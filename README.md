@@ -1,6 +1,4 @@
 # Tower Defense
-
-
 # CGRA252
 
 
@@ -12,10 +10,15 @@
 
 # Names and roles of the team members
 🐻 Eric Liu
+
 🐺 
+
 🐱 
+
 🐶 
+
 🐰 
+
 🦉
 
 
