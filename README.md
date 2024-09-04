@@ -1,7 +1,7 @@
 # Tower Defense
 
 
-# Course code
+# CGRA252
 
 
 # The title of the game
