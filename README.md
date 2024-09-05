@@ -15,7 +15,7 @@
 
 🐱 
 
-🐶 
+🐶 Nagare Negishi
 
 🐰 Brock Clarke
 
