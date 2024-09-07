@@ -33,12 +33,12 @@
 What is the style of the game, what are similar games
 - Tower Defense similar to Bloons TD
 
-[THIS IS TEMPORARY]
+[THIS IS TEMPORARY]/////////////////
 Our game is a classic 2D Tower Defense (TD) strategy game,
 drawing inspiration from popular title Bloons TD.
 The game combines strategic placement of defensive structures with resource management (and quick decision-making).
 Like Bloons TD, our game will feature a variety of tower types, each with unique abilities and upgrade.
-[/THIS IS TEMPORARY]
+//////////////////////////////////////////
 
 
 What is the main game mechanic
@@ -47,7 +47,7 @@ What is the main game mechanic
 - Player takes damage for every enemy that makes it through to base
 - When base health reaches 0 game is over
 
-[THIS IS TEMPORARY]
+[THIS IS TEMPORARY]////////////////////
 **Pre-round Setup**:
 - Players strategically place towers on the map before each wave begins
 - Limited resources (money/points) for purchasing and upgrading towers
@@ -65,13 +65,13 @@ What is the main game mechanic
 **Resource Management**:
 - Earn in-game currency by defeating enemies
 - Balance between saving for powerful upgrades and immediate defense needs
-[THIS IS TEMPORARY]
+////////////////////////////////////
 
 A list of the challenging engine technology that will be learnt/used.
 - Superclass for upgrading towers
 - Balancing tower damage with enemy health/scaling
 
-[THIS IS TEMPORARY]
+[THIS IS TEMPORARY]/////////////////////////
 **Tower Upgrade System**:
 - Implement a flexible superclass for tower upgrades
 **Game Balance**:
@@ -83,7 +83,7 @@ A list of the challenging engine technology that will be learnt/used.
 (Cant remember if we talk about it...
 **Multiple Path Implementation**:
 - Create a system to support multiple paths for enemies)
-[THIS IS TEMPORARY]
+////////////////////////////////////////
 
 ## Rubric
 [THIS IS TEMPORARY]
