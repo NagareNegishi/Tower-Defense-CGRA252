@@ -11,7 +11,7 @@
 # Names and roles of the team members
 🐻 Eric Liu
 
-🐺 
+🐺 Lawrence Huangfu
 
 🐱 Bruno Helbick
 
