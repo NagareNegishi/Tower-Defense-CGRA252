@@ -27,16 +27,15 @@
 
 # Game Description
 What is the style of the game, what are similar games
--Tower Defense similar to Bloons TD
+- Tower Defense similar to Bloons TD
 
 
 What is the main game mechanic
--Before each round player sets up and upgrades towers
--Enemies spwan in waves and try to reach players base
--Player takes damage for every enemy that makes it through to base
--When base health reaches 0 game is over 
+- Before each round player sets up and upgrades towers
+- Enemies spwan in waves and try to reach players base
+- Player takes damage for every enemy that makes it through to base
+- When base health reaches 0 game is over 
 
 A list of the challenging engine technology that will be learnt/used.
--Superclass for upgrading towers
--Balancing tower damage with enemy health/scaling
--
+- Superclass for upgrading towers
+- Balancing tower damage with enemy health/scaling
