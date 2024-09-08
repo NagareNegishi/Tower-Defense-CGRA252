@@ -28,6 +28,8 @@
 
 # Link to video (onedrive/vimeo/youtube/googledrive other video service) showing the design of the game ( approx. 2-4 mins )
 
+- https://drive.google.com/file/d/1G-85lo--mbkCuej0Jl6LQ6dVApytIs8x/view?usp=drive_link
+
 
 # Game Description
 What is the style of the game, what are similar games
