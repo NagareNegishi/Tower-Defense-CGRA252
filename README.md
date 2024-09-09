@@ -30,8 +30,9 @@
 
 
 # Game Description
-What is the style of the game, what are similar games:
-<TEMP>
+
+What is the style of the game, what are similar games:<TEMP>
+
 Our game is a classic 2D Tower Defense (TD) strategy game,
 drawing inspiration from popular title Bloons TD.
 The game combines strategic placement of defensive structures with resource management (and quick decision-making).
@@ -114,8 +115,8 @@ Suggestion for task Division:
 
 [THIS IS TEMPORARY]<TEMP>
 ## Art Style
-
 Potential asset references:
+
 https://free-game-assets.itch.io/free-field-enemies-pixel-art-for-tower-defense
 https://free-game-assets.itch.io/free-fields-tileset-pixel-art-for-tower-defense
 https://free-game-assets.itch.io/free-archer-towers-pixel-art-for-tower-defense
