@@ -95,13 +95,7 @@ In the absence of an official rubric link, we've proposed the following weightin
 | Design - Description | 35% | 20-45 |
 | Design - Technical | 25% | 15-35 |
 | Group Setup | 30% | 20-40 |
-| Video | 10% | 5-15 |
-
-
-- Design - Description: X% (20-45)
-- Design - Technical: Y% (15-35)
-- Group Setup: Z% (20-40)
-- Video: W% (5-15)
+| Video | 10% to 5?? | 5-15 |
 
 We will update this section if any official rubric or additional information becomes available.
 </TEMP>
