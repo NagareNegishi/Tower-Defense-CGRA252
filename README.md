@@ -86,13 +86,12 @@ Like Bloons TD, our game will feature a variety of tower types, each with unique
 
 # Rubric
 
+We set weights through the link below, but this link won't take us to the page where the weights are displayed.
 https://forms.office.com/r/gva89M1Y6s
-
-We set weights through the link above, but this link won't take us to the page where the weights are displayed.
-
 <TEMP>
+
 | Area | Weighting | Default range |
-|------|-----------|---------------|
+|------|:------------------:|:-------------:|
 | Design - Description | 40% | 20-45 |
 | Design - Technical | 25% | 15-35 |
 | Group Setup | 30% | 20-40 |
