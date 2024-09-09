@@ -90,7 +90,14 @@ The rubric for this project may be made available in Nuku/Quizzes. However, as o
 
 In the absence of an official rubric link, we've proposed the following weighting for the project components based on the given ranges:
 
-Our chosen weightings for the rubric:
+| Area | Set our weighting | Default range |
+|------|:------------------:|:-------------:|
+| Design - Description | 35% | 20-45 |
+| Design - Technical | 25% | 15-35 |
+| Group Setup | 30% | 20-40 |
+| Video | 10% | 5-15 |
+
+
 - Design - Description: X% (20-45)
 - Design - Technical: Y% (15-35)
 - Group Setup: Z% (20-40)
@@ -118,13 +125,22 @@ Suggestion for task Division:
 Potential asset references:
 
 https://free-game-assets.itch.io/free-field-enemies-pixel-art-for-tower-defense
+
 https://free-game-assets.itch.io/free-fields-tileset-pixel-art-for-tower-defense
+
 https://free-game-assets.itch.io/free-archer-towers-pixel-art-for-tower-defense
+
 https://free-game-assets.itch.io/free-magic-and-traps-top-down-pixel-art-asset
+
 https://foozlecc.itch.io/spire-tower-pack-1
+
 https://foozlecc.itch.io/spire-tower-pack-2
+
 https://foozlecc.itch.io/spire-tower-pack-3
+
 https://foozlecc.itch.io/spire-tower-pack-4
+
 https://foozlecc.itch.io/spire-enemy-pack-1
+
 https://foozlecc.itch.io/spire-enemy-pack-2
 </TEMP>
