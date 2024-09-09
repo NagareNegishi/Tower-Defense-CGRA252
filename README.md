@@ -92,7 +92,7 @@ We set weights through the link above, but this link won't take us to the page w
 
 <TEMP>
 | Area | Weighting | Default range |
-|------|:---------:|:-------------:|
+|------|-----------|---------------|
 | Design - Description | 40% | 20-45 |
 | Design - Technical | 25% | 15-35 |
 | Group Setup | 30% | 20-40 |
