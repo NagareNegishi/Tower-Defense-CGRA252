@@ -85,19 +85,19 @@ Like Bloons TD, our game will feature a variety of tower types, each with unique
 </TEMP>
 
 # Rubric
+
+We set weights through the link below, but this link won't take us to the page where the weights are displayed.
+
+https://forms.office.com/r/gva89M1Y6s
 <TEMP>
-The rubric for this project may be made available in Nuku/Quizzes. However, as of now, it's unclear whether a link will be provided or when it might become available.
 
-In the absence of an official rubric link, we've proposed the following weighting for the project components based on the given ranges:
-
-| Area | Set our weighting | Default range |
+| Area | Weighting | Default range |
 |------|:------------------:|:-------------:|
-| Design - Description | 35% | 20-45 |
+| Design - Description | 40% | 20-45 |
 | Design - Technical | 25% | 15-35 |
 | Group Setup | 30% | 20-40 |
-| Video | 10% to 5?? | 5-15 |
+| Video | 5%  | 5-15 |
 
-We will update this section if any official rubric or additional information becomes available.
 </TEMP>
 
 
