@@ -4,7 +4,7 @@
 
 # The title of the game
 
-<TEMP>Tower Defense</TEMP>
+<TEMP>Stop the goblins</TEMP>
 
 # Your group name
 
@@ -101,8 +101,9 @@ We will update this section if any official rubric or additional information bec
 </TEMP>
 
 
+
 [THIS IS TEMPORARY]<TEMP>
-## Task Division
+### Task Division
 Suggestion for task Division:
 
 - Stage: Responsible for the game environment and coordinating tower and enemy positions/ path.
@@ -115,7 +116,7 @@ Suggestion for task Division:
 
 
 [THIS IS TEMPORARY]<TEMP>
-## Art Style
+### Art Style
 Potential asset references:
 
 https://free-game-assets.itch.io/free-field-enemies-pixel-art-for-tower-defense
