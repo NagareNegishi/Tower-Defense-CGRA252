@@ -31,7 +31,7 @@
 
 # Game Description
 
-What is the style of the game, what are similar games:<TEMP>
+## What is the style of the game, what are similar games:<TEMP>
 
 Our game is a classic 2D Tower Defense (TD) strategy game,
 drawing inspiration from popular title Bloons TD.
@@ -40,7 +40,7 @@ Like Bloons TD, our game will feature a variety of tower types, each with unique
 </TEMP>
 
 
-What is the main game mechanic:<TEMP>
+## What is the main game mechanic:<TEMP>
 
 **Pre-round Setup**:
 - Players strategically place towers on the map before each wave begins
@@ -65,7 +65,7 @@ What is the main game mechanic:<TEMP>
 - Balance between saving for powerful upgrades and immediate defense needs
 </TEMP>
 
-A list of the challenging engine technology that will be learnt/used:<TEMP>
+## A list of the challenging engine technology that will be learnt/used:<TEMP>
 
 **Tower Upgrade System**:
 - Implement a flexible superclass for tower upgrades
@@ -84,7 +84,7 @@ A list of the challenging engine technology that will be learnt/used:<TEMP>
 - Create a system to support multiple paths for enemies)
 </TEMP>
 
-## Rubric
+# Rubric
 <TEMP>
 The rubric for this project may be made available in Nuku/Quizzes. However, as of now, it's unclear whether a link will be provided or when it might become available.
 
