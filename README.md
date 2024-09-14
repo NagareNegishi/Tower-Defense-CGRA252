@@ -89,7 +89,7 @@ Like Bloons TD, our game will feature a variety of tower types, each with unique
 We set weights through the link below, but this link won't take us to the page where the weights are displayed.
 
 https://forms.office.com/r/gva89M1Y6s
-<TEMP>
+
 
 | Area | Weighting | Default range |
 |------|:------------------:|:-------------:|
@@ -98,13 +98,9 @@ https://forms.office.com/r/gva89M1Y6s
 | Group Setup | 30% | 20-40 |
 | Video | 5%  | 5-15 |
 
-</TEMP>
-
-
 
 
 ### Task Division
-Suggestion for task Division:
 
 - Stage: Responsible for the game environment and coordinating tower and enemy positions/ path.
 - Tower: Develops the tower system, including different types, upgrades, and attack mechanics.
@@ -112,6 +108,15 @@ Suggestion for task Division:
 - HUD: Designs and implements all UI elements and information display.
 - InputController: Manages all user interactions and game controls.
 - LevelManager: Handles level progression, wave management, and difficulty scaling.
+
+Each task is assigned to:
+
+- Stage: 
+- Tower: 
+- Enemy: 
+- HUD: 
+- InputController: 
+- LevelManager: Nagare Negishi
 
 ### Art Style
 Potential asset references:
