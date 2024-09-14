@@ -102,7 +102,7 @@ https://forms.office.com/r/gva89M1Y6s
 
 
 
-[THIS IS TEMPORARY]<TEMP>
+
 ### Task Division
 Suggestion for task Division:
 
@@ -112,10 +112,7 @@ Suggestion for task Division:
 - HUD: Designs and implements all UI elements and information display.
 - InputController: Manages all user interactions and game controls.
 - LevelManager: Handles level progression, wave management, and difficulty scaling.
-</TEMP>
 
-
-[THIS IS TEMPORARY]<TEMP>
 ### Art Style
 Potential asset references:
 
@@ -138,4 +135,3 @@ https://foozlecc.itch.io/spire-tower-pack-4
 https://foozlecc.itch.io/spire-enemy-pack-1
 
 https://foozlecc.itch.io/spire-enemy-pack-2
-</TEMP>
