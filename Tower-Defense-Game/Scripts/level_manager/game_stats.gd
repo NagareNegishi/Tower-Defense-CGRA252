@@ -4,14 +4,29 @@ class_name GameStats
 ## GameStats manages the game statistics such as score, life, and resources.
 ## It uses signals to notify other parts of the game when these values change.
 
-var score: int = 0
-var life: int = 100
-var resources: int = 1000
-
 # HUD should listen to these signals
 signal score_changed(new_score: int)
 signal life_changed(new_life: int)
 signal resources_changed(new_resources: int)
+
+# Current score
+var score: int = 0:
+	set(value):
+		score = value
+		score_changed.emit(score)
+
+# Current life
+var life: int = 100:
+	set(value):
+		life = value
+		life_changed.emit(life)
+
+# Current resources
+var resources: int = 1000:
+	set(value):
+		resources = value
+		resources_changed.emit(resources)
+
 
 # Update the score
 func update_score(amount: int):
