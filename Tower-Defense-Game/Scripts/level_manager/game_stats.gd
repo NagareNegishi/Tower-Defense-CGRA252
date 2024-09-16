@@ -8,6 +8,7 @@ class_name GameStats
 signal score_changed(new_score: int)
 signal life_changed(new_life: int)
 signal resources_changed(new_resources: int)
+signal game_over
 
 # Current score
 var score: int = 0:
@@ -20,6 +21,8 @@ var life: int = 100:
 	set(value):
 		life = value
 		life_changed.emit(life)
+		if life <= 0:
+			game_over.emit()
 
 # Current resources
 var resources: int = 1000:

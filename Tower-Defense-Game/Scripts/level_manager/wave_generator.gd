@@ -1,5 +1,12 @@
+## oops, I forgot my original plan
+## with current wave implementation, I dont need to create a wave generator
+
+
 extends Node
 class_name WaveGenerator
+
+@export var wave_scene: PackedScene
+@export var enemy_scene: PackedScene
 
 func create_wave(difficulty: int) -> Wave:
 	var wave = Wave.new()
