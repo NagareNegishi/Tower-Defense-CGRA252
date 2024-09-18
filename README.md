@@ -4,16 +4,18 @@
 
 # The title of the game
 
+<TEMP>Stop the goblins</TEMP>
 
 # Your group name
 
+<TEMP>Team 6</TEMP>
 
 # Names and roles of the team members
 🐻 Eric Liu
 
-🐺 
+🐺 Lawrence Huangfu
 
-🐱 
+🐱 Bruno Helbick
 
 🐶 Nagare Negishi
 
@@ -24,13 +26,11 @@
 
 # Link to video (onedrive/vimeo/youtube/googledrive other video service) showing the design of the game ( approx. 2-4 mins )
 
+- https://drive.google.com/file/d/1G-85lo--mbkCuej0Jl6LQ6dVApytIs8x/view?usp=drive_link
+
 
 # Game Description
-What is the style of the game, what are similar games
-- Tower Defense similar to Bloons TD
 
-<<<<<<< Updated upstream
-=======
 ## What is the style of the game, what are similar games:<TEMP>
 
 Our game is a classic 2D Tower Defense (TD) strategy game,
@@ -114,7 +114,7 @@ Each task is assigned to:
 - Stage: 
 - Tower: 
 - Enemy: 
-- HUD: Angus Ng
+- HUD: 
 - InputController: 
 - LevelManager: Nagare Negishi
 
@@ -136,14 +136,7 @@ https://foozlecc.itch.io/spire-tower-pack-2
 https://foozlecc.itch.io/spire-tower-pack-3
 
 https://foozlecc.itch.io/spire-tower-pack-4
->>>>>>> Stashed changes
 
-What is the main game mechanic
-- Before each round player sets up and upgrades towers
-- Enemies spwan in waves and try to reach players base
-- Player takes damage for every enemy that makes it through to base
-- When base health reaches 0 game is over 
+https://foozlecc.itch.io/spire-enemy-pack-1
 
-A list of the challenging engine technology that will be learnt/used.
-- Superclass for upgrading towers
-- Balancing tower damage with enemy health/scaling
+https://foozlecc.itch.io/spire-enemy-pack-2
