@@ -20,7 +20,7 @@ enum GameState {
 
 
 @export var wave_scene: PackedScene
-@export var difficulty_estimator: Node  #I need to wait others code
+@export var strength_estimator: StrengthEstimator  #I need to wait others code
 
 signal waves_complete # finished sending all waves
 signal level_complete # all waves are defeated
@@ -32,6 +32,9 @@ func _ready():
 	game_stats = GameStats.new()
 	add_child(game_stats)
 	game_stats.connect("game_over", Callable(self, "_on_game_over"))
+	
+	strength_estimator = StrengthEstimator.new()
+	add_child(strength_estimator)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
