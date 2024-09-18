@@ -1,41 +1,55 @@
-[gd_scene load_steps=16 format=3 uid="uid://cwh4jo7nuoq3j"]
+[gd_scene load_steps=18 format=3 uid="uid://cwh4jo7nuoq3j"]
 
 [ext_resource type="Script" path="res://Scripts/Slime.gd" id="1_xkit3"]
+[ext_resource type="Texture2D" uid="uid://p3idcfr25olo" path="res://Assets/Enemies/1/S_Death2.png" id="2_rts8x"]
+[ext_resource type="Texture2D" uid="uid://cbhwfdkkmxcck" path="res://Assets/Enemies/1/D_Walk.png" id="3_l6xta"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_o3nf6"]
+atlas = ExtResource("2_rts8x")
 region = Rect2(0, 0, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_86f26"]
+atlas = ExtResource("2_rts8x")
 region = Rect2(48, 0, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_cp1jh"]
+atlas = ExtResource("2_rts8x")
 region = Rect2(96, 0, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mtws7"]
+atlas = ExtResource("2_rts8x")
 region = Rect2(144, 0, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_17vis"]
+atlas = ExtResource("2_rts8x")
 region = Rect2(192, 0, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6fmgr"]
+atlas = ExtResource("2_rts8x")
 region = Rect2(240, 0, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_c3ms4"]
+atlas = ExtResource("3_l6xta")
 region = Rect2(0, 0, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fmsup"]
+atlas = ExtResource("3_l6xta")
 region = Rect2(48, 0, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nqd1t"]
+atlas = ExtResource("3_l6xta")
 region = Rect2(96, 0, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_cr628"]
+atlas = ExtResource("3_l6xta")
 region = Rect2(144, 0, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_c2bmo"]
+atlas = ExtResource("3_l6xta")
 region = Rect2(192, 0, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dssn5"]
+atlas = ExtResource("3_l6xta")
 region = Rect2(240, 0, 48, 48)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_t22v2"]
