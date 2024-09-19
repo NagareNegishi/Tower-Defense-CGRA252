@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://djg35eycgywrp"]
+
+[ext_resource type="PackedScene" uid="uid://cwh4jo7nuoq3j" path="res://Scenes/slime.tscn" id="1_rqv26"]
+
+[sub_resource type="Curve2D" id="Curve2D_gomax"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 95, 137, 0, 0, 0, 0, 215, 157, 0, 0, 0, 0, 324, 151, 0, 0, 0, 0, 453, 142, 0, 0, 0, 0, 617, 172)
+}
+point_count = 5
+
+[node name="Path2D" type="Path2D"]
+curve = SubResource("Curve2D_gomax")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="."]
+position = Vector2(95, 137)
+rotation = 0.519146
+rotates = false
+loop = false
+
+[node name="Slime" parent="PathFollow2D" instance=ExtResource("1_rqv26")]
+rotation = -0.505883
