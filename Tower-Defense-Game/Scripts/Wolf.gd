@@ -7,6 +7,7 @@ var health = 100
 func _ready():
 	#play walking anim on spawn
 	$Animation.play("Walk")
+	$Animation.flip_h = true
 
 func _process(delta):
 	#get and set progress along path
