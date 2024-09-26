@@ -1,10 +1,10 @@
 [gd_scene load_steps=3 format=3 uid="uid://bw2mk5hydfm16"]
 
-[ext_resource type="PackedScene" uid="uid://c3gnueqlj1ky8" path="res://Scenes/Wolf.tscn" id="1_c61vg"]
+[ext_resource type="PackedScene" uid="uid://c3gnueqlj1ky8" path="res://Scenes/Wolf.tscn" id="1_r60vm"]
 
 [sub_resource type="Curve2D" id="Curve2D_gomax"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 95, 137, 0, 0, 0, 0, 215, 157, 0, 0, 0, 0, 324, 151, 0, 0, 0, 0, 453, 142, 0, 0, 0, 0, 617, 172)
+"points": PackedVector2Array(0, 0, 0, 0, 95, 137, 0, 0, 0, 0, 215, 157, 0, 0, 0, 0, 324, 151, 0, 0, 0, 0, 453, 142, 0, 0, 0, 0, 616, 160)
 }
 point_count = 5
 
@@ -17,5 +17,5 @@ rotation = 0.519146
 rotates = false
 loop = false
 
-[node name="Wolf" parent="PathFollow2D" instance=ExtResource("1_c61vg")]
+[node name="Wolf" parent="PathFollow2D" instance=ExtResource("1_r60vm")]
 rotation = -0.414869

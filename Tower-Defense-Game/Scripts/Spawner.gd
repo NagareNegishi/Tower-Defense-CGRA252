@@ -7,16 +7,19 @@ var enemyCount = 0
 
 #array for wave scenes
 var waves = [
-	preload("res://Scenes/Wave1.tscn"),
-	preload("res://Scenes/Wave2.tscn"),
-	preload("res://Scenes/Wave3.tscn"),
-	preload("res://Scenes/Wave4.tscn")
+	preload("res://Scenes/Waves/Wave1.tscn"),
+	preload("res://Scenes/Waves/Wave2.tscn"),
+	preload("res://Scenes/Waves/Wave3.tscn"),
+	preload("res://Scenes/Waves/Wave4.tscn"),
+	preload("res://Scenes/Waves/Wave5.tscn"),
+	preload("res://Scenes/Waves/Wave6.tscn"),
+	preload("res://Scenes/Waves/Wave7.tscn")
 ]
 
 
 func start_wave():
 	#if wave is ready to spawn and there are still waves to be spawned
-	if waveReady and currentWave < waves.size():
+	if waveReady and currentWave <= waves.size():
 		#prevent further waves from spawning
 		waveReady = false
 		#reset enemy count
@@ -27,16 +30,19 @@ func start_wave():
 		currentWave += 1
 
 func _on_timer_timeout():
-	#intantiate current wave
-	var waveScene = waves[currentWave].instantiate()
-	#new child for new enemy
-	add_child(waveScene)
-	#increment enemy count
-	enemyCount += 1
-	
+	if currentWave < waves.size():
+		#intantiate current wave
+		var waveScene = waves[currentWave].instantiate()
+		#new child for new enemy
+		add_child(waveScene)
+		#increment enemy count
+	if currentWave < 4:
+		enemyCount += 1
+	else:
+		enemyCount += 2
 	#currently spawns 10 enemies per wave but can be adjusted for
 	#each wave with a variable
-	if enemyCount >= 10:
+	if enemyCount >= 20:
 		#stop timer when wave has reached max 
 		$Timer.stop()
 		#have these calls here to keep spawning waves can link this to a button for player to handle
