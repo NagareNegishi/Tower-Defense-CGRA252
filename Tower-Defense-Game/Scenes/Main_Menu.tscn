@@ -47,6 +47,7 @@ scale = Vector2(0.4, 0.4)
 texture = ExtResource("3_e5u4g")
 
 [node name="Setting" parent="." instance=ExtResource("2_y7glj")]
+layout_mode = 0
 offset_left = 426.0
 offset_top = 367.0
 offset_right = 726.0
@@ -60,6 +61,7 @@ scale = Vector2(2.9, 2.9)
 texture = ExtResource("4_pl588")
 
 [node name="Exit_Game" parent="." instance=ExtResource("2_y7glj")]
+layout_mode = 0
 offset_left = 426.0
 offset_top = 506.0
 offset_right = 726.0
