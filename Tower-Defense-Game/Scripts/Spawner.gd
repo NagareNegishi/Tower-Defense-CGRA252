@@ -16,6 +16,9 @@ var waves = [
 	preload("res://Scenes/Waves/Wave7.tscn")
 ]
 
+# modification by Nagi delete it later
+signal wave_completed
+
 
 func start_wave():
 	#if wave is ready to spawn and there are still waves to be spawned
@@ -58,3 +61,6 @@ func on_player_ready():
 #enables ability to start next wave
 func on_wave_completed():
 	waveReady = true
+	
+# modification by Nagi delete it later
+	wave_completed.emit()
