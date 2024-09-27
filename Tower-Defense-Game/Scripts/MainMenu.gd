@@ -1,6 +1,6 @@
 extends Control
 
-var level = "res://game.tscn" # remove this later
+var level = "res://Scenes/Prototype/game.tscn" # remove this later
 var setting = ""
 
 
