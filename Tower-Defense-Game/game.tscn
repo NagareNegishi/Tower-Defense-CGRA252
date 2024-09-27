@@ -2,9 +2,9 @@
 
 [ext_resource type="Script" path="res://Scripts/level_manager/Game.gd" id="1_afu5y"]
 [ext_resource type="Script" path="res://Scripts/level_manager/Temp_LevelManager.gd" id="2_5wrmc"]
-[ext_resource type="Script" path="res://Scripts/Spawner.gd" id="3_w1yab"]
 [ext_resource type="Script" path="res://Scripts/level_manager/game_stats.gd" id="4_b872q"]
 [ext_resource type="Script" path="res://Scripts/level_manager/strength_estimator.gd" id="5_3bk54"]
+[ext_resource type="PackedScene" uid="uid://b60qa1syew0md" path="res://Scenes/Spawner.tscn" id="5_jvh6j"]
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_afu5y")
@@ -12,11 +12,10 @@ script = ExtResource("1_afu5y")
 [node name="LevelManager" type="Node" parent="."]
 script = ExtResource("2_5wrmc")
 
-[node name="Spawner" type="Node2D" parent="."]
-script = ExtResource("3_w1yab")
-
 [node name="GameStats" type="Node" parent="."]
 script = ExtResource("4_b872q")
 
 [node name="StrengthEstimator" type="Node" parent="."]
 script = ExtResource("5_3bk54")
+
+[node name="Spawner" parent="." instance=ExtResource("5_jvh6j")]
