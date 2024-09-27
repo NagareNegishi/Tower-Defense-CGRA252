@@ -4,7 +4,7 @@
 
 # The title of the game
 
-<TEMP>Stop the goblins</TEMP>
+<TEMP>Goblins’ Fury: Fortress Fight</TEMP>
 
 # Your group name
 
@@ -84,20 +84,62 @@ Like Bloons TD, our game will feature a variety of tower types, each with unique
 - Create a system to support multiple paths for enemies)
 </TEMP>
 
+
+
+## A list of the challenging engine technology currently used.
+
+
+## A list of the challenging engine technology that will be tested for the rest of the development.
+
+
+## A list of features that have been implemented in the prototype:
+
+- Basic Level Management: Temp_LevelManager implements a basic structure for managing game levels and waves.
+
+## Prepared but NOT YET IMPLEMENTED Systems:
+
+- GameStats: A system designed for tracking game resources and player stats. This system exists in code but is not yet connected to other game systems or actively tracking any data.
+
+- StrengthEstimator: A framework intended for adjusting game difficulty. While the basic structure exists, it is not yet integrated or influencing gameplay.
+
+- Wave Generation: A basic structure for creating enemy waves has been outlined in code. However, this system is not yet functional or generating actual waves in the game.
+
+
+## Controls: how to interact with the prototype
+
+
+## List of Assets used/templates used:
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 # Rubric
 
-We set weights through the link below, but this link won't take us to the page where the weights are displayed.
-
-https://forms.office.com/r/gva89M1Y6s
-
-
 | Area | Weighting | Default range |
-|------|:------------------:|:-------------:|
-| Design - Description | 40% | 20-45 |
-| Design - Technical | 25% | 15-35 |
-| Group Setup | 30% | 20-40 |
-| Video | 5%  | 5-15 |
-
+|------|:---------:|:-------------:|
+| Updates | | 0-20 |
+| Prototype - Code | | 15-35 |
+| Prototype - Plan | | 15-35 |
+| Reflection | | 20-40 |
+| Video | | 5-15 |
 
 
 ### Task Division
@@ -118,7 +160,37 @@ Each task is assigned to:
 - InputController: 
 - LevelManager: Nagare Negishi
 
-### Art Style
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+### Art Style //this could go
 Potential asset references:
 
 https://free-game-assets.itch.io/free-field-enemies-pixel-art-for-tower-defense
