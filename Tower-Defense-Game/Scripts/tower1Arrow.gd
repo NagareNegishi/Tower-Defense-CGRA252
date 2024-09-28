@@ -19,6 +19,6 @@ func _physics_process(delta):
 	move_and_slide()
 
 func _on_area_2d_body_entered(body):
-	if "Slime" in body.name:
+	if "Slime" in body.name or "Bee" in body.name or "Wolf" in body.name or "Goblin" in body.name:
 		body.health -= bulletDamage
 		queue_free()
