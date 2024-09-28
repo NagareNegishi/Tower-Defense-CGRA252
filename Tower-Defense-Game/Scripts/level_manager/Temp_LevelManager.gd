@@ -23,6 +23,7 @@ signal game_complete
 func _ready():
     game_stats.connect("game_over", Callable(self, "_on_game_over"))
     spawner.connect("wave_completed", Callable(self, "_on_wave_completed"))
+    spawner.connect("enemy_reached_goal", Callable(self, "_on_enemy_reached_goal")) 
 
 func start_level():
     current_state = GameState.WAVE_IN_PROGRESS
@@ -61,3 +62,7 @@ func update_stats_enemy_killed():
 func update_stats_enemy_reached_end():
     game_stats.update_life(1)
     strength_estimator.enemy_reached_goal()
+
+func _on_enemy_reached_goal():
+    print("LevelManager: Enemy reached goal")
+    update_stats_enemy_reached_end()
