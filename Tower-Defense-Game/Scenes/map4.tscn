@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://mrd3i17w5gtu"]
+
+[ext_resource type="Texture2D" uid="uid://ccpa3ryh8niy1" path="res://Assets/Tileset/LAIMap4.jpg" id="1_p067r"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="LaiMap4" type="Sprite2D" parent="."]
+position = Vector2(1353, 1350)
+texture = ExtResource("1_p067r")
