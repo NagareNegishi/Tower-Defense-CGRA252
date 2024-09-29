@@ -110,6 +110,7 @@ script = ExtResource("1_xkit3")
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_t22v2")
 animation = &"Death"
+frame_progress = 0.622459
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 2)

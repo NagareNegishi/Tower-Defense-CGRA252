@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://djg35eycgywrp"]
+[gd_scene load_steps=4 format=3 uid="uid://djg35eycgywrp"]
 
-[ext_resource type="PackedScene" uid="uid://cwh4jo7nuoq3j" path="res://Scenes/slime.tscn" id="1_e5b5g"]
+[ext_resource type="Script" path="res://Scripts/Spawner.gd" id="1_1vlby"]
+[ext_resource type="PackedScene" uid="uid://cwh4jo7nuoq3j" path="res://Scenes/slime.tscn" id="2_8oip6"]
 
 [sub_resource type="Curve2D" id="Curve2D_gomax"]
 _data = {
@@ -16,6 +17,7 @@ position = Vector2(95, 137)
 rotation = 0.519146
 rotates = false
 loop = false
+script = ExtResource("1_1vlby")
 
-[node name="Slime" parent="PathFollow2D" instance=ExtResource("1_e5b5g")]
+[node name="Slime" parent="PathFollow2D" instance=ExtResource("2_8oip6")]
 rotation = -0.505883
