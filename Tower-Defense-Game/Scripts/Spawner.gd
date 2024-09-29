@@ -46,7 +46,7 @@ func _on_timer_timeout():
 		for path_follow in waveScene.get_children():
 			if path_follow is PathFollow2D and path_follow.get_child_count() > 0:
 				var enemy = path_follow.get_child(0)
-				#print("Enemy node: ", enemy.name, " - Class: ", enemy.get_class())
+				print("Enemy node: ", enemy.name, " - Class: ", enemy.get_class())
 				if enemy.has_signal("reached_goal"):
 					#print("Connecting reached_goal signal for ", enemy.name)
 					enemy.connect("reached_goal", Callable(self, "_on_enemy_reached_goal"))
@@ -62,7 +62,7 @@ func _on_timer_timeout():
 		enemyCount += 2
 	#currently spawns 10 enemies per wave but can be adjusted for
 	#each wave with a variable
-	if enemyCount >= 20:
+	if enemyCount >= 5:
 		#stop timer when wave has reached max 
 		$Timer.stop()
 		#have these calls here to keep spawning waves can link this to a button for player to handle
