@@ -16,6 +16,10 @@ var waves = [
 	preload("res://Scenes/Waves/Wave7.tscn")
 ]
 
+## modification by Nagi delete it later
+signal wave_completed
+signal enemy_reached_goal
+##########################
 
 func start_wave():
 	#if wave is ready to spawn and there are still waves to be spawned
@@ -36,6 +40,22 @@ func _on_timer_timeout():
 		#new child for new enemy
 		add_child(waveScene)
 		#increment enemy count
+
+	## delete this block############
+		#print("Connecting signals for new wave")
+		for path_follow in waveScene.get_children():
+			if path_follow is PathFollow2D and path_follow.get_child_count() > 0:
+				var enemy = path_follow.get_child(0)
+				#print("Enemy node: ", enemy.name, " - Class: ", enemy.get_class())
+				if enemy.has_signal("reached_goal"):
+					#print("Connecting reached_goal signal for ", enemy.name)
+					enemy.connect("reached_goal", Callable(self, "_on_enemy_reached_goal"))
+				#else:
+					#print(enemy.name, " does not have reached_goal signal")
+	########################
+
+
+
 	if currentWave < 4:
 		enemyCount += 1
 	else:
@@ -58,3 +78,14 @@ func on_player_ready():
 #enables ability to start next wave
 func on_wave_completed():
 	waveReady = true
+	
+
+# modification by Nagi delete it later
+	wave_completed.emit()
+
+
+## delete this block############
+func _on_enemy_reached_goal():
+	#print("Spawner: Enemy reached goal")
+	emit_signal("enemy_reached_goal")
+########################

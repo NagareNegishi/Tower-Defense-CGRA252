@@ -17,7 +17,7 @@ var score: int = 0:
 		score_changed.emit(score)
 
 # Current life
-var life: int = 100:
+var life: int = 10:
 	set(value):
 		life = value
 		life_changed.emit(life)
@@ -38,6 +38,7 @@ func update_score(amount: int):
 # Update the life
 func update_life(amount: int):
 	life -= amount
+	print("Life: ", life)
 
 # Update the resources
 func update_resources(amount: int):

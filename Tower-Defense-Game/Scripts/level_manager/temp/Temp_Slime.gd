@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 ## delete this line
 signal reached_goal
+signal enemy_died
 ###################
 
 #speed and health
@@ -14,10 +15,11 @@ func _ready():
 
 func _process(delta):
 	#get and set progress along path
-	get_parent().set_progress(get_parent().get_progress() + speed * delta)
+	var path = get_parent().get_parent()
+	path.set_progress(path.get_progress() + speed * delta)
 	
 	#when enemy reaches end despwan can add damage to player off this call
-	if get_parent().get_progress_ratio() == 1:
+	if get_parent().get_progress_ratio() >= 1:
 		## delete this block############
 		reached_goal.emit()
 		#print("reached goal")
@@ -31,4 +33,5 @@ func _process(delta):
 		$Animation.play("Death")
 		await  $Animation.animation_finished
 		#despawn enemy
+		enemy_died.emit()
 		queue_free()

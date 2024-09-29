@@ -4,8 +4,12 @@
 
 # The title of the game
 
-[THIS IS TEMPORARY]
-<TEMP>Tower Defense</TEMP>
+<TEMP>Goblins’ Fury: Fortress Fight</TEMP>
+
+# IMPORTANT:
+
+The code in this main branch currently contains multiple errors and is not functional.
+Please see the [back-up-nagare] branch for the working version of this prototype.
 
 # Your group name
 
@@ -98,22 +102,112 @@ Our chosen weightings for the rubric:
 </TEMP>
 
 
-[THIS IS TEMPORARY]
-<TEMP>## Task Division
-Suggestion for task Division:
 
-Stage: Responsible for the game environment and coordinating tower and enemy positions/path.
-Tower: Develops the tower system, including different types, upgrades, and attack mechanics.
-Enemy: Creates the enemy system, including different types, movement, and interaction with towers.
-HUD: Designs and implements all UI elements and information display.
-InputController: Manages all user interactions and game controls.
-LevelManager: Handles level progression, wave management, and difficulty scaling.
-</TEMP>
+## A list of the challenging engine technology currently used.
 
 
-[THIS IS TEMPORARY]
-<TEMP>## Art Style
+## A list of the challenging engine technology that will be tested for the rest of the development.
 
+
+## A list of features that have been implemented in the prototype:
+
+- Basic Level Management: Temp_LevelManager implements a basic structure for managing game levels and waves.
+
+## Prepared but NOT YET IMPLEMENTED Systems:
+
+- GameStats: A system designed for tracking game resources and player stats. This system exists in code but is not yet connected to other game systems or actively tracking any data.
+
+- StrengthEstimator: A framework intended for adjusting game difficulty. While the basic structure exists, it is not yet integrated or influencing gameplay.
+
+- Wave Generation: A basic structure for creating enemy waves has been outlined in code. However, this system is not yet functional or generating actual waves in the game.
+
+
+## Controls: how to interact with the prototype
+
+
+## List of Assets used/templates used:
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# Rubric
+
+| Area | Weighting | Default range |
+|------|:---------:|:-------------:|
+| Updates | | 0-20 |
+| Prototype - Code | | 15-35 |
+| Prototype - Plan | | 15-35 |
+| Reflection | | 20-40 |
+| Video | | 5-15 |
+
+
+### Task Division
+
+- Stage: Responsible for the game environment and coordinating tower and enemy positions/ path.
+- Tower: Develops the tower system, including different types, upgrades, and attack mechanics.
+- Enemy: Creates the enemy system, including different types, movement, and interaction with towers.
+- HUD: Designs and implements all UI elements and information display.
+- InputController: Manages all user interactions and game controls.
+- LevelManager: Handles level progression, wave management, and difficulty scaling.
+
+Each task is assigned to:
+
+- Stage: 
+- Tower: 
+- Enemy: 
+- HUD: 
+- InputController: 
+- LevelManager: Nagare Negishi
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+### Art Style //this could go
 Potential asset references:
 https://free-game-assets.itch.io/free-field-enemies-pixel-art-for-tower-defense
 https://free-game-assets.itch.io/free-fields-tileset-pixel-art-for-tower-defense
