@@ -50,7 +50,7 @@ func start():
 func send_enemies():
 	while not enemies.empty():
 		var enemy = enemies.pop_front()
-		add_child(enemy)
+		# add_child(enemy)
 		enemy_spawned.emit(enemy)
 		enemies_spawned += 1
 		# this will spawn enemies but enemys movement or lacation need to wait teams code
