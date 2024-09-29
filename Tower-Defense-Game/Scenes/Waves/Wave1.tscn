@@ -4,15 +4,15 @@
 
 [sub_resource type="Curve2D" id="Curve2D_gomax"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 95, 137, 0, 0, 0, 0, 184, 152, 0, 0, 0, 0, 224, 152, 0, 0, 0, 0, 324, 151, 0, 0, 0, 0, 453, 142, 0, 0, 0, 0, 617, 172)
+"points": PackedVector2Array(0, 0, 0, 0, 51, 90, 0, 0, 0, 0, 227, 89, 0, 0, 0, 0, 1042, 90, 0, 0, 0, 0, 1047, 246, 0, 0, 0, 0, 100, 252, 0, 0, 0, 0, 98, 403, 0, 0, 0, 0, 961, 415, 0, 0, 0, 0, 965, 564, 0, 0, 0, 0, 268, 574, 0, 0, 0, 0, 268, 661)
 }
-point_count = 6
+point_count = 10
 
 [node name="Path2D" type="Path2D"]
 curve = SubResource("Curve2D_gomax")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="."]
-position = Vector2(95, 137)
+position = Vector2(51, 90)
 rotation = 0.519146
 rotates = false
 loop = false
