@@ -9,7 +9,8 @@
 # IMPORTANT:
 
 The code in this main branch currently contains multiple errors and is not functional.
-Please see the [back-up-nagare] branch for the working version of this prototype.
+
+### Please see the [back-up-nagare] branch for the working version of this prototype.
 
 # Your group name
 
@@ -127,22 +128,25 @@ Our chosen weightings for the rubric:
 
 ## List of Assets used/templates used:
 
+https://free-game-assets.itch.io/free-field-enemies-pixel-art-for-tower-defense
 
+https://free-game-assets.itch.io/free-fields-tileset-pixel-art-for-tower-defense
 
+https://free-game-assets.itch.io/free-archer-towers-pixel-art-for-tower-defense
 
+https://free-game-assets.itch.io/free-magic-and-traps-top-down-pixel-art-asset
 
+https://foozlecc.itch.io/spire-tower-pack-1
 
+https://foozlecc.itch.io/spire-tower-pack-2
 
+https://foozlecc.itch.io/spire-tower-pack-3
 
+https://foozlecc.itch.io/spire-tower-pack-4
 
+https://foozlecc.itch.io/spire-enemy-pack-1
 
-
-
-
-
-
-
-
+https://foozlecc.itch.io/spire-enemy-pack-2
 
 
 
@@ -177,46 +181,3 @@ Each task is assigned to:
 - InputController: 
 - LevelManager: Nagare Negishi
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-### Art Style //this could go
-Potential asset references:
-https://free-game-assets.itch.io/free-field-enemies-pixel-art-for-tower-defense
-https://free-game-assets.itch.io/free-fields-tileset-pixel-art-for-tower-defense
-https://free-game-assets.itch.io/free-archer-towers-pixel-art-for-tower-defense
-https://free-game-assets.itch.io/free-magic-and-traps-top-down-pixel-art-asset
-https://foozlecc.itch.io/spire-tower-pack-1
-https://foozlecc.itch.io/spire-tower-pack-2
-https://foozlecc.itch.io/spire-tower-pack-3
-https://foozlecc.itch.io/spire-tower-pack-4
-https://foozlecc.itch.io/spire-enemy-pack-1
-https://foozlecc.itch.io/spire-enemy-pack-2
-</TEMP>
