@@ -4,17 +4,18 @@
 
 [sub_resource type="Curve2D" id="Curve2D_gomax"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 95, 137, 0, 0, 0, 0, 215, 157, 0, 0, 0, 0, 294, 160, 0, 0, 0, 0, 324, 151, 0, 0, 0, 0, 453, 142, 0, 0, 0, 0, 624, 168)
+"points": PackedVector2Array(0, 0, 0, 0, 40, 73, 0, 0, 0, 0, 1039, 74, 0, 0, 0, 0, 1039, 221, 0, 0, 0, 0, 99, 223, 0, 0, 0, 0, 96, 393, 0, 0, 0, 0, 956, 403, 0, 0, 0, 0, 956, 530, 0, 0, 0, 0, 259, 539, 0, 0, 0, 0, 261, 655)
 }
-point_count = 6
+point_count = 9
 
 [node name="Path2D" type="Path2D"]
 curve = SubResource("Curve2D_gomax")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="."]
-position = Vector2(95, 137)
+position = Vector2(40, 73)
 rotation = 0.519146
 rotates = false
 loop = false
 
 [node name="Goblin" parent="PathFollow2D" instance=ExtResource("1_sg4yv")]
+rotation = -0.454817
