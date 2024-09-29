@@ -8,8 +8,10 @@
 
 # IMPORTANT:
 
-The code in this main branch currently contains multiple errors and is not functional.
-Please see the [back-up-nagare] branch for the working version of this prototype.
+~~The code in this main branch currently contains multiple errors and is not functional.~~
+Although many components are missing, the game is functioning. As we try to avoid modifying others' code as much as possible, communication between each component is not well handled yet.
+
+Please also see the [back-up-nagare] branch for other version of the prototype.
 
 # Your group name
 
@@ -39,12 +41,10 @@ Please see the [back-up-nagare] branch for the working version of this prototype
 What is the style of the game, what are similar games
 - Tower Defense similar to Bloons TD
 
-[THIS IS TEMPORARY]/////////////////
 Our game is a classic 2D Tower Defense (TD) strategy game,
 drawing inspiration from popular title Bloons TD.
 The game combines strategic placement of defensive structures with resource management and quick decision-making.
 Like Bloons TD, our game will feature a variety of tower types, each with unique abilities and upgrades.
-//////////////////////////////////////////
 
 
 What is the main game mechanic
@@ -53,7 +53,7 @@ What is the main game mechanic
 - Player takes damage for every enemy that makes it through to base
 - When base health reaches 0 game is over
 
-[THIS IS TEMPORARY]////////////////////
+
 **Pre-round Setup**:
 - Players strategically place towers on the map before each wave begins
 - Limited resources (money/points) for purchasing and upgrading towers
@@ -71,13 +71,10 @@ What is the main game mechanic
 **Resource Management**:
 - Earn in-game currency by defeating enemies
 - Balance between saving for powerful upgrades and immediate defense needs
-////////////////////////////////////
+
 
 A list of the challenging engine technology that will be learnt/used.
-- Superclass for upgrading towers
-- Balancing tower damage with enemy health/scaling
 
-[THIS IS TEMPORARY]/////////////////////////
 **Tower Upgrade System**:
 - Implement a flexible superclass for tower upgrades
 **Game Balance**:
@@ -89,17 +86,6 @@ A list of the challenging engine technology that will be learnt/used.
 (Cant remember if we talk about it...
 **Multiple Path Implementation**:
 - Create a system to support multiple paths for enemies)
-////////////////////////////////////////
-
-## Rubric
-[THIS IS TEMPORARY]
-<TEMP>
-Our chosen weightings for the rubric:
-- Design - Description: X% (20-45)
-- Design - Technical: Y% (15-35)
-- Group Setup: Z% (20-40)
-- Video: W% (5-15)
-</TEMP>
 
 
 
@@ -127,22 +113,25 @@ Our chosen weightings for the rubric:
 
 ## List of Assets used/templates used:
 
+https://free-game-assets.itch.io/free-field-enemies-pixel-art-for-tower-defense
 
+https://free-game-assets.itch.io/free-fields-tileset-pixel-art-for-tower-defense
 
+https://free-game-assets.itch.io/free-archer-towers-pixel-art-for-tower-defense
 
+https://free-game-assets.itch.io/free-magic-and-traps-top-down-pixel-art-asset
 
+https://foozlecc.itch.io/spire-tower-pack-1
 
+https://foozlecc.itch.io/spire-tower-pack-2
 
+https://foozlecc.itch.io/spire-tower-pack-3
 
+https://foozlecc.itch.io/spire-tower-pack-4
 
+https://foozlecc.itch.io/spire-enemy-pack-1
 
-
-
-
-
-
-
-
+https://foozlecc.itch.io/spire-enemy-pack-2
 
 
 
@@ -177,46 +166,3 @@ Each task is assigned to:
 - InputController: 
 - LevelManager: Nagare Negishi
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-### Art Style //this could go
-Potential asset references:
-https://free-game-assets.itch.io/free-field-enemies-pixel-art-for-tower-defense
-https://free-game-assets.itch.io/free-fields-tileset-pixel-art-for-tower-defense
-https://free-game-assets.itch.io/free-archer-towers-pixel-art-for-tower-defense
-https://free-game-assets.itch.io/free-magic-and-traps-top-down-pixel-art-asset
-https://foozlecc.itch.io/spire-tower-pack-1
-https://foozlecc.itch.io/spire-tower-pack-2
-https://foozlecc.itch.io/spire-tower-pack-3
-https://foozlecc.itch.io/spire-tower-pack-4
-https://foozlecc.itch.io/spire-enemy-pack-1
-https://foozlecc.itch.io/spire-enemy-pack-2
-</TEMP>
