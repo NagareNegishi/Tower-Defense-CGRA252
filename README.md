@@ -6,6 +6,11 @@
 
 <TEMP>Goblins’ Fury: Fortress Fight</TEMP>
 
+# IMPORTANT:
+
+The code in this main branch currently contains multiple errors and is not functional.
+Please see the [back-up-nagare] branch for the working version of this prototype.
+
 # Your group name
 
 [THIS IS TEMPORARY]
