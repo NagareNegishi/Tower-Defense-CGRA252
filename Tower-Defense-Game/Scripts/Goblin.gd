@@ -1,4 +1,5 @@
 extends CharacterBody2D
+class_name Goblin
 
 #speed and health
 @export var speed = 50
