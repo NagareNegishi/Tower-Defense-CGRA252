@@ -25,10 +25,10 @@ func _process(delta):
 # lets assume
 # Default enemy strengths
 const ENEMY_STRENGTHS = {
-    "basic": 10,
-    "fast": 15,
-    "tank": 25,
-    "boss": 50
+	"basic": 10,
+	"fast": 15,
+	"tank": 25,
+	"boss": 50
 }
 
 # Difficulty adjustment factors

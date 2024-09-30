@@ -3,13 +3,13 @@
 [ext_resource type="Script" path="res://Scripts/Spawner.gd" id="1_1a14x"]
 [ext_resource type="Script" path="res://Scripts/HUD.gd" id="2_gccxc"]
 [ext_resource type="Script" path="res://Scripts/Health.gd" id="2_swi4d"]
-[ext_resource type="PackedScene" path="res://Scenes/Heart.tscn" id="3_u5qxj"]
+[ext_resource type="PackedScene" uid="uid://dubw3phbv5o6m" path="res://Scenes/Heart.tscn" id="3_u5qxj"]
 [ext_resource type="Script" path="res://Scripts/Money.gd" id="4_vde0w"]
 [ext_resource type="Script" path="res://Scripts/Pause.gd" id="5_okcb6"]
 [ext_resource type="Script" path="res://Scripts/Play.gd" id="6_fohvs"]
 [ext_resource type="Script" path="res://Scripts/Buy Tower.gd" id="7_waop1"]
 [ext_resource type="Script" path="res://Scripts/Next Wave.gd" id="8_wx08f"]
-[ext_resource type="PackedScene" path="res://Scenes/Coin.tscn" id="9_buuop"]
+[ext_resource type="PackedScene" uid="uid://b055ixjo5jrno" path="res://Scenes/Coin.tscn" id="9_buuop"]
 
 [node name="Spawner" type="Node2D"]
 script = ExtResource("1_1a14x")
