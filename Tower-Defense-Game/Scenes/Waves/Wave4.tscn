@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://bkd6li2allb4e"]
 
-[ext_resource type="PackedScene" uid="uid://d1setya43cpnp" path="res://Scenes/goblin.tscn" id="1_4im4t"]
+[ext_resource type="PackedScene" uid="uid://d1setya43cpnp" path="res://Scenes/Enemies/goblin.tscn" id="1_4im4t"]
 
 [sub_resource type="Curve2D" id="Curve2D_gomax"]
 _data = {

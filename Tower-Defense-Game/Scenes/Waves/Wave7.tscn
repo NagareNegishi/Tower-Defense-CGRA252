@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://fah6ngy6tfvl"]
 
-[ext_resource type="PackedScene" uid="uid://c3gnueqlj1ky8" path="res://Scenes/Wolf.tscn" id="1_a7wwc"]
+[ext_resource type="PackedScene" uid="uid://c3gnueqlj1ky8" path="res://Scenes/Enemies/Wolf.tscn" id="1_a7wwc"]
 [ext_resource type="PackedScene" uid="uid://dhakfq20f1tww" path="res://Scenes/Waves/GoblinWave.tscn" id="2_gwfjh"]
 
 [sub_resource type="Curve2D" id="Curve2D_gomax"]
