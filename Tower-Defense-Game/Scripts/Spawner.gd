@@ -1,10 +1,10 @@
 extends Node2D
 
 #variables to handle wave spawns
-var waveReady = true
-var currentWave = 0
-var enemyCount = 0
 
+var currentWave = 0
+
+var HUD_scene = preload("res://Scenes/HUD.tscn")
 #array for wave scenes
 var waves = [
 	preload("res://Scenes/Waves/Wave1.tscn"),
@@ -21,13 +21,25 @@ signal wave_completed
 signal enemy_reached_goal
 ##########################
 
+func _ready():
+	#wave button doesnt work yet
+	var HUD_instance = HUD_scene.instantiate()
+	add_child(HUD_instance)
+	var start_wave_button = HUD_instance.get_node("CanvasLayer/Next Wave")
+	start_wave_button.connect("start_wave_signal", Callable(self, "start_wave"))
+
+
+func _process(delta):
+	print(currentWave)
+	print(Global.enemyCount)
+
 func start_wave():
 	#if wave is ready to spawn and there are still waves to be spawned
-	if waveReady and currentWave <= waves.size():
+	if Global.waveReady and currentWave <= waves.size():
 		#prevent further waves from spawning
-		waveReady = false
+		Global.waveReady = false
 		#reset enemy count
-		enemyCount = 0
+		Global.enemyCount = 0
 		#restart timer
 		$Timer.start()
 		#increment wave count
@@ -57,27 +69,25 @@ func _on_timer_timeout():
 
 
 	if currentWave < 4:
-		enemyCount += 1
+		Global.enemyCount += 1
 	else:
-		enemyCount += 2
+		Global.enemyCount += 2
 	#currently spawns 10 enemies per wave but can be adjusted for
 	#each wave with a variable
-	if enemyCount >= 5:
+	if Global.enemyCount >= 5:
 		#stop timer when wave has reached max 
 		$Timer.stop()
 		#have these calls here to keep spawning waves can link this to a button for player to handle
 		#spawning the next wave
-		on_wave_completed()
-		start_wave()
+		if Global.enemyCount >= 5:
+			start_wave()
+			on_wave_completed()
+			
 
-#function for player to spawn wave
-func on_player_ready():
-	if waveReady:
-		start_wave()
 
 #enables ability to start next wave
 func on_wave_completed():
-	waveReady = true
+	Global.waveReady = true
 	
 
 # modification by Nagi delete it later

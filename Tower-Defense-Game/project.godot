@@ -11,13 +11,14 @@ config_version=5
 [application]
 
 config/name="Tower-Defense"
-run/main_scene="res://Scenes/Main_Menu.tscn"
+run/main_scene="res://Scenes/Prototype/game.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"
 
 [autoload]
 
 ControlManager="*res://Scripts/control_manager.gd"
+Global="*res://Scripts/Global.gd"
 
 [input]
 

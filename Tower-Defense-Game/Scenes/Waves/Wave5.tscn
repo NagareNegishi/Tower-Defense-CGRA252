@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://cle7b367ljouk"]
 
-[ext_resource type="PackedScene" uid="uid://cpp4aiqvwncpp" path="res://Scenes/Bee.tscn" id="1_oc85f"]
+[ext_resource type="PackedScene" uid="uid://cpp4aiqvwncpp" path="res://Scenes/Enemies/Bee.tscn" id="1_oc85f"]
 [ext_resource type="PackedScene" uid="uid://1cgm5krnpkaq" path="res://Scenes/Waves/SlimeWave.tscn" id="2_5m6c7"]
 
 [sub_resource type="Curve2D" id="Curve2D_gomax"]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://d382mkdy85art"]
 
-[ext_resource type="PackedScene" uid="uid://c3gnueqlj1ky8" path="res://Scenes/Wolf.tscn" id="1_1tbwl"]
+[ext_resource type="PackedScene" uid="uid://c3gnueqlj1ky8" path="res://Scenes/Enemies/Wolf.tscn" id="1_1tbwl"]
 
 [sub_resource type="Curve2D" id="Curve2D_gomax"]
 _data = {
