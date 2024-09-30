@@ -161,7 +161,7 @@ Each task is assigned to:
 
 - Stage: 
 - Tower: 
-- Enemy: 
+- Enemy: Brock Clarke
 - HUD: 
 - InputController: 
 - LevelManager: Nagare Negishi

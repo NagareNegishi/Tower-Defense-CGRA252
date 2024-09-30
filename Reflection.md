@@ -23,8 +23,14 @@ As the team member responsible for the LevelManager component, my experience dur
 ### [Team Member 4 Name]
 [Space for Team Member 4's reflection]
 
-### [Team Member 5 Name]
-[Space for Team Member 5's reflection]
+### [Brock Clarke, 🐰, Enemy logic and HUD]
+
+As the Team memeber initially resposible for the Enenmy spawner/wave system it has been interesting to find out how to spawn multiple enemies off one instance of a path follow2D, This is a part of the game engine I lightly touched on in my first project and something i did initially find quite difficult,
+and because of that it is the reason I opted for this task.
+
+As we have had a bit of a lack of commuication towards the project I have also had a hand in implementing the map for the project and working on the HUD, the map was quite simple as I worked with Tilesets in my first project but linking up buttons from the HUD to other scripts within the project have proved to be a challenge, i look forawrd to learning more about how to effectivley implement these an imporve on my current work so far which will be looking more into signals.
+
+Working as a team has also been quite enlightening as said by Nagare that animal system doesnt necessarily work as people fall into thier natural demanors. my role assigned has been the communicator/ facilitator while I dont think my communication has lacked there is certainly room for improvement with this and future projects
 
 ### [Team Member 6 Name]
 [Space for Team Member 6's reflection]
