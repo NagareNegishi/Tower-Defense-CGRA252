@@ -1,4 +1,5 @@
 extends CharacterBody2D
+class_name Slime
 
 ## delete this line
 signal reached_goal

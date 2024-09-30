@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+class_name Bee
+
 #speed and health
 @export var speed = 50
 var health = 100
