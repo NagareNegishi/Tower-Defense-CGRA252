@@ -68,17 +68,21 @@ What is the main game mechanic
 **Pre-round Setup**:
 - Players strategically place towers on the map before each wave begins
 - Limited resources (money/points) for purchasing and upgrading towers
-- Players can sell or relocate towers to adapt their strategy<br>
+- Players can sell or relocate towers to adapt their strategy
+
 **Wave-based Enemy Spawns**:
 - Diverse enemy types with different speeds, health, and abilities
-- Progressively challenging waves that test the player's defense<br>
+- Progressively challenging waves that test the player's defense
+
 **Player Base and Health System**:
 - Path end that players must protect
 - Base health decreases when enemies reach it
-- Game over when base health reaches zero<br>
+- Game over when base health reaches zero
+
 **Tower Mechanics**:
 - Multiple tower types (e.g., projectile, area-of-effect, support)
-- Upgrade for each tower, enhancing damage, range, or special abilities<br>
+- Upgrade for each tower, enhancing damage, range, or special abilities
+
 **Resource Management**:
 - Earn in-game currency by defeating enemies
 - Balance between saving for powerful upgrades and immediate defense needs
