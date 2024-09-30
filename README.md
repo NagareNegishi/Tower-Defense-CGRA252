@@ -105,7 +105,7 @@ A list of the challenging engine technology that will be learnt/used.
 
 - StrengthEstimator: A framework intended for adjusting game difficulty. While the basic structure exists, it is not yet integrated or influencing gameplay.
 
-- Wave Generation: A basic structure for creating enemy waves has been outlined in code. However, this system is not yet functional or generating actual waves in the game.
+- Wave/ Wave Generation: A basic structure for creating enemy waves has been outlined in code. However, this system is not yet functional or generating actual waves in the game.
 
 
 ## Controls: how to interact with the prototype
@@ -157,7 +157,7 @@ https://foozlecc.itch.io/spire-enemy-pack-2
 - InputController: Manages all user interactions and game controls.
 - LevelManager: Handles level progression, wave management, and difficulty scaling.
 
-Each task is assigned to:
+Each task was initially assigned to:
 
 - Stage: 
 - Tower: 
@@ -166,3 +166,11 @@ Each task is assigned to:
 - InputController: 
 - LevelManager: Nagare Negishi
 
+Each task was implemented by:
+
+- Stage: 
+- Tower: 
+- Enemy: 
+- HUD: 
+- InputController: 
+- LevelManager: Nagare Negishi
