@@ -8,8 +8,8 @@ Goblins’ Fury: Fortress Fight
 
 # IMPORTANT:
 
-~~The code in this main branch currently contains multiple errors and is not functional.~~<br>
-Although many components are missing, the game is functioning. As we try to avoid modifying others' code as much as possible, communication between each component is not well handled yet.
+~~The code in this main branch currently contains multiple errors and is not functional.~~
+<br>Although many components are missing, the game is functioning. As we try to avoid modifying others' code as much as possible, communication between each component is not well handled yet.
 <br>-><br>
 As we tried to implement missing functionality at the last minute, there are some conflicts in the code, resulting in three different work-in-progress versions.
 
