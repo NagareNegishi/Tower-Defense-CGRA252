@@ -1,0 +1,117 @@
+[gd_scene load_steps=18 format=3 uid="uid://b055ixjo5jrno"]
+
+[ext_resource type="Texture2D" uid="uid://d17ejsyvklswn" path="res://Assets/gold.blink.png" id="1_2d40n"]
+[ext_resource type="Script" path="res://Scripts/Coin.gd" id="2_e1x7a"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vvt6c"]
+atlas = ExtResource("1_2d40n")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jwq5e"]
+atlas = ExtResource("1_2d40n")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vb8q6"]
+atlas = ExtResource("1_2d40n")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5rqsh"]
+atlas = ExtResource("1_2d40n")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3elss"]
+atlas = ExtResource("1_2d40n")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nfnca"]
+atlas = ExtResource("1_2d40n")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kpfk5"]
+atlas = ExtResource("1_2d40n")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_42a37"]
+atlas = ExtResource("1_2d40n")
+region = Rect2(224, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4ftbo"]
+atlas = ExtResource("1_2d40n")
+region = Rect2(256, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7d0wb"]
+atlas = ExtResource("1_2d40n")
+region = Rect2(288, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fe0mk"]
+atlas = ExtResource("1_2d40n")
+region = Rect2(320, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nse1u"]
+atlas = ExtResource("1_2d40n")
+region = Rect2(352, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gxyfb"]
+atlas = ExtResource("1_2d40n")
+region = Rect2(384, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i7yff"]
+atlas = ExtResource("1_2d40n")
+region = Rect2(416, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_njjuq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vvt6c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jwq5e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vb8q6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5rqsh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3elss")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nfnca")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kpfk5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_42a37")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4ftbo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7d0wb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fe0mk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nse1u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gxyfb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i7yff")
+}],
+"loop": true,
+"name": &"Shine",
+"speed": 5.0
+}]
+
+[node name="Coin" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_njjuq")
+animation = &"Shine"
+script = ExtResource("2_e1x7a")
+
+[connection signal="ready" from="." to="." method="_on_ready"]

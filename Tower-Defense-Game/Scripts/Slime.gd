@@ -18,6 +18,8 @@ func _process(delta):
 	
 	#when enemy reaches end despwan can add damage to player off this call
 	if get_parent().get_progress_ratio() == 1:
+		Global.playerHealth -= 1
+		Global.enemyCount -= 1
 		## delete this block############
 		reached_goal.emit()
 		#print("reached goal")
@@ -25,6 +27,8 @@ func _process(delta):
 		queue_free()
 	
 	if health <= 0:
+		Global.playerGold += 1
+		Global.enemyCount -= 1
 		#stop movement
 		set_process(false)
 		#play death animation and wait for it to finish

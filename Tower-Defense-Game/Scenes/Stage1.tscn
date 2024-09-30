@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://djg35eycgywrp"]
 
-[ext_resource type="PackedScene" uid="uid://cwh4jo7nuoq3j" path="res://Scenes/slime.tscn" id="1_s2m02"]
+[ext_resource type="PackedScene" uid="uid://cwh4jo7nuoq3j" path="res://Scenes/Enemies/slime.tscn" id="1_s2m02"]
 
 [sub_resource type="Curve2D" id="Curve2D_gomax"]
 _data = {
