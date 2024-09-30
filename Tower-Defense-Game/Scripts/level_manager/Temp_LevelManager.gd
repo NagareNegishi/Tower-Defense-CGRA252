@@ -34,6 +34,7 @@ func _ready():
 	spawner.connect("next_wave_ready", Callable(self, "_on_next_wave_ready"))
 
 	hud.connect("next_wave_requested", Callable(self, "_on_next_wave_requested"))
+	hud.connect("buy_tower_requested", Callable(self, "_on_buy_tower_requested"))
 
 
 
@@ -97,3 +98,6 @@ func _on_next_wave_requested():
 
 func _on_next_wave_ready():
 	print("LevelManager: Next wave ready")
+
+func _on_buy_tower_requested():
+	print("LevelManager: Buy tower requested")

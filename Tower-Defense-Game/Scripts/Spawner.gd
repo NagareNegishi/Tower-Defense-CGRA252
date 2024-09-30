@@ -31,9 +31,10 @@ func _ready():
 	start_wave_button.connect("start_wave_signal", Callable(self, "start_wave"))
 
 
-func _process(delta):
-	print(currentWave)
-	print(Global.enemyCount)
+func _process(_delta):
+	# print(currentWave)
+	# print(Global.enemyCount)
+	pass
 
 func start_wave():
 	print("Starting new wave")
