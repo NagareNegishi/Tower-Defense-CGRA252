@@ -1,6 +1,14 @@
-[gd_scene load_steps=2 format=3 uid="uid://b60qa1syew0md"]
+[gd_scene load_steps=10 format=3 uid="uid://b60qa1syew0md"]
 
 [ext_resource type="Script" path="res://Scripts/Spawner.gd" id="1_1a14x"]
+[ext_resource type="Script" path="res://Scripts/Health.gd" id="2_swi4d"]
+[ext_resource type="PackedScene" uid="uid://dubw3phbv5o6m" path="res://Scenes/Heart.tscn" id="3_u5qxj"]
+[ext_resource type="Script" path="res://Scripts/Money.gd" id="4_vde0w"]
+[ext_resource type="Script" path="res://Scripts/Pause.gd" id="5_okcb6"]
+[ext_resource type="Script" path="res://Scripts/Play.gd" id="6_fohvs"]
+[ext_resource type="Script" path="res://Scripts/Buy Tower.gd" id="7_waop1"]
+[ext_resource type="Script" path="res://Scripts/Next Wave.gd" id="8_wx08f"]
+[ext_resource type="PackedScene" uid="uid://b055ixjo5jrno" path="res://Scenes/Coin.tscn" id="9_buuop"]
 
 [node name="Spawner" type="Node2D"]
 script = ExtResource("1_1a14x")
@@ -8,4 +16,110 @@ script = ExtResource("1_1a14x")
 [node name="Timer" type="Timer" parent="."]
 autostart = true
 
+[node name="HUD" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -648.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="CanvasLayer" type="CanvasLayer" parent="HUD"]
+
+[node name="Health" type="TextEdit" parent="HUD/CanvasLayer"]
+offset_left = 120.0
+offset_top = 15.0
+offset_right = 160.0
+offset_bottom = 55.0
+text = "x 0"
+script = ExtResource("2_swi4d")
+
+[node name="Heart" parent="HUD/CanvasLayer" instance=ExtResource("3_u5qxj")]
+position = Vector2(100, 30)
+
+[node name="Money" type="TextEdit" parent="HUD/CanvasLayer"]
+offset_left = 45.0
+offset_top = 15.0
+offset_right = 85.0
+offset_bottom = 55.0
+text = "x 0"
+script = ExtResource("4_vde0w")
+
+[node name="Pause" type="Button" parent="HUD/CanvasLayer"]
+offset_left = 1048.0
+offset_top = 435.0
+offset_right = 1128.0
+offset_bottom = 530.0
+text = "Pause II"
+script = ExtResource("5_okcb6")
+
+[node name="Play" type="Button" parent="HUD/CanvasLayer"]
+process_mode = 2
+offset_left = 1048.0
+offset_top = 535.0
+offset_right = 1128.0
+offset_bottom = 630.0
+text = "Play I>"
+script = ExtResource("6_fohvs")
+
+[node name="Buy Tower" type="Button" parent="HUD/CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = 435.0
+offset_right = -892.0
+offset_bottom = -13.0
+grow_horizontal = 2
+grow_vertical = 2
+disabled = true
+text = "Buy Tower"
+script = ExtResource("7_waop1")
+
+[node name="Upgrade Tower" type="Button" parent="HUD/CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 270.0
+offset_top = 435.0
+offset_right = -632.0
+offset_bottom = -13.0
+grow_horizontal = 2
+grow_vertical = 2
+disabled = true
+text = "Upgrade Tower"
+
+[node name="Button" type="Button" parent="HUD/CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 530.0
+offset_top = 435.0
+offset_right = -372.0
+offset_bottom = -13.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Next Wave" type="Button" parent="HUD/CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 790.0
+offset_top = 435.0
+offset_right = -112.0
+offset_bottom = -13.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Next Wave
+"
+script = ExtResource("8_wx08f")
+
+[node name="Coin" parent="HUD/CanvasLayer" instance=ExtResource("9_buuop")]
+position = Vector2(30, 30)
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="pressed" from="HUD/CanvasLayer/Pause" to="HUD/CanvasLayer/Pause" method="_on_pressed"]
+[connection signal="pressed" from="HUD/CanvasLayer/Play" to="HUD/CanvasLayer/Play" method="_on_pressed"]
+[connection signal="pressed" from="HUD/CanvasLayer/Next Wave" to="HUD/CanvasLayer/Next Wave" method="_on_pressed"]
