@@ -2,7 +2,7 @@ extends Node2D
 
 #variables to handle wave spawns
 
-var currentWave = 0
+var previousWave = 0
 
 var HUD_scene = preload("res://Scenes/HUD.tscn")
 #array for wave scenes
@@ -30,28 +30,27 @@ func _ready():
 
 
 func _process(delta):
-	print(currentWave)
-	print(Global.enemyCount)
+
+	if Global.prepWave == true:
+		on_wave_completed()
 
 func start_wave():
 	#if wave is ready to spawn and there are still waves to be spawned
-	if Global.waveReady and currentWave <= waves.size():
-		#prevent further waves from spawning
-		Global.waveReady = false
+	if Global.waveReady and Global.currentWave < waves.size():
 		#reset enemy count
 		Global.enemyCount = 0
 		#restart timer
 		$Timer.start()
 		#increment wave count
-		currentWave += 1
+		
 
 func _on_timer_timeout():
-	if currentWave < waves.size():
+	if Global.currentWave <= waves.size() -1:
 		#intantiate current wave
-		var waveScene = waves[currentWave].instantiate()
+		var waveScene = waves[Global.currentWave].instantiate()
 		#new child for new enemy
 		add_child(waveScene)
-		#increment enemy count
+
 
 	## delete this block############
 		#print("Connecting signals for new wave")
@@ -67,27 +66,29 @@ func _on_timer_timeout():
 	########################
 
 
-
-	if currentWave < 4:
+	
+	if Global.currentWave < 4:
 		Global.enemyCount += 1
 	else:
 		Global.enemyCount += 2
 	#currently spawns 10 enemies per wave but can be adjusted for
 	#each wave with a variable
-	if Global.enemyCount >= 5:
-		#stop timer when wave has reached max 
+	if Global.enemyCount == 5:
+		#ensure next wave cannot spawn
+		Global.waveReady = false
+		#Stop further enemies from spawning
 		$Timer.stop()
-		#have these calls here to keep spawning waves can link this to a button for player to handle
-		#spawning the next wave
-		if Global.enemyCount >= 5:
-			start_wave()
-			on_wave_completed()
+		#ready prepWave
+		Global.prepWave = true
+		
 			
 
 
 #enables ability to start next wave
 func on_wave_completed():
-	Global.waveReady = true
+	if Global.waveReady == true:
+		start_wave()
+		Global.prepWave = false
 	
 
 # modification by Nagi delete it later
