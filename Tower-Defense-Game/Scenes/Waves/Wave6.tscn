@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://cu7h20l1cai4q"]
+
+[ext_resource type="PackedScene" uid="uid://cwh4jo7nuoq3j" path="res://Scenes/Enemies/slime.tscn" id="1_mctm0"]
+[ext_resource type="PackedScene" uid="uid://d382mkdy85art" path="res://Scenes/Waves/WolfWave.tscn" id="2_pnhea"]
+
+[sub_resource type="Curve2D" id="Curve2D_gomax"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 39, 74, 0, 0, 0, 0, 1059, 74, 0, 0, 0, 0, 1059, 259, 0, 0, 0, 0, 114, 263, 0, 0, 0, 0, 114, 391, 0, 0, 0, 0, 977, 403, 0, 0, 0, 0, 980, 579, 0, 0, 0, 0, 275, 582, 0, 0, 0, 0, 273, 651, 0, 0, 0, 0, 273, 651)
+}
+point_count = 10
+
+[node name="Path2D" type="Path2D"]
+curve = SubResource("Curve2D_gomax")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="."]
+position = Vector2(39, 74)
+rotation = 0.519146
+rotates = false
+loop = false
+
+[node name="Slime" parent="PathFollow2D" instance=ExtResource("1_mctm0")]
+rotation = -0.505883
+
+[node name="Path2D" parent="." instance=ExtResource("2_pnhea")]
+position = Vector2(0, 24)

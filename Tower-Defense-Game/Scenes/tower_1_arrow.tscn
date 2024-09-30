@@ -1,0 +1,38 @@
+[gd_scene load_steps=5 format=3 uid="uid://bpm6huxl6wnvb"]
+
+[ext_resource type="Script" path="res://Scripts/tower1Arrow.gd" id="1_fisiq"]
+[ext_resource type="Texture2D" uid="uid://c1xdf0ss6bl44" path="res://Assets/Towers/3 Units/Arrow/18.png" id="2_1r6o3"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0axai"]
+radius = 2.5
+height = 13.6363
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_mdlxy"]
+radius = 3.0
+height = 15.9091
+
+[node name="tower1Arrow" type="CharacterBody2D"]
+script = ExtResource("1_fisiq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.5708
+scale = Vector2(0.800001, 0.880001)
+shape = SubResource("CapsuleShape2D_0axai")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+rotation = 1.5708
+scale = Vector2(1, 0.880001)
+shape = SubResource("CapsuleShape2D_mdlxy")
+
+[node name="18" type="Sprite2D" parent="."]
+rotation = 0.785398
+texture = ExtResource("2_1r6o3")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.75
+autostart = true
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://cle7b367ljouk"]
+
+[ext_resource type="PackedScene" uid="uid://cpp4aiqvwncpp" path="res://Scenes/Enemies/Bee.tscn" id="1_oc85f"]
+[ext_resource type="PackedScene" uid="uid://1cgm5krnpkaq" path="res://Scenes/Waves/SlimeWave.tscn" id="2_5m6c7"]
+
+[sub_resource type="Curve2D" id="Curve2D_gomax"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 44, 77, 0, 0, 0, 0, 1055, 78, 0, 0, 0, 0, 1056, 256, 0, 0, 0, 0, 114, 262, 0, 0, 0, 0, 115, 396, 0, 0, 0, 0, 979, 397, 0, 0, 0, 0, 979, 579, 0, 0, 0, 0, 273, 579, 0, 0, 0, 0, 277, 652)
+}
+point_count = 9
+
+[node name="Path2D" type="Path2D"]
+curve = SubResource("Curve2D_gomax")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="."]
+position = Vector2(44, 77)
+rotates = false
+loop = false
+
+[node name="Bee" parent="PathFollow2D" instance=ExtResource("1_oc85f")]
+
+[node name="Path2D" parent="." instance=ExtResource("2_5m6c7")]
+position = Vector2(0, 16)

@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://d382mkdy85art"]
+
+[ext_resource type="PackedScene" uid="uid://c3gnueqlj1ky8" path="res://Scenes/Enemies/Wolf.tscn" id="1_1tbwl"]
+
+[sub_resource type="Curve2D" id="Curve2D_gomax"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 38, 72, 0, 0, 0, 0, 1056, 73, 0, 0, 0, 0, 1059, 220, 0, 0, 0, 0, 90, 225, 0, 0, 0, 0, 88, 388, 0, 0, 0, 0, 956, 400, 0, 0, 0, 0, 957, 539, 0, 0, 0, 0, 247, 542, 0, 0, 0, 0, 251, 654)
+}
+point_count = 9
+
+[node name="Path2D" type="Path2D"]
+curve = SubResource("Curve2D_gomax")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="."]
+position = Vector2(38, 72)
+rotation = 0.519146
+rotates = false
+loop = false
+
+[node name="Wolf" parent="PathFollow2D" instance=ExtResource("1_1tbwl")]
+rotation = -0.414869

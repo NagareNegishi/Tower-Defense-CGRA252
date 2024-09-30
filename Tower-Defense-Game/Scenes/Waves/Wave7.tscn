@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://fah6ngy6tfvl"]
+
+[ext_resource type="PackedScene" uid="uid://c3gnueqlj1ky8" path="res://Scenes/Enemies/Wolf.tscn" id="1_a7wwc"]
+[ext_resource type="PackedScene" uid="uid://dhakfq20f1tww" path="res://Scenes/Waves/GoblinWave.tscn" id="2_gwfjh"]
+
+[sub_resource type="Curve2D" id="Curve2D_gomax"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 40, 72, 0, 0, 0, 0, 1060, 76, 0, 0, 0, 0, 1060, 257, 0, 0, 0, 0, 114, 260, 0, 0, 0, 0, 116, 393, 0, 0, 0, 0, 979, 403, 0, 0, 0, 0, 980, 578, 0, 0, 0, 0, 275, 579, 0, 0, 0, 0, 274, 655)
+}
+point_count = 9
+
+[node name="Path2D" type="Path2D"]
+curve = SubResource("Curve2D_gomax")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="."]
+position = Vector2(40, 72)
+rotation = 0.519146
+rotates = false
+loop = false
+
+[node name="Wolf" parent="PathFollow2D" instance=ExtResource("1_a7wwc")]
+rotation = -0.414869
+
+[node name="Path2D" parent="." instance=ExtResource("2_gwfjh")]
+position = Vector2(-8, 24)

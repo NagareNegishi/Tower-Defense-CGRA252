@@ -1,10 +1,10 @@
 [gd_scene load_steps=6 format=3 uid="uid://deiqyx24kprdw"]
 
-[ext_resource type="Script" path="res://Scripts/MainMenu.gd" id="1_donl7"]
-[ext_resource type="PackedScene" uid="uid://btenchf3ee11" path="res://Scenes/Basic_Button.tscn" id="2_y7glj"]
-[ext_resource type="Texture2D" uid="uid://dwdn0sxewh65h" path="res://Assets/Icon/StartGame-Icon.webp" id="3_e5u4g"]
-[ext_resource type="Texture2D" uid="uid://b15jacge4w54s" path="res://Assets/Icon/Setting_Icon.svg" id="4_pl588"]
-[ext_resource type="Texture2D" uid="uid://b1o5ga33flil4" path="res://Assets/Icon/Exit_Icon.png" id="5_2p0n7"]
+[ext_resource type="Script" path="res://Scripts/MainMenu.gd" id="1_xfwnd"]
+[ext_resource type="PackedScene" uid="uid://btenchf3ee11" path="res://Scenes/Basic_Button.tscn" id="2_hubrh"]
+[ext_resource type="Texture2D" uid="uid://dwdn0sxewh65h" path="res://Assets/Icon/StartGame-Icon.webp" id="3_aqwuo"]
+[ext_resource type="Texture2D" uid="uid://b15jacge4w54s" path="res://Assets/Icon/Setting_Icon.svg" id="4_kophg"]
+[ext_resource type="Texture2D" uid="uid://b1o5ga33flil4" path="res://Assets/Icon/Exit_Icon.png" id="5_wemn1"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -13,7 +13,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_donl7")
+script = ExtResource("1_xfwnd")
 
 [node name="Background" type="ColorRect" parent="."]
 layout_mode = 0
@@ -32,7 +32,7 @@ text = "Something TD"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Start_Game" parent="." instance=ExtResource("2_y7glj")]
+[node name="Start_Game" parent="." instance=ExtResource("2_hubrh")]
 layout_mode = 0
 offset_left = 426.0
 offset_top = 226.0
@@ -44,9 +44,9 @@ text = "Start Game
 [node name="Start_Game_Icon" type="Sprite2D" parent="."]
 position = Vector2(669, 278)
 scale = Vector2(0.4, 0.4)
-texture = ExtResource("3_e5u4g")
+texture = ExtResource("3_aqwuo")
 
-[node name="Setting" parent="." instance=ExtResource("2_y7glj")]
+[node name="Setting" parent="." instance=ExtResource("2_hubrh")]
 layout_mode = 0
 offset_left = 426.0
 offset_top = 367.0
@@ -58,9 +58,9 @@ text = "Setting
 [node name="Setting_Icon" type="Sprite2D" parent="."]
 position = Vector2(664, 417)
 scale = Vector2(2.9, 2.9)
-texture = ExtResource("4_pl588")
+texture = ExtResource("4_kophg")
 
-[node name="Exit_Game" parent="." instance=ExtResource("2_y7glj")]
+[node name="Exit_Game" parent="." instance=ExtResource("2_hubrh")]
 layout_mode = 0
 offset_left = 426.0
 offset_top = 506.0
@@ -72,7 +72,7 @@ text = "Exit Game
 [node name="Exit_Game_Icon" type="Sprite2D" parent="."]
 position = Vector2(666, 558)
 scale = Vector2(0.03, 0.03)
-texture = ExtResource("5_2p0n7")
+texture = ExtResource("5_wemn1")
 
 [connection signal="click_end" from="Start_Game" to="." method="_on_start_game_click_end"]
 [connection signal="click_end" from="Setting" to="." method="_on_setting_click_end"]

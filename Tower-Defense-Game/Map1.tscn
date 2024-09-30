@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://5rfph18j4fpm"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="LaiMap1" type="Sprite2D" parent="."]
+position = Vector2(1344, 1343)

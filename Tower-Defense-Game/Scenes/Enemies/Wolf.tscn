@@ -1,55 +1,55 @@
 [gd_scene load_steps=18 format=3 uid="uid://c3gnueqlj1ky8"]
 
-[ext_resource type="Script" path="res://Scripts/Wolf.gd" id="1_dwl2a"]
-[ext_resource type="Texture2D" uid="uid://dd0ap1xnbjr20" path="res://Assets/Enemies/3/S_Death.png" id="2_jckuw"]
-[ext_resource type="Texture2D" uid="uid://csajl74n7ognc" path="res://Assets/Enemies/3/S_Walk.png" id="3_1b27r"]
+[ext_resource type="Script" path="res://Scripts/Wolf.gd" id="1_05ur8"]
+[ext_resource type="Texture2D" uid="uid://dd0ap1xnbjr20" path="res://Assets/Enemies/3/S_Death.png" id="2_rnkc1"]
+[ext_resource type="Texture2D" uid="uid://csajl74n7ognc" path="res://Assets/Enemies/3/S_Walk.png" id="3_ws0fw"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_d7jye"]
-atlas = ExtResource("2_jckuw")
+atlas = ExtResource("2_rnkc1")
 region = Rect2(0, 0, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fc6aq"]
-atlas = ExtResource("2_jckuw")
+atlas = ExtResource("2_rnkc1")
 region = Rect2(48, 0, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nphl6"]
-atlas = ExtResource("2_jckuw")
+atlas = ExtResource("2_rnkc1")
 region = Rect2(96, 0, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8grx6"]
-atlas = ExtResource("2_jckuw")
+atlas = ExtResource("2_rnkc1")
 region = Rect2(144, 0, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7h21i"]
-atlas = ExtResource("2_jckuw")
+atlas = ExtResource("2_rnkc1")
 region = Rect2(192, 0, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_p0n8o"]
-atlas = ExtResource("2_jckuw")
+atlas = ExtResource("2_rnkc1")
 region = Rect2(240, 0, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_uiao0"]
-atlas = ExtResource("3_1b27r")
+atlas = ExtResource("3_ws0fw")
 region = Rect2(0, 0, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qf0mr"]
-atlas = ExtResource("3_1b27r")
+atlas = ExtResource("3_ws0fw")
 region = Rect2(48, 0, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3ib6i"]
-atlas = ExtResource("3_1b27r")
+atlas = ExtResource("3_ws0fw")
 region = Rect2(96, 0, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6psn7"]
-atlas = ExtResource("3_1b27r")
+atlas = ExtResource("3_ws0fw")
 region = Rect2(144, 0, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lfupb"]
-atlas = ExtResource("3_1b27r")
+atlas = ExtResource("3_ws0fw")
 region = Rect2(192, 0, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_b803p"]
-atlas = ExtResource("3_1b27r")
+atlas = ExtResource("3_ws0fw")
 region = Rect2(240, 0, 48, 48)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ka1wf"]
@@ -73,7 +73,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_p0n8o")
 }],
-"loop": true,
+"loop": false,
 "name": &"Death",
 "speed": 5.0
 }, {
@@ -104,7 +104,7 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_hqemc"]
 
 [node name="Wolf" type="CharacterBody2D"]
-script = ExtResource("1_dwl2a")
+script = ExtResource("1_05ur8")
 
 [node name="Animation" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
