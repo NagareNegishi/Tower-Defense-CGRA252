@@ -36,6 +36,9 @@ Please also see the [back-up-nagare] branch for other version of the prototype.
 
 - https://drive.google.com/file/d/1G-85lo--mbkCuej0Jl6LQ6dVApytIs8x/view?usp=drive_link
 
+# Link to video Part 2 (onedrive/vimeo/youtube/googledrive other video service) showing the design of the game 
+
+- https://drive.google.com/file/d/1RbY_nErklaLgeHszo1-wWQy5fIIjs2zN/view?usp=drive_link
 
 # Game Description
 What is the style of the game, what are similar games
