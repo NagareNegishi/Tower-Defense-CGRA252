@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://t56bjpq1epnb"]
 
 [ext_resource type="PackedScene" uid="uid://b42rwnmr5txd1" path="res://Scenes/platform.tscn" id="1_or1tq"]
-[ext_resource type="PackedScene" uid="uid://om2rn352wg4a" path="res://Scenes/control_tower_test.tscn" id="2_6em4n"]
+[ext_resource type="PackedScene" uid="uid://vu7lio57dmva" path="res://Scenes/tower1.tscn" id="2_cywq6"]
 
 [node name="ControlTest" type="Node2D"]
 
@@ -11,5 +11,5 @@ position = Vector2(329, 301)
 [node name="Platform2" parent="." instance=ExtResource("1_or1tq")]
 position = Vector2(670, 391)
 
-[node name="ControlTowerTest" parent="." instance=ExtResource("2_6em4n")]
-position = Vector2(627, 195)
+[node name="TowerType1" parent="." instance=ExtResource("2_cywq6")]
+position = Vector2(951, 463)

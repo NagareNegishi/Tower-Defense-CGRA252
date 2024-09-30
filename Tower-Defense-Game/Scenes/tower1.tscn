@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://vu7lio57dmva"]
+[gd_scene load_steps=31 format=3 uid="uid://vu7lio57dmva"]
 
 [ext_resource type="Texture2D" uid="uid://bcxvjdxui126e" path="res://Assets/Towers/2 Idle/1.png" id="1_gnr7i"]
 [ext_resource type="Script" path="res://Scripts/tower.gd" id="1_xph51"]
@@ -183,6 +183,9 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ogih4"]
 size = Vector2(64, 61)
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_jr34m"]
+radius = 41.0
+
 [node name="TowerType1" type="StaticBody2D"]
 script = ExtResource("1_xph51")
 
@@ -205,5 +208,15 @@ shape = SubResource("RectangleShape2D_ogih4")
 
 [node name="arrowContainer" type="Node" parent="."]
 
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, 4)
+shape = SubResource("CircleShape2D_jr34m")
+
 [connection signal="body_entered" from="Tower" to="." method="_on_tower_body_entered"]
 [connection signal="body_exited" from="Tower" to="." method="_on_tower_body_exited"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
+[connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]
