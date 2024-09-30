@@ -32,10 +32,10 @@ func start_level():
 func _on_wave_completed():
 	current_state = GameState.BETWEEN_WAVES
 	var player_strength = strength_estimator.estimate_player_strength()
-	var next_wave_difficulty = strength_estimator.calculate_next_wave_difficulty(player_strength, spawner.currentWave)
+	var next_wave_difficulty = strength_estimator.calculate_next_wave_difficulty(player_strength, Global.currentWave)
 	strength_estimator.adjust_difficulty()
 	
-	if spawner.currentWave >= spawner.waves.size():
+	if Global.currentWave >= spawner.waves.size():
 		_on_level_complete()
 	else:
 		await get_tree().create_timer(3.0).timeout  # wait 3 seconds before starting the next wave
