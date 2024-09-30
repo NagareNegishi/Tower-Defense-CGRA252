@@ -20,8 +20,15 @@ As the team member responsible for the LevelManager component, my experience dur
 
 - Role Dynamics and Project Management: The animal role system didn't translate effectively to our project. This experience emphasized the importance of early alignment on expectations and consistent contributions from all team members in voluntary group settings.
 
-### [Team Member 4 Name]
-[Space for Team Member 4's reflection]
+### [Bruno Helbick, 😼, Towers]
+
+Working on the Towers has been an interesting experience.
+
+During the development of the first Tower, I faced challenges when adjustments were made to how certain systems operated, which required significant changes to how my towers functioned. Since my towers were initially designed around a different approach, this showed the importance of flexible design.
+
+One of the main challenges was communication, as there were moments where it felt lacking across the team. My own communication was affected by personal circumstances, including a pretty bad period of sickness, which made it difficult to stay engaged and maintain consistent involvement. In hindsight, better communication on my part could have helped overcome some of these difficulties.
+
+Overall, this experience has been eye-opening in terms of what’s needed to operate smoothly as a team. Teamwork is an area I’m keen to improve on in future projects, ensuring that I contribute not only in code but also in open discussions to help create a more effective and stress-free development process.
 
 ### [Brock Clarke, 🐰, Enemy logic and HUD]
 
