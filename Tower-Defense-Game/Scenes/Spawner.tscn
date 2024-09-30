@@ -1,6 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://b60qa1syew0md"]
+[gd_scene load_steps=11 format=3 uid="uid://b60qa1syew0md"]
 
 [ext_resource type="Script" path="res://Scripts/Spawner.gd" id="1_1a14x"]
+[ext_resource type="Script" path="res://Scripts/HUD.gd" id="2_gccxc"]
 [ext_resource type="Script" path="res://Scripts/Health.gd" id="2_swi4d"]
 [ext_resource type="PackedScene" path="res://Scenes/Heart.tscn" id="3_u5qxj"]
 [ext_resource type="Script" path="res://Scripts/Money.gd" id="4_vde0w"]
@@ -25,6 +26,7 @@ anchor_bottom = 1.0
 offset_top = -648.0
 grow_horizontal = 2
 grow_vertical = 0
+script = ExtResource("2_gccxc")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="HUD"]
 

@@ -37,7 +37,7 @@ func _process(delta):
 		on_wave_completed()
 
 func start_wave():
-	print("Starting new wave")
+	# print("Starting new wave")
 	#if wave is ready to spawn and there are still waves to be spawned
 	if Global.waveReady and Global.currentWave < waves.size():
 		#reset enemy count
@@ -105,7 +105,8 @@ func _on_enemy_reached_goal():
 ########################
 
 func resetCurrentWave():
-	currentWave = 0
-	$Timer.stop()
+	pass
+	"""currentWave = 0
+	$Timer.stop()"""
 	
 
