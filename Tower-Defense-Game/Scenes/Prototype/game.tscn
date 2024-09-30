@@ -7,7 +7,7 @@
 [ext_resource type="Script" path="res://Scripts/level_manager/strength_estimator.gd" id="5_3bk54"]
 [ext_resource type="PackedScene" uid="uid://b60qa1syew0md" path="res://Scenes/Spawner.tscn" id="5_jvh6j"]
 [ext_resource type="PackedScene" uid="uid://vu7lio57dmva" path="res://Scenes/tower1.tscn" id="7_gwvsm"]
-[ext_resource type="PackedScene" path="res://Scenes/HUD.tscn" id="8_jcchl"]
+[ext_resource type="PackedScene" uid="uid://blf3ur7lfdj8w" path="res://Scenes/HUD.tscn" id="8_jcchl"]
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_afu5y")

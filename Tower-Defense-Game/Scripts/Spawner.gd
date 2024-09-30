@@ -20,6 +20,7 @@ var waves = [
 ## modification by Nagi delete it later
 signal wave_completed
 signal enemy_reached_goal
+signal next_wave_ready
 ##########################
 
 func _ready():
@@ -35,6 +36,7 @@ func _process(delta):
 	print(Global.enemyCount)
 
 func start_wave():
+	print("Starting new wave")
 	#if wave is ready to spawn and there are still waves to be spawned
 	if Global.waveReady and currentWave <= waves.size():
 		#prevent further waves from spawning
@@ -89,7 +91,8 @@ func _on_timer_timeout():
 #enables ability to start next wave
 func on_wave_completed():
 	Global.waveReady = true
-	
+	next_wave_ready.emit()
+
 
 # modification by Nagi delete it later
 	wave_completed.emit()
@@ -100,3 +103,9 @@ func _on_enemy_reached_goal():
 	#print("Spawner: Enemy reached goal")
 	emit_signal("enemy_reached_goal")
 ########################
+
+func resetCurrentWave():
+	currentWave = 0
+	$Timer.stop()
+	
+

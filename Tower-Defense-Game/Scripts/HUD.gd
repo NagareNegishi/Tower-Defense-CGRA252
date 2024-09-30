@@ -1,11 +1,21 @@
 extends Control
+class_name HUD
 
+signal next_wave_requested
 
-# Called when the node enters the scene tree for the first time.
+@onready var next_wave_button = $"CanvasLayer/Next Wave"
+
 func _ready():
-	pass # Replace with function body.
+    print("HUD _ready called")
+    print("next_wave_button: ", next_wave_button)
+    if next_wave_button:
+        print("Button class: ", next_wave_button.get_class())
+        next_wave_button.pressed.connect(_on_next_wave_pressed)
+    else:
+        push_error("Next Wave button not found!")
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
+func _on_next_wave_pressed():
+    print("Next Wave button pressed")
+    next_wave_requested.emit()
+

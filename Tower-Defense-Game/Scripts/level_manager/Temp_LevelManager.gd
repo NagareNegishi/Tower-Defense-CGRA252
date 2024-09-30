@@ -15,25 +15,40 @@ enum GameState {
 @onready var game_stats: GameStats = $"../GameStats"
 @onready var strength_estimator: StrengthEstimator = $"../StrengthEstimator"
 @onready var spawner: Node2D = $"../Spawner"
+@onready var hud: Control = $"../HUD"
+
+# Initially enable the Next Wave button
+
 
 signal level_complete
 signal player_defeat
 signal game_complete
 
+
+var can_send_next_wave = false
+
 func _ready():
 	game_stats.connect("game_over", Callable(self, "_on_game_over"))
 	spawner.connect("wave_completed", Callable(self, "_on_wave_completed"))
-	spawner.connect("enemy_reached_goal", Callable(self, "_on_enemy_reached_goal")) 
+	spawner.connect("enemy_reached_goal", Callable(self, "_on_enemy_reached_goal"))
+	spawner.connect("next_wave_ready", Callable(self, "_on_next_wave_ready"))
+
+	hud.connect("next_wave_requested", Callable(self, "_on_next_wave_requested"))
+
+
 
 func start_level():
 	current_state = GameState.WAVE_IN_PROGRESS
 	spawner.start_wave()
+
+
 
 func _on_wave_completed():
 	current_state = GameState.BETWEEN_WAVES
 	var player_strength = strength_estimator.estimate_player_strength()
 	var next_wave_difficulty = strength_estimator.calculate_next_wave_difficulty(player_strength, spawner.currentWave)
 	strength_estimator.adjust_difficulty()
+	can_send_next_wave = true
 	
 	if spawner.currentWave >= spawner.waves.size():
 		_on_level_complete()
@@ -48,6 +63,9 @@ func _on_level_complete():
 		game_complete.emit()
 	else:
 		level_complete.emit()
+		spawner.resetCurrentWave()
+		spawner.start_wave()
+
 		# reset spawner for next level
 
 func _on_game_over():
@@ -66,3 +84,16 @@ func update_stats_enemy_reached_end():
 func _on_enemy_reached_goal():
 	print("LevelManager: Enemy reached goal")
 	update_stats_enemy_reached_end()
+
+# This function is called when the player requests the next wave
+func _on_next_wave_requested():
+	if can_send_next_wave:
+		can_send_next_wave = false
+		
+		spawner.reset_CurrentWave()
+		print("LevelManager: Wave has been reset")
+		spawner.start_wave()
+		print("LevelManager: Next wave requested")
+
+func _on_next_wave_ready():
+	print("LevelManager: Next wave ready")
