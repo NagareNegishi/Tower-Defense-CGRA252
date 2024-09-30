@@ -2,6 +2,7 @@ extends Control
 class_name HUD
 
 signal next_wave_requested
+signal buy_tower_requested
 
 @onready var next_wave_button = $"CanvasLayer/Next Wave"
 @onready var buy_tower_button = $"CanvasLayer/Buy Tower"
@@ -28,5 +29,5 @@ func _on_next_wave_pressed():
 
 func _on_buy_tower_pressed():
     print("Buy Tower button pressed")
-    buy_tower_button.emit_signal("buy_tower_requested")
+    buy_tower_requested.emit()
 

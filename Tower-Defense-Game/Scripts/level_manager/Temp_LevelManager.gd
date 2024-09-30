@@ -23,6 +23,9 @@ enum GameState {
 signal level_complete
 signal player_defeat
 signal game_complete
+signal add_tower
+
+
 
 
 var can_send_next_wave = false
@@ -101,3 +104,9 @@ func _on_next_wave_ready():
 
 func _on_buy_tower_requested():
 	print("LevelManager: Buy tower requested")
+	add_tower.emit()
+	
+
+
+
+
