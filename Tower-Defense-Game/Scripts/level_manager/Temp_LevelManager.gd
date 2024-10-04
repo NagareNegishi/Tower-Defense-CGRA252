@@ -35,7 +35,7 @@ func _on_wave_completed():
 	var next_wave_difficulty = strength_estimator.calculate_next_wave_difficulty(player_strength, Global.currentWave)
 	strength_estimator.adjust_difficulty()
 	
-	if Global.currentWave >= spawner.waves.size():
+	if Global.currentWave >= spawner.wave_data.size():
 		_on_level_complete()
 	else:
 		await get_tree().create_timer(3.0).timeout  # wait 3 seconds before starting the next wave

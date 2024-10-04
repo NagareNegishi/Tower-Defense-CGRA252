@@ -20,6 +20,10 @@ config/icon="res://icon.svg"
 ControlManager="*res://Scripts/control_manager.gd"
 Global="*res://Scripts/Global.gd"
 
+[display]
+
+window/size/viewport_height=900
+
 [input]
 
 click={

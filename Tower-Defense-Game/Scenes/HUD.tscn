@@ -15,28 +15,30 @@ anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -648.0
+offset_top = -900.0
 grow_horizontal = 2
 grow_vertical = 0
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+offset = Vector2(0, 220)
+transform = Transform2D(1, 0, 0, 1, 0, 220)
 
 [node name="Health" type="TextEdit" parent="CanvasLayer"]
 offset_left = 120.0
-offset_top = 15.0
+offset_top = -210.0
 offset_right = 160.0
-offset_bottom = 55.0
+offset_bottom = -170.0
 text = "x 0"
 script = ExtResource("4_th2k2")
 
 [node name="Heart" parent="CanvasLayer" instance=ExtResource("2_fmweh")]
-position = Vector2(100, 30)
+position = Vector2(100, -190)
 
 [node name="Money" type="TextEdit" parent="CanvasLayer"]
 offset_left = 45.0
-offset_top = 15.0
+offset_top = -210.0
 offset_right = 85.0
-offset_bottom = 55.0
+offset_bottom = -170.0
 text = "x 0"
 script = ExtResource("3_rbaxa")
 
@@ -64,7 +66,7 @@ anchor_bottom = 1.0
 offset_left = 10.0
 offset_top = 435.0
 offset_right = -892.0
-offset_bottom = -13.0
+offset_bottom = -232.0
 grow_horizontal = 2
 grow_vertical = 2
 disabled = true
@@ -72,13 +74,14 @@ text = "Buy Tower"
 script = ExtResource("6_sxnni")
 
 [node name="Upgrade Tower" type="Button" parent="CanvasLayer"]
-anchors_preset = 15
+anchors_preset = 14
+anchor_top = 0.5
 anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 270.0
-offset_top = 435.0
+anchor_bottom = 0.5
+offset_left = 272.0
+offset_top = -15.0
 offset_right = -632.0
-offset_bottom = -13.0
+offset_bottom = 218.0
 grow_horizontal = 2
 grow_vertical = 2
 disabled = true
@@ -91,7 +94,7 @@ anchor_bottom = 1.0
 offset_left = 530.0
 offset_top = 435.0
 offset_right = -372.0
-offset_bottom = -13.0
+offset_bottom = -232.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -102,7 +105,7 @@ anchor_bottom = 1.0
 offset_left = 790.0
 offset_top = 435.0
 offset_right = -112.0
-offset_bottom = -13.0
+offset_bottom = -232.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "Next Wave
@@ -110,7 +113,7 @@ text = "Next Wave
 script = ExtResource("7_i7c0w")
 
 [node name="Coin" parent="CanvasLayer" instance=ExtResource("1_i52ew")]
-position = Vector2(30, 30)
+position = Vector2(32, -190)
 
 [connection signal="pressed" from="CanvasLayer/Pause" to="CanvasLayer/Pause" method="_on_pressed"]
 [connection signal="pressed" from="CanvasLayer/Play" to="CanvasLayer/Play" method="_on_pressed"]

@@ -18,3 +18,4 @@ rotates = false
 loop = false
 
 [node name="Bee" parent="PathFollow2D" instance=ExtResource("1_uyxna")]
+rotation = -0.357344
