@@ -1,4 +1,5 @@
 extends Control
+class_name MainMenu
 
 var level = "res://Scenes/Prototype/game.tscn" # remove this later
 var setting = ""

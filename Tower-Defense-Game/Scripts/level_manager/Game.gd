@@ -8,7 +8,12 @@ func _ready():
 	$LevelManager.connect("level_complete", Callable(self, "_on_level_complete"))
 	$LevelManager.connect("player_defeat", Callable(self, "_on_player_defeat"))
 	$LevelManager.connect("game_complete", Callable(self, "_on_game_complete"))
+	$LevelManager.connect("add_tower", Callable(self, "spawn_next_tower"))
+	print("add tower signal connected")
 	$LevelManager.start_level()
+	$HUD.connect("buy_tower_requested", Callable(self, "spawn_next_tower"))
+
+
 
 func _on_level_complete():
 	print("Level completed!")

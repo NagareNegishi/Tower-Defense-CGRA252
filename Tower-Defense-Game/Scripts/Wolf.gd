@@ -1,4 +1,5 @@
 extends CharacterBody2D
+class_name Wolf
 
 #speed and health
 @export var speed = 50

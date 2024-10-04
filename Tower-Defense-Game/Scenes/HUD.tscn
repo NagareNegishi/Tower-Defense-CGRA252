@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://dt3kcf5j3nvsj"]
+[gd_scene load_steps=9 format=3 uid="uid://blf3ur7lfdj8w"]
 
 [ext_resource type="PackedScene" uid="uid://b055ixjo5jrno" path="res://Scenes/Coin.tscn" id="1_i52ew"]
 [ext_resource type="PackedScene" uid="uid://dubw3phbv5o6m" path="res://Scenes/Heart.tscn" id="2_fmweh"]
 [ext_resource type="Script" path="res://Scripts/Money.gd" id="3_rbaxa"]
 [ext_resource type="Script" path="res://Scripts/Pause.gd" id="4_jhxud"]
+[ext_resource type="Script" path="res://Scripts/HUD.gd" id="1_em3vq"]
 [ext_resource type="Script" path="res://Scripts/Health.gd" id="4_th2k2"]
 [ext_resource type="Script" path="res://Scripts/Play.gd" id="5_ll13y"]
 [ext_resource type="Script" path="res://Scripts/Buy Tower.gd" id="6_sxnni"]
@@ -18,6 +19,7 @@ anchor_bottom = 1.0
 offset_top = -900.0
 grow_horizontal = 2
 grow_vertical = 0
+script = ExtResource("1_em3vq")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 offset = Vector2(0, 220)
@@ -108,6 +110,7 @@ offset_right = -112.0
 offset_bottom = -232.0
 grow_horizontal = 2
 grow_vertical = 2
+disabled = true
 text = "Next Wave
 "
 script = ExtResource("7_i7c0w")

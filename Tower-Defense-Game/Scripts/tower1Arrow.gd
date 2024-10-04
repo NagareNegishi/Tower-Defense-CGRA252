@@ -1,4 +1,5 @@
 extends CharacterBody2D
+class_name tower1Arrow
 
 #changed this to acire target
 var target
