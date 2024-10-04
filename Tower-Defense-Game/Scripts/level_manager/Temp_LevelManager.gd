@@ -56,7 +56,7 @@ func _on_wave_completed():
 	strength_estimator.adjust_difficulty()
 	can_send_next_wave = true
 	
-	if Global.currentWave >= spawner.waves.size():
+	if Global.currentWave >= spawner.wave_data.size():
 		_on_level_complete()
 	else:
 		await get_tree().create_timer(3.0).timeout  # wait 3 seconds before starting the next wave

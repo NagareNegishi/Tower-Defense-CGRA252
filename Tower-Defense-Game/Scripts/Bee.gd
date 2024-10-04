@@ -30,4 +30,5 @@ func _process(delta):
 		$Animation.play("Death")
 		await  $Animation.animation_finished
 		#despawn enemy
+		print("dead")
 		queue_free()

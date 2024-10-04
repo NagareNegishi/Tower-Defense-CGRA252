@@ -2,13 +2,7 @@ extends Node2D
 
 var isPaused = false
 
-var Tower = preload("res://Scenes/tower1.tscn")
-var tower_positions = [
-    Vector2(500, 300),
-    Vector2(500, 500),
-    Vector2(500, 150)
-]
-var towers_spawned = 0
+var tower_scene = preload("res://Scenes/tower1.tscn")
 
 func _ready():
 	$LevelManager.connect("level_complete", Callable(self, "_on_level_complete"))
@@ -33,17 +27,8 @@ func _on_game_complete():
 	print("Congratulations! You've completed the game!")
 
 
-func spawn_next_tower():
-	if towers_spawned < tower_positions.size():
-		spawn_tower_at_location(tower_positions[towers_spawned])
-		towers_spawned += 1
-		print("Tower spawned. Total towers: ", towers_spawned)
-	else:
-		print("Maximum number of towers reached!")
-
-
-func spawn_tower_at_location(location: Vector2):
-	var new_tower = Tower.instantiate()
-	new_tower.position = location
-	add_child(new_tower)
-
+func _on_buy_tower_pressed():
+	Global.playerGold -= 5
+	var tower_instance = tower_scene.instantiate()
+	add_child(tower_instance)
+	print("tower Added")

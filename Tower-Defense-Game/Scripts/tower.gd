@@ -7,6 +7,7 @@ var bulletDamage = 100
 var pathName
 var currTargets = []
 var curr
+
 @onready var sprite = get_node("towerSprite")
 var current_level = 0
 var tower_levels = [
@@ -36,34 +37,42 @@ func update_tower_properties():
 	sprite.texture = load(tower_levels[current_level]["sprite"])
 	
 func _on_tower_body_entered(body):
+	
 	if "Slime" in body.name or "Bee" in body.name or "Wolf" in body.name or "Goblin" in body.name:
 		var tempArray = []
 		currTargets = get_node("Tower").get_overlapping_bodies()
-
+		
+			
 		for i in currTargets:
 			if "Slime" in i.name or "Bee" in i.name or "Wolf" in i.name or "Goblin" in i.name:
 				tempArray.append(i)
-		
+			
 		var currTarget = null
+		
 		
 		for i in tempArray:
 			if currTarget == null:
-				currTarget = i.get_parent()
+				currTarget = i
+				
 			else:
-				if i.get_parent().get_progress() > currTarget.get_progress():
-					currTarget = i.get_parent()
+				if i.get_parent().get_progress() > currTarget.get_parent().get_progress():
+					currTarget = i
+		
 		curr = currTarget
 		
 		pathName = currTarget.get_parent().name
+		
+		
 		var tempBullet = Bullet.instantiate()
-		tempBullet.pathName = pathName
+		tempBullet.target = currTarget
 		tempBullet.bulletDamage = bulletDamage
 		get_node("arrowContainer").add_child(tempBullet)
-		tempBullet.global_position = $Aim.global_position
+		tempBullet.global_position = global_position
 		
 func _on_tower_body_exited(body):
 	currTargets = get_node("Tower").get_overlapping_bodies()
 	
+			
 func _process(delta):
 	if draggable:
 		if Input.is_action_just_pressed("click"):
@@ -80,6 +89,7 @@ func _process(delta):
 				tween.tween_property(self,"position",body_ref.position,0.2).set_ease(Tween.EASE_OUT)
 			else:
 				tween.tween_property(self,"global_position",initialPos,0.2).set_ease(Tween.EASE_OUT)
+	
 
 func _on_area_2d_mouse_entered():
 	if not ControlManager.is_dragging:
