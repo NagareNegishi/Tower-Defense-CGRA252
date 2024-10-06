@@ -12,6 +12,8 @@ point_count = 6
 curve = SubResource("Curve2D_gomax")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="."]
+light_mask = 2
+visibility_layer = 2
 position = Vector2(95, 137)
 rotation = 0.519146
 rotates = false

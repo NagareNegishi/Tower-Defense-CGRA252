@@ -31,9 +31,9 @@ script = ExtResource("4_b872q")
 [node name="StrengthEstimator" type="Node" parent="."]
 script = ExtResource("5_3bk54")
 
-[node name="Spawner" parent="." instance=ExtResource("5_jvh6j")]
-
 [node name="ControlTest" parent="." instance=ExtResource("9_wup18")]
+
+[node name="Spawner" parent="." instance=ExtResource("5_jvh6j")]
 
 [node name="HUD" type="Control" parent="."]
 layout_mode = 3

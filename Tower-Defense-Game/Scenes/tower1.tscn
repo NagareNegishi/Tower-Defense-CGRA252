@@ -179,7 +179,7 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_td0gv"]
-radius = 22.6456
+radius = 14.7308
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ogih4"]
 size = Vector2(64, 61)
@@ -207,7 +207,7 @@ position = Vector2(1, 4.5)
 shape = SubResource("RectangleShape2D_ogih4")
 
 [node name="Aim" type="Marker2D" parent="."]
-scale = Vector2(10.7808, 1.75289)
+scale = Vector2(1.9008, 1.75289)
 gizmo_extents = 215.7
 
 [node name="arrowContainer" type="Node" parent="."]
