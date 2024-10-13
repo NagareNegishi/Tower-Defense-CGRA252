@@ -11,6 +11,6 @@ func _on_pressed():
 	#ensure wave is over
 	if Global.enemyCount == 0:
 		#increment wave count
-		Global.currentWave += 1
+		#Global.currentWave += 1
 		#ready wave for spawner
 		Global.waveReady = true

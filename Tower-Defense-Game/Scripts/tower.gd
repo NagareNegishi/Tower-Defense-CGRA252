@@ -38,6 +38,7 @@ func update_tower_properties():
 	
 func _on_tower_body_entered(body):
 	
+	
 	if "Slime" in body.name or "Bee" in body.name or "Wolf" in body.name or "Goblin" in body.name:
 		var tempArray = []
 		currTargets = get_node("Tower").get_overlapping_bodies()
@@ -84,9 +85,12 @@ func _process(delta):
 			global_position = get_global_mouse_position()
 		elif Input.is_action_just_released("click"):
 			ControlManager.is_dragging = false
+			
 			var tween = get_tree().create_tween()
-			if is_inside_dropable:
+			if is_inside_dropable and body_ref.is_occupied == false:
 				tween.tween_property(self,"position",body_ref.position,0.2).set_ease(Tween.EASE_OUT)
+				body_ref.occupy_platform()
+				draggable = false
 			else:
 				tween.tween_property(self,"global_position",initialPos,0.2).set_ease(Tween.EASE_OUT)
 	
@@ -114,4 +118,5 @@ func _on_area_2d_body_exited(body):
 	if body.is_in_group("drop"):
 		is_inside_dropable = false
 		body.modulate = Color(Color.MEDIUM_PURPLE, 0.7)
+		body_ref = body
 
