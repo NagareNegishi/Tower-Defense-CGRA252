@@ -1,4 +1,5 @@
 extends StaticBody2D
+class_name Platform
 
 var is_occupied = false
 # Called when the node enters the scene tree for the first time.
@@ -18,3 +19,19 @@ func _process(delta):
 func occupy_platform():
 	is_occupied = true
 	modulate = Color(Color.DARK_SLATE_BLUE, 1)
+
+
+
+
+const EDGE_MARGIN: float = 10.0  # margin around the platform edge
+
+func get_rect() -> Rect2:
+	var size = $ColorRect.size * scale
+	return Rect2(position - size / 2, size)
+
+func get_safe_rect() -> Rect2:
+	var full_rect = get_rect()
+	return full_rect.grow(-EDGE_MARGIN)
+
+func contains_point(point: Vector2) -> bool:
+	return get_safe_rect().has_point(point)

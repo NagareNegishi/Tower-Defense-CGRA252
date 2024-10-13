@@ -1,10 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://bereouv6k206h"]
+[gd_scene load_steps=6 format=3 uid="uid://bereouv6k206h"]
 
 [ext_resource type="Script" path="res://Scripts/stage/Stage.gd" id="1_6lpuk"]
 [ext_resource type="PackedScene" uid="uid://b8bae2njmwbqa" path="res://Scenes/Map.tscn" id="2_d2hur"]
 [ext_resource type="PackedScene" uid="uid://b42rwnmr5txd1" path="res://Scenes/platform.tscn" id="4_1vc7a"]
 [ext_resource type="Script" path="res://Scripts/stage/EnemyPath.gd" id="4_up8se"]
-[ext_resource type="PackedScene" uid="uid://vu7lio57dmva" path="res://Scenes/tower1.tscn" id="5_7vej8"]
 
 [sub_resource type="Curve2D" id="Curve2D_leh68"]
 _data = {
@@ -62,6 +61,3 @@ scale = Vector2(4.3, 0.8)
 [node name="Platform9" parent="Platforms" instance=ExtResource("4_1vc7a")]
 position = Vector2(631, 627)
 scale = Vector2(4.3, 0.4)
-
-[node name="TowerType1" parent="." instance=ExtResource("5_7vej8")]
-position = Vector2(71, 538)

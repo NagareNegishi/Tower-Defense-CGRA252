@@ -1,8 +1,8 @@
 [gd_scene load_steps=11 format=3 uid="uid://dt3kcf5j3nvsj"]
 
 [ext_resource type="Script" path="res://Scripts/HUD.gd" id="1_em3vq"]
-[ext_resource type="PackedScene" uid="uid://b055ixjo5jrno" path="res://Scenes/Coin.tscn" id="1_i52ew"]
-[ext_resource type="PackedScene" uid="uid://dubw3phbv5o6m" path="res://Scenes/Heart.tscn" id="2_fmweh"]
+[ext_resource type="PackedScene" path="res://Scenes/Coin.tscn" id="1_i52ew"]
+[ext_resource type="PackedScene" path="res://Scenes/Heart.tscn" id="2_fmweh"]
 [ext_resource type="Script" path="res://Scripts/Money.gd" id="3_rbaxa"]
 [ext_resource type="Script" path="res://Scripts/Pause.gd" id="4_jhxud"]
 [ext_resource type="Script" path="res://Scripts/Health.gd" id="4_th2k2"]

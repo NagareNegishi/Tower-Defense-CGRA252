@@ -1,26 +1,28 @@
-[gd_scene load_steps=16 format=3 uid="uid://bmb1ihnnrpan4"]
+[gd_scene load_steps=17 format=3 uid="uid://bmb1ihnnrpan4"]
 
 [ext_resource type="Script" path="res://Scripts/level_manager/Game.gd" id="1_afu5y"]
-[ext_resource type="PackedScene" uid="uid://b8bae2njmwbqa" path="res://Scenes/Map.tscn" id="2_crn3k"]
 [ext_resource type="Script" path="res://Scripts/level_manager/Temp_LevelManager.gd" id="2_nfluv"]
+[ext_resource type="PackedScene" uid="uid://bbfwgc53jd2tb" path="res://Scenes/InputManager/input_manager.tscn" id="3_frryq"]
 [ext_resource type="Script" path="res://Scripts/level_manager/game_stats.gd" id="4_b872q"]
 [ext_resource type="Script" path="res://Scripts/level_manager/strength_estimator.gd" id="5_3bk54"]
 [ext_resource type="PackedScene" uid="uid://b60qa1syew0md" path="res://Scenes/Spawner.tscn" id="5_jvh6j"]
+[ext_resource type="Script" path="res://Scripts/HUD.gd" id="7_syon7"]
 [ext_resource type="Script" path="res://Scripts/Health.gd" id="8_gkj0e"]
-[ext_resource type="PackedScene" uid="uid://dubw3phbv5o6m" path="res://Scenes/Heart.tscn" id="9_a7q1j"]
+[ext_resource type="PackedScene" path="res://Scenes/Heart.tscn" id="9_a7q1j"]
 [ext_resource type="Script" path="res://Scripts/Money.gd" id="10_xfvgw"]
 [ext_resource type="Script" path="res://Scripts/Pause.gd" id="11_nkokj"]
 [ext_resource type="Script" path="res://Scripts/Play.gd" id="12_cq6di"]
 [ext_resource type="Script" path="res://Scripts/Buy Tower.gd" id="13_3fpjn"]
 [ext_resource type="Script" path="res://Scripts/Next Wave.gd" id="14_51vyn"]
-[ext_resource type="PackedScene" uid="uid://t56bjpq1epnb" path="res://Scenes/Waves/control_test.tscn" id="15_jqkbi"]
-[ext_resource type="PackedScene" uid="uid://b055ixjo5jrno" path="res://Scenes/Coin.tscn" id="15_xo2jt"]
+[ext_resource type="PackedScene" path="res://Scenes/Coin.tscn" id="15_xo2jt"]
+[ext_resource type="PackedScene" uid="uid://bereouv6k206h" path="res://Scenes/stage/stage.tscn" id="16_1n1sm"]
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_afu5y")
 
-[node name="Node2D" parent="." instance=ExtResource("2_crn3k")]
-position = Vector2(-1, 0)
+[node name="Stage" parent="." instance=ExtResource("16_1n1sm")]
+
+[node name="InputManager" parent="." instance=ExtResource("3_frryq")]
 
 [node name="LevelManager" type="Node" parent="."]
 script = ExtResource("2_nfluv")
@@ -42,6 +44,7 @@ anchor_bottom = 1.0
 offset_top = -900.0
 grow_horizontal = 2
 grow_vertical = 0
+script = ExtResource("7_syon7")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="HUD"]
 offset = Vector2(0, 220)
@@ -138,8 +141,6 @@ script = ExtResource("14_51vyn")
 
 [node name="Coin" parent="HUD/CanvasLayer" instance=ExtResource("15_xo2jt")]
 position = Vector2(32, -190)
-
-[node name="ControlTest" parent="." instance=ExtResource("15_jqkbi")]
 
 [connection signal="pressed" from="HUD/CanvasLayer/Pause" to="HUD/CanvasLayer/Pause" method="_on_pressed"]
 [connection signal="pressed" from="HUD/CanvasLayer/Play" to="HUD/CanvasLayer/Play" method="_on_pressed"]
