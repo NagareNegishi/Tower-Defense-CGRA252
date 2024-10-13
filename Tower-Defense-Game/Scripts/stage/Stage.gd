@@ -43,7 +43,7 @@ func add_tower(tower_position: Vector2):
 	towers.append(new_tower)
 	add_child(new_tower)
 	new_tower.position = tower_position
-	new_tower.connect("tower_placed", Callable(self, "_on_tower_placed"))
+	# new_tower.connect("tower_placed", Callable(self, "_on_tower_placed"))
 	print("Tower placed at ", new_tower.position)
 
 func _on_tower_placed(tower: Tower):

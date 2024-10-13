@@ -26,8 +26,9 @@ func occupy_platform():
 const EDGE_MARGIN: float = 10.0  # margin around the platform edge
 
 func get_rect() -> Rect2:
-	var size = $ColorRect.size * scale
-	return Rect2(position - size / 2, size)
+	var size = $ColorRect.size * scale.abs()
+	var pos = global_position - size / 2
+	return Rect2(pos, size).abs()
 
 func get_safe_rect() -> Rect2:
 	var full_rect = get_rect()
