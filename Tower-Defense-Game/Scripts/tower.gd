@@ -7,8 +7,16 @@ var bulletDamage = 100
 var pathName
 var currTargets = []
 var curr
+var currTarget
+var fire_rate = 1.0
+var fire_timer = 0.0
+
+var is_selected = false
 
 @onready var sprite = get_node("towerSprite")
+@onready var collision_shape = $CollisionShape2D
+
+
 var current_level = 0
 var tower_levels = [
 	{"damage": 100, "sprite": "res://Sprites/towerlvl1.png"},
@@ -24,6 +32,24 @@ var body_ref
 var offset : Vector2
 var initialPos : Vector2
 
+
+func _ready_():
+	fire_timer = fire_rate
+	set_process_unhandled_input(true)
+
+func _unhandled_input(event):
+	if event is InputEventMouseButton and event.pressed:
+		if event.button_index == MOUSE_BUTTON_LEFT and not draggable:
+			var collision_shape = $CollisionShape2D
+			var mouse_pos = get_global_mouse_position()
+			
+			# Check if the mouse is over the tower using the collision shape
+			if collision_shape.shape and collision_shape.shape.overlaps_point(to_local(mouse_pos)):
+				select_tower()
+			else:
+				deselect_tower()
+				get_node("/root/HUD").deselect_tower()
+
 func level_up():
 	if current_level < tower_levels.size() - 1:
 		current_level += 1
@@ -37,21 +63,15 @@ func update_tower_properties():
 	sprite.texture = load(tower_levels[current_level]["sprite"])
 	
 func _on_tower_body_entered(body):
-	
-	
-	if "Slime" in body.name or "Bee" in body.name or "Wolf" in body.name or "Goblin" in body.name:
-		var tempArray = []
-		currTargets = get_node("Tower").get_overlapping_bodies()
-		
+	# Only target enemies in the "enemy" group
+	if body.is_in_group("enemy") and body != self:
+		currTargets.append(body)
+		if currTarget == null:
+			currTarget = body
 			
+		currTarget = null
+		
 		for i in currTargets:
-			if "Slime" in i.name or "Bee" in i.name or "Wolf" in i.name or "Goblin" in i.name:
-				tempArray.append(i)
-			
-		var currTarget = null
-		
-		
-		for i in tempArray:
 			if currTarget == null:
 				currTarget = i
 				
@@ -71,10 +91,28 @@ func _on_tower_body_entered(body):
 		tempBullet.global_position = global_position
 		
 func _on_tower_body_exited(body):
-	currTargets = get_node("Tower").get_overlapping_bodies()
+	if body in currTargets:
+		currTargets.erase(body)
+	
+	if body == currTarget:
+		currTarget = null
+	#currTargets = get_node("Tower").get_overlapping_bodies()
 	
 			
 func _process(delta):
+	
+	
+	fire_timer -= delta
+	
+	if currTarget and currTarget.health > 0:
+		if fire_timer <= 0.0:
+			_fire()
+			fire_timer = fire_rate
+			
+	else:
+		#currTargets.erase(currTarget)
+		currTarget = _new_target()
+
 	if draggable:
 		if Input.is_action_just_pressed("click"):
 			initialPos = global_position
@@ -120,3 +158,28 @@ func _on_area_2d_body_exited(body):
 		body.modulate = Color(Color.MEDIUM_PURPLE, 0.7)
 		body_ref = body
 
+func _fire():
+	if currTarget:
+		var tempBullet = Bullet.instantiate()
+		tempBullet.target = currTarget
+		tempBullet.bulletDamage = bulletDamage
+		get_node("arrowContainer").add_child(tempBullet)
+		tempBullet.global_position = global_position
+		
+
+func _new_target():
+	if currTargets.size() > 0:
+		return currTargets[0]
+	return null
+	
+
+func select_tower():
+	is_selected = true
+	print("Tower selected")
+	# You can add visual feedback like changing the tower's appearance here
+
+# Function to deselect the tower
+func deselect_tower():
+	is_selected = false
+	print("Tower deselected")
+	# Reset the tower's appearance if needed

@@ -10,6 +10,7 @@ signal reached_goal
 var health = 100
 
 func _ready():
+	add_to_group("enemy")
 	#play walking anim on spawn
 	$Animation.play("Walk")
 

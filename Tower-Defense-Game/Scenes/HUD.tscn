@@ -1,14 +1,15 @@
-[gd_scene load_steps=9 format=3 uid="uid://blf3ur7lfdj8w"]
+[gd_scene load_steps=11 format=3 uid="uid://dt3kcf5j3nvsj"]
 
+[ext_resource type="Script" path="res://Scripts/HUD.gd" id="1_em3vq"]
 [ext_resource type="PackedScene" uid="uid://b055ixjo5jrno" path="res://Scenes/Coin.tscn" id="1_i52ew"]
 [ext_resource type="PackedScene" uid="uid://dubw3phbv5o6m" path="res://Scenes/Heart.tscn" id="2_fmweh"]
 [ext_resource type="Script" path="res://Scripts/Money.gd" id="3_rbaxa"]
 [ext_resource type="Script" path="res://Scripts/Pause.gd" id="4_jhxud"]
-[ext_resource type="Script" path="res://Scripts/HUD.gd" id="1_em3vq"]
 [ext_resource type="Script" path="res://Scripts/Health.gd" id="4_th2k2"]
 [ext_resource type="Script" path="res://Scripts/Play.gd" id="5_ll13y"]
 [ext_resource type="Script" path="res://Scripts/Buy Tower.gd" id="6_sxnni"]
 [ext_resource type="Script" path="res://Scripts/Next Wave.gd" id="7_i7c0w"]
+[ext_resource type="Script" path="res://Scenes/Upgrade Tower.gd" id="8_wlvw5"]
 
 [node name="HUD" type="Control"]
 layout_mode = 3
@@ -86,8 +87,8 @@ offset_right = -632.0
 offset_bottom = 218.0
 grow_horizontal = 2
 grow_vertical = 2
-disabled = true
 text = "Upgrade Tower"
+script = ExtResource("8_wlvw5")
 
 [node name="Button" type="Button" parent="CanvasLayer"]
 anchors_preset = 15
