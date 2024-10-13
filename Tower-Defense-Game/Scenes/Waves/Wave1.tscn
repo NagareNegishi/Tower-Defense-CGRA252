@@ -12,9 +12,12 @@ point_count = 10
 curve = SubResource("Curve2D_gomax")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="."]
+light_mask = 2
+visibility_layer = 2
 position = Vector2(51, 90)
 rotation = 0.519146
 rotates = false
 loop = false
 
 [node name="Bee" parent="PathFollow2D" instance=ExtResource("1_uyxna")]
+rotation = -0.357344

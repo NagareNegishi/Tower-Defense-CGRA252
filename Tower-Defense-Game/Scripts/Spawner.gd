@@ -4,17 +4,27 @@ extends Node2D
 #variables to handle wave spawns
 
 var previousWave = 0
-
-var HUD_scene = preload("res://Scenes/HUD.tscn")
+var enemies_to_spawn = 0
+var current_wave = Global.currentWave
 #array for wave scenes
-var waves = [
-	preload("res://Scenes/Waves/Wave1.tscn"),
-	preload("res://Scenes/Waves/Wave2.tscn"),
-	preload("res://Scenes/Waves/Wave3.tscn"),
-	preload("res://Scenes/Waves/Wave4.tscn"),
-	preload("res://Scenes/Waves/Wave5.tscn"),
-	preload("res://Scenes/Waves/Wave6.tscn"),
-	preload("res://Scenes/Waves/Wave7.tscn")
+#var waves = [
+	#preload("res://Scenes/Waves/Wave1.tscn"),
+	#preload("res://Scenes/Waves/Wave2.tscn"),
+	#preload("res://Scenes/Waves/Wave3.tscn"),
+	#preload("res://Scenes/Waves/Wave4.tscn"),
+	#preload("res://Scenes/Waves/Wave5.tscn"),
+	#preload("res://Scenes/Waves/Wave6.tscn"),
+	#preload("res://Scenes/Waves/Wave7.tscn")
+	#]
+	
+var wave_data = [
+	{ "enemy_count": 1, "enemy_scene": preload("res://Scenes/Waves/Wave1.tscn") },
+	{ "enemy_count": 1, "enemy_scene": preload("res://Scenes/Waves/Wave2.tscn") },
+	{ "enemy_count": 1, "enemy_scene": preload("res://Scenes/Waves/Wave3.tscn") },
+	{ "enemy_count": 1, "enemy_scene": preload("res://Scenes/Waves/Wave4.tscn") },
+	{ "enemy_count": 1, "enemy_scene": preload("res://Scenes/Waves/Wave5.tscn") },
+	{ "enemy_count": 1, "enemy_scene": preload("res://Scenes/Waves/Wave6.tscn") },
+	{ "enemy_count": 1, "enemy_scene": preload("res://Scenes/Waves/Wave7.tscn") }
 ]
 
 ## modification by Nagi delete it later
@@ -23,12 +33,7 @@ signal enemy_reached_goal
 signal next_wave_ready
 ##########################
 
-func _ready():
-	#wave button doesnt work yet
-	var HUD_instance = HUD_scene.instantiate()
-	add_child(HUD_instance)
-	var start_wave_button = HUD_instance.get_node("CanvasLayer/Next Wave")
-	start_wave_button.connect("start_wave_signal", Callable(self, "start_wave"))
+
 
 
 func _process(delta):
@@ -39,53 +44,52 @@ func _process(delta):
 func start_wave():
 	# print("Starting new wave")
 	#if wave is ready to spawn and there are still waves to be spawned
-	if Global.waveReady and Global.currentWave < waves.size():
+	if Global.currentWave < wave_data.size():
+		
+		enemies_to_spawn = wave_data[current_wave]["enemy_count"]
+		
 		#reset enemy count
 		Global.enemyCount = 0
+		
 		#restart timer
 		$Timer.start()
 		#increment wave count
 		
 
 func _on_timer_timeout():
-	if Global.currentWave <= waves.size() -1:
-		#intantiate current wave
-		var waveScene = waves[Global.currentWave].instantiate()
-		#new child for new enemy
-		add_child(waveScene)
-
-
+	if Global.enemyCount < wave_data.size():
+		
+		spawn_enemy()
+		Global.enemyCount += 1
+		
+	else:
+		$Timer.stop()
+		Global.currentWave += 1
+		#ensure next wave cannot spawn
+		Global.waveReady = false
+		Global.prepWave = true
+		
 	## delete this block############
 		#print("Connecting signals for new wave")
-		for path_follow in waveScene.get_children():
-			if path_follow is PathFollow2D and path_follow.get_child_count() > 0:
-				var enemy = path_follow.get_child(0)
-				print("Enemy node: ", enemy.name, " - Class: ", enemy.get_class())
-				if enemy.has_signal("reached_goal"):
+		#for path_follow in wave_data.get_children():
+			#if path_follow is PathFollow2D and path_follow.get_child_count() > 0:
+				#var enemy = path_follow.get_child(0)
+				#print("Enemy node: ", enemy.name, " - Class: ", enemy.get_class())
+				#if enemy.has_signal("reached_goal"):
 					#print("Connecting reached_goal signal for ", enemy.name)
-					enemy.connect("reached_goal", Callable(self, "_on_enemy_reached_goal"))
+					#enemy.connect("reached_goal", Callable(self, "_on_enemy_reached_goal"))
 				#else:
 					#print(enemy.name, " does not have reached_goal signal")
 	########################
 
 
-	
-	if Global.currentWave < 4:
-		Global.enemyCount += 1
-	else:
-		Global.enemyCount += 2
-	#currently spawns 10 enemies per wave but can be adjusted for
-	#each wave with a variable
-	if Global.enemyCount == 5:
-		#ensure next wave cannot spawn
-		Global.waveReady = false
 		#Stop further enemies from spawning
-		$Timer.stop()
-		#ready prepWave
-		Global.prepWave = true
 		
 			
 
+func spawn_enemy():
+	var enemy = wave_data[Global.currentWave]["enemy_scene"].instantiate()
+	add_child(enemy)
 
 #enables ability to start next wave
 func on_wave_completed():

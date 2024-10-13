@@ -1,0 +1,50 @@
+[gd_scene load_steps=2 format=3 uid="uid://t56bjpq1epnb"]
+
+[ext_resource type="PackedScene" uid="uid://b42rwnmr5txd1" path="res://Scenes/platform.tscn" id="1_or1tq"]
+
+[node name="ControlTest" type="Node2D"]
+
+[node name="Platform" parent="." instance=ExtResource("1_or1tq")]
+position = Vector2(120, 168)
+
+[node name="Platform2" parent="." instance=ExtResource("1_or1tq")]
+position = Vector2(448, 168)
+
+[node name="Platform3" parent="." instance=ExtResource("1_or1tq")]
+position = Vector2(288, 168)
+
+[node name="Platform4" parent="." instance=ExtResource("1_or1tq")]
+position = Vector2(952, 168)
+
+[node name="Platform5" parent="." instance=ExtResource("1_or1tq")]
+position = Vector2(784, 168)
+
+[node name="Platform6" parent="." instance=ExtResource("1_or1tq")]
+position = Vector2(616, 168)
+
+[node name="Platform7" parent="." instance=ExtResource("1_or1tq")]
+position = Vector2(200, 328)
+
+[node name="Platform8" parent="." instance=ExtResource("1_or1tq")]
+position = Vector2(704, 328)
+
+[node name="Platform9" parent="." instance=ExtResource("1_or1tq")]
+position = Vector2(536, 328)
+
+[node name="Platform10" parent="." instance=ExtResource("1_or1tq")]
+position = Vector2(368, 328)
+
+[node name="Platform11" parent="." instance=ExtResource("1_or1tq")]
+position = Vector2(520, 488)
+
+[node name="Platform12" parent="." instance=ExtResource("1_or1tq")]
+position = Vector2(688, 488)
+
+[node name="Platform13" parent="." instance=ExtResource("1_or1tq")]
+position = Vector2(856, 488)
+
+[node name="Platform14" parent="." instance=ExtResource("1_or1tq")]
+position = Vector2(872, 328)
+
+[node name="Platform15" parent="." instance=ExtResource("1_or1tq")]
+position = Vector2(352, 488)

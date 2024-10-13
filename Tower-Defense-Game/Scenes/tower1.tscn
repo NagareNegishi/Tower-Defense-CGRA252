@@ -179,6 +179,7 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_td0gv"]
+radius = 14.7308
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ogih4"]
 size = Vector2(64, 61)
@@ -187,6 +188,7 @@ size = Vector2(64, 61)
 radius = 41.0
 
 [node name="TowerType1" type="StaticBody2D"]
+position = Vector2(200, 650)
 script = ExtResource("1_xph51")
 
 [node name="towerSprite" type="AnimatedSprite2D" parent="."]
@@ -205,6 +207,8 @@ position = Vector2(1, 4.5)
 shape = SubResource("RectangleShape2D_ogih4")
 
 [node name="Aim" type="Marker2D" parent="."]
+scale = Vector2(1.9008, 1.75289)
+gizmo_extents = 215.7
 
 [node name="arrowContainer" type="Node" parent="."]
 

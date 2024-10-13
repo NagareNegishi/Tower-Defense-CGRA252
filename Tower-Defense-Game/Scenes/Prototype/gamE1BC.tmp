@@ -8,12 +8,12 @@
 [ext_resource type="PackedScene" uid="uid://b60qa1syew0md" path="res://Scenes/Spawner.tscn" id="5_jvh6j"]
 [ext_resource type="Script" path="res://Scripts/Health.gd" id="8_gkj0e"]
 [ext_resource type="PackedScene" uid="uid://dubw3phbv5o6m" path="res://Scenes/Heart.tscn" id="9_a7q1j"]
+[ext_resource type="PackedScene" uid="uid://t56bjpq1epnb" path="res://Scenes/control_test.tscn" id="9_wup18"]
 [ext_resource type="Script" path="res://Scripts/Money.gd" id="10_xfvgw"]
 [ext_resource type="Script" path="res://Scripts/Pause.gd" id="11_nkokj"]
 [ext_resource type="Script" path="res://Scripts/Play.gd" id="12_cq6di"]
 [ext_resource type="Script" path="res://Scripts/Buy Tower.gd" id="13_3fpjn"]
 [ext_resource type="Script" path="res://Scripts/Next Wave.gd" id="14_51vyn"]
-[ext_resource type="PackedScene" uid="uid://t56bjpq1epnb" path="res://Scenes/Waves/control_test.tscn" id="15_jqkbi"]
 [ext_resource type="PackedScene" uid="uid://b055ixjo5jrno" path="res://Scenes/Coin.tscn" id="15_xo2jt"]
 
 [node name="Game" type="Node2D"]
@@ -32,6 +32,8 @@ script = ExtResource("4_b872q")
 script = ExtResource("5_3bk54")
 
 [node name="Spawner" parent="." instance=ExtResource("5_jvh6j")]
+
+[node name="ControlTest" parent="." instance=ExtResource("9_wup18")]
 
 [node name="HUD" type="Control" parent="."]
 layout_mode = 3
@@ -138,8 +140,6 @@ script = ExtResource("14_51vyn")
 
 [node name="Coin" parent="HUD/CanvasLayer" instance=ExtResource("15_xo2jt")]
 position = Vector2(32, -190)
-
-[node name="ControlTest" parent="." instance=ExtResource("15_jqkbi")]
 
 [connection signal="pressed" from="HUD/CanvasLayer/Pause" to="HUD/CanvasLayer/Pause" method="_on_pressed"]
 [connection signal="pressed" from="HUD/CanvasLayer/Play" to="HUD/CanvasLayer/Play" method="_on_pressed"]
