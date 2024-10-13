@@ -23,6 +23,10 @@ var body_ref
 var offset : Vector2
 var initialPos : Vector2
 
+signal tower_placed(tower)
+
+
+
 func level_up():
 	if current_level < tower_levels.size() - 1:
 		current_level += 1
@@ -104,4 +108,6 @@ func _on_area_2d_body_exited(body):
 	if body.is_in_group("drop"):
 		is_inside_dropable = false
 		body.modulate = Color(Color.MEDIUM_PURPLE, 0.7)
+		if get_parent() is Stage:
+			emit_signal("tower_placed", self)
 
