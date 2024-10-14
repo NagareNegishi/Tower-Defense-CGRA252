@@ -20,6 +20,7 @@ func _ready():
 	input_manager.stage = stage
 	stage.input_manager = input_manager
 	input_manager.connect("tower_placement_requested", Callable(stage, "handle_tower_placement_request"))
+	input_manager.connect("tower_selected", Callable(stage, "_on_tower_selected"))
 
 
 func _on_level_complete():

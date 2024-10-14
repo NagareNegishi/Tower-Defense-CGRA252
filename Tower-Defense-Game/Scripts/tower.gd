@@ -1,7 +1,6 @@
 extends StaticBody2D
 class_name Tower
 
-
 var Bullet = preload("res://Scenes/tower_1_arrow.tscn")
 var bulletDamage = 100
 var pathName
@@ -13,42 +12,45 @@ var fire_timer = 0.0
 
 var is_selected = false
 
-@onready var sprite = get_node("towerSprite")
-@onready var collision_shape = $CollisionShape2D
+@onready var sprite = $towerSprite
+@onready var tower_area = $Tower
+@onready var detection_area = $Tower/DetectionArea
+@onready var selection_rect = $Selection
+@onready var upgrade_button = $UpgradeButton
+var detection_color = Color(1, 1, 1, 0.4)  # White with 20% opacity
+var detection_scale = 15.0
 
+signal upgrade_requested(tower)
 
-var current_level = 0
+var current_level = 1
 var tower_levels = [
-	{"damage": 100, "sprite": "res://Sprites/towerlvl1.png"},
+	{"damage": 100, "sprite": "res://Sprites/towerlvl1.png"},  # we can remove this sprite refarence it is not there anyway
 	{"damage": 150, "sprite": "res://Sprites/towerlvl2.png"},
 	{"damage": 200, "sprite": "res://Sprites/towerlvl3.png"},
 	{"damage": 300, "sprite": "res://Sprites/towerlvl4.png"},
 	{"damage": 500, "sprite": "res://Sprites/towerlvl5.png"}
 ]
 
-var draggable = false
-var is_inside_dropable = false
-var body_ref
-var offset : Vector2
-var initialPos : Vector2
-
-
 func _ready_():
 	fire_timer = fire_rate
-	set_process_unhandled_input(true)
+	scale_detection_area(detection_scale)
+	selection_rect.visible = false
+	upgrade_button.hide()
 
-func _unhandled_input(event):
-	if event is InputEventMouseButton and event.pressed:
-		if event.button_index == MOUSE_BUTTON_LEFT and not draggable:
-			var collision_shape = $CollisionShape2D
-			var mouse_pos = get_global_mouse_position()
+
+func _process(delta):
+	tower_area.queue_redraw()
+
+	fire_timer -= delta
+	if currTarget and currTarget.health > 0:
+		if fire_timer <= 0.0:
+			_fire()
+			fire_timer = fire_rate
 			
-			# Check if the mouse is over the tower using the collision shape
-			if collision_shape.shape and collision_shape.shape.overlaps_point(to_local(mouse_pos)):
-				select_tower()
-			else:
-				deselect_tower()
-				get_node("/root/HUD").deselect_tower()
+	else:
+		#currTargets.erase(currTarget)
+		currTarget = _new_target()
+
 
 func level_up():
 	if current_level < tower_levels.size() - 1:
@@ -60,7 +62,9 @@ func level_up():
 
 func update_tower_properties():
 	bulletDamage = tower_levels[current_level]["damage"]
-	sprite.texture = load(tower_levels[current_level]["sprite"])
+	#sprite.texture = load(tower_levels[current_level]["sprite"])
+	sprite.play("towerlvl" + str(current_level))
+	
 	
 func _on_tower_body_entered(body):
 	# Only target enemies in the "enemy" group
@@ -80,10 +84,7 @@ func _on_tower_body_entered(body):
 					currTarget = i
 		
 		curr = currTarget
-		
 		pathName = currTarget.get_parent().name
-		
-		
 		var tempBullet = Bullet.instantiate()
 		tempBullet.target = currTarget
 		tempBullet.bulletDamage = bulletDamage
@@ -98,68 +99,6 @@ func _on_tower_body_exited(body):
 		currTarget = null
 	#currTargets = get_node("Tower").get_overlapping_bodies()
 	
-			
-func _process(delta):
-	
-	
-	fire_timer -= delta
-	
-	if currTarget and currTarget.health > 0:
-		if fire_timer <= 0.0:
-			_fire()
-			fire_timer = fire_rate
-			
-	else:
-		#currTargets.erase(currTarget)
-		currTarget = _new_target()
-
-	if draggable:
-		if Input.is_action_just_pressed("click"):
-			initialPos = global_position
-			offset = get_global_mouse_position() - global_position
-			ControlManager.is_dragging = true
-			
-		if Input.is_action_pressed("click"):
-			global_position = get_global_mouse_position()
-		elif Input.is_action_just_released("click"):
-			ControlManager.is_dragging = false
-			
-			var tween = get_tree().create_tween()
-			if is_inside_dropable and body_ref.is_occupied == false:
-				tween.tween_property(self,"position",body_ref.position,0.2).set_ease(Tween.EASE_OUT)
-				body_ref.occupy_platform()
-				draggable = false
-			else:
-				tween.tween_property(self,"global_position",initialPos,0.2).set_ease(Tween.EASE_OUT)
-	
-
-func _on_area_2d_mouse_entered():
-	if not ControlManager.is_dragging:
-		draggable = true
-		scale = Vector2(1.05, 1.05)
-
-
-func _on_area_2d_mouse_exited():
-	if not ControlManager.is_dragging:
-		draggable = false
-		scale = Vector2(1, 1)
-
-
-func _on_area_2d_body_entered(body):
-	if body.is_in_group("drop"):
-		is_inside_dropable = true
-		body.modulate = Color(Color.REBECCA_PURPLE, 1)
-		body_ref = body
-
-
-func _on_area_2d_body_exited(body):
-	if body.is_in_group("drop"):
-		is_inside_dropable = false
-		body.modulate = Color(Color.MEDIUM_PURPLE, 0.7)
-		body_ref = body
-		if get_parent() is Stage:
-			emit_signal("tower_placed", self)
-
 func _fire():
 	if currTarget:
 		var tempBullet = Bullet.instantiate()
@@ -167,7 +106,6 @@ func _fire():
 		tempBullet.bulletDamage = bulletDamage
 		get_node("arrowContainer").add_child(tempBullet)
 		tempBullet.global_position = global_position
-		
 
 func _new_target():
 	if currTargets.size() > 0:
@@ -175,13 +113,44 @@ func _new_target():
 	return null
 	
 
+
+
+
+
+
+
+
+
+# Function to select the tower
 func select_tower():
 	is_selected = true
-	print("Tower selected")
-	# You can add visual feedback like changing the tower's appearance here
+	selection_rect.visible = true
+	upgrade_button.show()
+	tower_area.queue_redraw()
 
 # Function to deselect the tower
 func deselect_tower():
 	is_selected = false
-	print("Tower deselected")
-	# Reset the tower's appearance if needed
+	selection_rect.visible = false
+	upgrade_button.hide()
+	tower_area.queue_redraw()
+
+# Function to draw the detection area of the tower
+func _on_tower_draw():
+	if is_selected:
+		var shape = detection_area.shape as CircleShape2D
+		if shape:
+			tower_area.draw_circle(Vector2.ZERO, shape.radius * detection_scale , detection_color)
+
+# Function to scale the detection area of the tower
+func scale_detection_area(new_scale: float):
+	detection_scale = new_scale
+	tower_area.scale *= detection_scale
+	detection_area.scale *= detection_scale
+
+# Function to handle the input event for the upgrade button
+func _on_upgrade_button_input(event):
+	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_RIGHT and event.pressed:
+		print("Upgrade button pressed")
+		level_up()
+
