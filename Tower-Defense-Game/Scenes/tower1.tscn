@@ -194,7 +194,7 @@ script = ExtResource("1_xph51")
 [node name="towerSprite" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -30)
 sprite_frames = SubResource("SpriteFrames_apq6u")
-animation = &"towerlvl1"
+animation = &"towerlvl2"
 
 [node name="Tower" type="Area2D" parent="."]
 

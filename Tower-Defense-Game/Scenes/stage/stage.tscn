@@ -1,0 +1,63 @@
+[gd_scene load_steps=6 format=3 uid="uid://bereouv6k206h"]
+
+[ext_resource type="Script" path="res://Scripts/stage/Stage.gd" id="1_6lpuk"]
+[ext_resource type="PackedScene" uid="uid://b8bae2njmwbqa" path="res://Scenes/Map.tscn" id="2_d2hur"]
+[ext_resource type="PackedScene" uid="uid://b42rwnmr5txd1" path="res://Scenes/platform.tscn" id="4_1vc7a"]
+[ext_resource type="Script" path="res://Scripts/stage/EnemyPath.gd" id="4_up8se"]
+
+[sub_resource type="Curve2D" id="Curve2D_leh68"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 11, 87, 0, 0, 0, 0, 1046, 89, 0, 0, 0, 0, 1045, 240, 0, 0, 0, 0, 106, 250, 0, 0, 0, 0, 104, 404, 0, 0, 0, 0, 964, 410, 0, 0, 0, 0, 963, 567, 0, 0, 0, 0, 265, 570, 0, 0, 0, 0, 263, 655)
+}
+point_count = 9
+
+[node name="Stage" type="Node2D"]
+script = ExtResource("1_6lpuk")
+
+[node name="Node2D" parent="." instance=ExtResource("2_d2hur")]
+
+[node name="Path2D" type="Path2D" parent="."]
+curve = SubResource("Curve2D_leh68")
+script = ExtResource("4_up8se")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
+position = Vector2(11, 87)
+rotation = 0.00193236
+
+[node name="Platforms" type="Node2D" parent="."]
+
+[node name="Platform" parent="Platforms" instance=ExtResource("4_1vc7a")]
+position = Vector2(570, 35)
+scale = Vector2(7.03083, -0.492689)
+
+[node name="Platform2" parent="Platforms" instance=ExtResource("4_1vc7a")]
+position = Vector2(504, 168)
+scale = Vector2(6.2, 0.8)
+
+[node name="Platform3" parent="Platforms" instance=ExtResource("4_1vc7a")]
+position = Vector2(596, 325)
+scale = Vector2(5.7, 0.8)
+
+[node name="Platform4" parent="Platforms" instance=ExtResource("4_1vc7a")]
+position = Vector2(41, 440)
+scale = Vector2(0.5, 3)
+
+[node name="Platform5" parent="Platforms" instance=ExtResource("4_1vc7a")]
+position = Vector2(1113, 360)
+scale = Vector2(0.5, 4.1)
+
+[node name="Platform6" parent="Platforms" instance=ExtResource("4_1vc7a")]
+position = Vector2(1030, 519)
+scale = Vector2(0.5, 1.9)
+
+[node name="Platform7" parent="Platforms" instance=ExtResource("4_1vc7a")]
+position = Vector2(160, 542)
+scale = Vector2(0.95, 1.6)
+
+[node name="Platform8" parent="Platforms" instance=ExtResource("4_1vc7a")]
+position = Vector2(589, 486)
+scale = Vector2(4.3, 0.8)
+
+[node name="Platform9" parent="Platforms" instance=ExtResource("4_1vc7a")]
+position = Vector2(631, 627)
+scale = Vector2(4.3, 0.4)
