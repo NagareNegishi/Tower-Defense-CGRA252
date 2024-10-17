@@ -13,7 +13,7 @@ func _ready():
 	$Animation.flip_h = true
 	
 func _process(delta):
-	# print(health) # commenting out for now
+	
 	#get and set progress along path
 	get_parent().set_progress(get_parent().get_progress() + speed * delta)
 	

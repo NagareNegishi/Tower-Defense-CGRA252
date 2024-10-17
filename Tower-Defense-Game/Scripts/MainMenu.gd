@@ -11,7 +11,7 @@ func _on_start_game_click_end():
 
 
 func _on_setting_click_end():
-	var _level = get_tree().change_scene_to_file(setting)
+	var _level = get_tree().change_scene_to_file("res://Scenes/SettingsMenu.tscn")
 
 
 func _on_exit_game_click_end():
