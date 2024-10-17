@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://deiqyx24kprdw"]
+[gd_scene load_steps=7 format=3 uid="uid://deiqyx24kprdw"]
 
 [ext_resource type="Script" path="res://Scripts/MainMenu.gd" id="1_xfwnd"]
 [ext_resource type="PackedScene" uid="uid://btenchf3ee11" path="res://Scenes/Basic_Button.tscn" id="2_hubrh"]
+[ext_resource type="PackedScene" uid="uid://dp240gp14xoyx" path="res://Scenes/MenuBackdrop.tscn" id="2_iw4k8"]
 [ext_resource type="Texture2D" uid="uid://dwdn0sxewh65h" path="res://Assets/Icon/StartGame-Icon.webp" id="3_aqwuo"]
 [ext_resource type="Texture2D" uid="uid://b15jacge4w54s" path="res://Assets/Icon/Setting_Icon.svg" id="4_kophg"]
 [ext_resource type="Texture2D" uid="uid://b1o5ga33flil4" path="res://Assets/Icon/Exit_Icon.png" id="5_wemn1"]
@@ -21,14 +22,21 @@ offset_right = 1152.0
 offset_bottom = 648.0
 color = Color(0.441858, 0.291657, 1, 1)
 
+[node name="Node2D" parent="." instance=ExtResource("2_iw4k8")]
+
 [node name="Title" type="Label" parent="."]
-layout_mode = 0
-offset_left = 373.0
-offset_top = 62.0
-offset_right = 779.0
-offset_bottom = 211.0
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -337.0
+offset_top = 33.0
+offset_right = 334.0
+offset_bottom = 182.0
+grow_horizontal = 2
 theme_override_font_sizes/font_size = 50
-text = "Something TD"
+text = "Goblins Fury 
+\"Fortress Fight\" "
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -52,7 +60,7 @@ offset_left = 426.0
 offset_top = 367.0
 offset_right = 726.0
 offset_bottom = 467.0
-text = "Setting
+text = "Settings
 "
 
 [node name="Setting_Icon" type="Sprite2D" parent="."]
