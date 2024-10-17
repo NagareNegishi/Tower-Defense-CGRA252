@@ -3,11 +3,12 @@ class_name Stage
 
 var enemy_path: Path2D
 var platforms: Array[Node] = []
-var towers: Array[Node] = []
+var towers: Array[Tower] = []
 const MIN_TOWER_DISTANCE: float = 70.0  # distance between towers
 var tower_scene = preload("res://Scenes/tower1.tscn")
 
 var input_manager: InputManager
+var selected_tower: Tower = null
 
 func _ready():
 	enemy_path = $Path2D
@@ -48,3 +49,13 @@ func add_tower(tower_position: Vector2):
 
 func _on_tower_placed(tower: Tower):
 	print("Tower placed at ", tower.position)
+
+
+func _on_tower_selected(tower: Tower):
+	if selected_tower:
+		selected_tower.deselect_tower()
+		selected_tower = null
+	if tower:
+		selected_tower = tower
+		selected_tower.select_tower()
+
