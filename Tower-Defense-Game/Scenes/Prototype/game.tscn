@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://bmb1ihnnrpan4"]
+[gd_scene load_steps=16 format=3 uid="uid://bmb1ihnnrpan4"]
 
 [ext_resource type="Script" path="res://Scripts/level_manager/Game.gd" id="1_afu5y"]
 [ext_resource type="Script" path="res://Scripts/level_manager/Temp_LevelManager.gd" id="2_nfluv"]
@@ -7,15 +7,27 @@
 [ext_resource type="Script" path="res://Scripts/level_manager/strength_estimator.gd" id="5_3bk54"]
 [ext_resource type="PackedScene" uid="uid://b60qa1syew0md" path="res://Scenes/Spawner.tscn" id="5_jvh6j"]
 [ext_resource type="Script" path="res://Scripts/HUD.gd" id="7_syon7"]
-[ext_resource type="Script" path="res://Scripts/Health.gd" id="8_gkj0e"]
 [ext_resource type="PackedScene" uid="uid://dubw3phbv5o6m" path="res://Scenes/Heart.tscn" id="9_a7q1j"]
-[ext_resource type="Script" path="res://Scripts/Money.gd" id="10_xfvgw"]
-[ext_resource type="Script" path="res://Scripts/Pause.gd" id="11_nkokj"]
-[ext_resource type="Script" path="res://Scripts/Play.gd" id="12_cq6di"]
 [ext_resource type="Script" path="res://Scripts/Buy Tower.gd" id="13_3fpjn"]
 [ext_resource type="Script" path="res://Scripts/Next Wave.gd" id="14_51vyn"]
 [ext_resource type="PackedScene" uid="uid://b055ixjo5jrno" path="res://Scenes/Coin.tscn" id="15_xo2jt"]
 [ext_resource type="PackedScene" uid="uid://bereouv6k206h" path="res://Scenes/stage/stage.tscn" id="16_1n1sm"]
+[ext_resource type="PackedScene" uid="uid://jcr25qlqg3va" path="res://Scenes/PauseMenu.tscn" id="17_jcxi8"]
+
+[sub_resource type="GDScript" id="GDScript_4nubo"]
+script/source = "extends TextEdit
+
+
+"
+
+[sub_resource type="GDScript" id="GDScript_73kjn"]
+script/source = "extends TextEdit
+
+#dyanamically change player gold
+func _process(delta):
+	text = str(Global.playerGold)
+	
+"
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_afu5y")
@@ -35,13 +47,21 @@ script = ExtResource("5_3bk54")
 
 [node name="Spawner" parent="." instance=ExtResource("5_jvh6j")]
 
+[node name="PauseMenu" parent="." instance=ExtResource("17_jcxi8")]
+process_mode = 2
+visible = false
+position = Vector2(0, -220)
+
 [node name="HUD" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -900.0
+offset_left = 3.0
+offset_top = -3.0
+offset_right = 3.0
+offset_bottom = 897.0
 grow_horizontal = 2
 grow_vertical = 0
 script = ExtResource("7_syon7")
@@ -56,7 +76,7 @@ offset_top = -210.0
 offset_right = 160.0
 offset_bottom = -170.0
 text = "x 0"
-script = ExtResource("8_gkj0e")
+script = SubResource("GDScript_4nubo")
 
 [node name="Heart" parent="HUD/CanvasLayer" instance=ExtResource("9_a7q1j")]
 position = Vector2(100, -190)
@@ -67,63 +87,28 @@ offset_top = -210.0
 offset_right = 85.0
 offset_bottom = -170.0
 text = "x 0"
-script = ExtResource("10_xfvgw")
+script = SubResource("GDScript_73kjn")
 
 [node name="Pause" type="Button" parent="HUD/CanvasLayer"]
 offset_left = 1048.0
 offset_top = 435.0
 offset_right = 1128.0
-offset_bottom = 530.0
+offset_bottom = 668.0
 text = "Pause II"
-script = ExtResource("11_nkokj")
-
-[node name="Play" type="Button" parent="HUD/CanvasLayer"]
-process_mode = 2
-offset_left = 1048.0
-offset_top = 535.0
-offset_right = 1128.0
-offset_bottom = 630.0
-text = "Play I>"
-script = ExtResource("12_cq6di")
 
 [node name="Buy Tower" type="Button" parent="HUD/CanvasLayer"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 10.0
-offset_top = 435.0
-offset_right = -892.0
-offset_bottom = -232.0
+offset_left = 530.0
+offset_top = 437.0
+offset_right = -372.0
+offset_bottom = -230.0
 grow_horizontal = 2
 grow_vertical = 2
 disabled = true
 text = "Buy Tower"
 script = ExtResource("13_3fpjn")
-
-[node name="Upgrade Tower" type="Button" parent="HUD/CanvasLayer"]
-anchors_preset = 14
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_left = 272.0
-offset_top = -15.0
-offset_right = -632.0
-offset_bottom = 218.0
-grow_horizontal = 2
-grow_vertical = 2
-disabled = true
-text = "Upgrade Tower"
-
-[node name="Button" type="Button" parent="HUD/CanvasLayer"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 530.0
-offset_top = 435.0
-offset_right = -372.0
-offset_bottom = -232.0
-grow_horizontal = 2
-grow_vertical = 2
 
 [node name="Next Wave" type="Button" parent="HUD/CanvasLayer"]
 anchors_preset = 15
@@ -142,7 +127,8 @@ script = ExtResource("14_51vyn")
 [node name="Coin" parent="HUD/CanvasLayer" instance=ExtResource("15_xo2jt")]
 position = Vector2(32, -190)
 
+[connection signal="pressed" from="HUD/CanvasLayer/Pause" to="." method="_on_pause_pressed"]
+[connection signal="pressed" from="HUD/CanvasLayer/Pause" to="PauseMenu" method="_on_pause_pressed"]
 [connection signal="pressed" from="HUD/CanvasLayer/Pause" to="HUD/CanvasLayer/Pause" method="_on_pressed"]
-[connection signal="pressed" from="HUD/CanvasLayer/Play" to="HUD/CanvasLayer/Play" method="_on_pressed"]
 [connection signal="pressed" from="HUD/CanvasLayer/Buy Tower" to="." method="_on_buy_tower_pressed"]
 [connection signal="pressed" from="HUD/CanvasLayer/Next Wave" to="HUD/CanvasLayer/Next Wave" method="_on_pressed"]

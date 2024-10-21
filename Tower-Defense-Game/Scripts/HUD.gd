@@ -7,6 +7,14 @@ signal buy_tower_requested
 @onready var next_wave_button = $"CanvasLayer/Next Wave"
 @onready var buy_tower_button = $"CanvasLayer/Buy Tower"
 
+#dynaically change player HP/gold and play icon animations
+func _process(delta):
+	$CanvasLayer/Health.text = str(Global.playerHealth)
+	$CanvasLayer/Money.text = str(Global.playerGold)
+	$CanvasLayer/Coin.play("Shine")
+	$CanvasLayer/Heart.play("Shine")
+
+
 func _ready():
 	print("HUD _ready called")
 	print("next_wave_button: ", next_wave_button)

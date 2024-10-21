@@ -25,3 +25,13 @@ func _on_h_slider_value_changed(value: float) -> void:
 
 func _on_check_button_toggled(toggled_on):
 	AudioServer.set_bus_mute(bus_index, not AudioServer.is_bus_mute(bus_index))
+
+
+func _on_pause_pressed():
+	self.show()
+
+
+func _on_button_pressed():
+	self.hide()
+	Global.isPaused = false
+	get_tree().paused = false

@@ -1,6 +1,6 @@
 [gd_scene load_steps=75 format=3 uid="uid://dp240gp14xoyx"]
 
-[ext_resource type="Script" path="res://Node2D.gd" id="1_jwt2h"]
+[ext_resource type="Script" path="res://Scripts/Node2D.gd" id="1_p2oh1"]
 [ext_resource type="Texture2D" uid="uid://b7ht2r8xpanl2" path="res://Assets/Tileset/1 Tiles/FieldsTileset.png" id="2_aedxk"]
 [ext_resource type="Texture2D" uid="uid://p3yfa1g0xr8f" path="res://Assets/Tileset/2 Objects/1 Shadow/5.png" id="3_tj3fe"]
 [ext_resource type="Texture2D" uid="uid://b70lifu4aa54x" path="res://Assets/Tileset/3 Animated Objects/1 Flag/1.png" id="4_fb6j3"]
@@ -508,7 +508,7 @@ animations = [{
 }]
 
 [node name="Node2D" type="Node2D"]
-script = ExtResource("1_jwt2h")
+script = ExtResource("1_p2oh1")
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_03y8h")
