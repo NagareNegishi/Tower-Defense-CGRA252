@@ -1,11 +1,10 @@
-[gd_scene load_steps=16 format=3 uid="uid://bmb1ihnnrpan4"]
+[gd_scene load_steps=15 format=3 uid="uid://bmb1ihnnrpan4"]
 
 [ext_resource type="Script" path="res://Scripts/level_manager/Game.gd" id="1_afu5y"]
-[ext_resource type="Script" path="res://Scripts/level_manager/Temp_LevelManager.gd" id="2_nfluv"]
 [ext_resource type="PackedScene" uid="uid://bbfwgc53jd2tb" path="res://Scenes/InputManager/input_manager.tscn" id="3_frryq"]
 [ext_resource type="Script" path="res://Scripts/level_manager/game_stats.gd" id="4_b872q"]
+[ext_resource type="Script" path="res://Scripts/level_manager/level_manager.gd" id="4_mkuov"]
 [ext_resource type="Script" path="res://Scripts/level_manager/strength_estimator.gd" id="5_3bk54"]
-[ext_resource type="PackedScene" uid="uid://b60qa1syew0md" path="res://Scenes/Spawner.tscn" id="5_jvh6j"]
 [ext_resource type="Script" path="res://Scripts/HUD.gd" id="7_syon7"]
 [ext_resource type="PackedScene" path="res://Scenes/Heart.tscn" id="9_a7q1j"]
 [ext_resource type="Script" path="res://Scripts/Buy Tower.gd" id="13_3fpjn"]
@@ -37,15 +36,13 @@ script = ExtResource("1_afu5y")
 [node name="InputManager" parent="." instance=ExtResource("3_frryq")]
 
 [node name="LevelManager" type="Node" parent="."]
-script = ExtResource("2_nfluv")
+script = ExtResource("4_mkuov")
 
 [node name="GameStats" type="Node" parent="."]
 script = ExtResource("4_b872q")
 
 [node name="StrengthEstimator" type="Node" parent="."]
 script = ExtResource("5_3bk54")
-
-[node name="Spawner" parent="." instance=ExtResource("5_jvh6j")]
 
 [node name="PauseMenu" parent="." instance=ExtResource("17_jcxi8")]
 process_mode = 2

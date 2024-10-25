@@ -2,7 +2,7 @@ extends CharacterBody2D
 class_name EnemyBase
 
 # base parameters
-@export var base_speed: float = 50
+@export var base_speed: float = 100
 @export var base_health: float = 100
 @export var gold_reward: int = 1
 @export var damage_to_player: int = 1
@@ -20,10 +20,12 @@ func _ready():
 	add_to_group("enemy")
 	_play_walk_animation()
 
+
 func _process(delta):
 	_move(delta)
 	_check_goal()
 	_check_health()
+
 
 func _play_walk_animation():
 	if has_node("Animation"):
@@ -31,7 +33,19 @@ func _play_walk_animation():
 
 func _move(delta):
 	if get_parent():
+		var old_pos = global_position
 		get_parent().set_progress(get_parent().get_progress() + speed * delta)
+		get_parent().rotates = false
+
+		var new_pos = global_position
+
+		if new_pos.x < old_pos.x:
+			if has_node("Animation"):
+				$Animation.flip_h = false
+		elif new_pos.x > old_pos.x:
+			if has_node("Animation"):
+				$Animation.flip_h = true
+
 
 func _check_goal():
 	if get_parent() and get_parent().get_progress_ratio() >= 1:

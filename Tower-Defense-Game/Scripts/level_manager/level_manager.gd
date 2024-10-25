@@ -18,10 +18,8 @@ enum GameState {
 
 @export var game_stats: GameStats
 @export var enemy_path: EnemyPath
-@export var slime_scene: PackedScene
-
-@export var wave_scene: Wave
 @export var strength_estimator: StrengthEstimator  #I need to wait others code
+var wave_scene = preload("res://Scenes/level_manager/wave.tscn")
 
 signal waves_complete # finished sending all waves
 signal level_complete # all waves are defeated
@@ -32,14 +30,24 @@ signal game_complete # player won
 func _ready():
 	game_stats = get_node("/root/Game/GameStats")
 	if game_stats:
-		game_stats.game_over.connect(_on_game_over)	
+		game_stats.game_over.connect(_on_game_over)
+
+	enemy_path = get_node("/root/Game/Stage/Path2D")
+	if not enemy_path:
+		push_error("EnemyPath not found!")
+		return
+		
+	if not game_stats:
+		push_error("GameStats not found!")
+		return
+
+	game_stats.game_over.connect(_on_game_over)
 	generate_waves()
 
 func generate_waves():
 	for i in range(total_waves):
 		var wave = wave_scene.instantiate()
-		wave.difficulty_level = current_difficulty + i
-		wave.enemy_scene = slime_scene
+		wave.difficulty_level = current_difficulty + 1
 		waves.append(wave)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -61,18 +69,26 @@ func spawn_wave(wave: Wave):
 
 func send_waves():
 	current_state = GameState.WAVE_IN_PROGRESS
-	while not waves.empty():
+	while not waves.is_empty():
+
+		print("waveleft: ", waves.size())
 		current_wave = waves.pop_front()
 		add_child(current_wave)
 
-		current_wave.connect("enemy_spawned", Callable(self, "_on_enemy_spawned"))
+		current_wave.enemy_spawned.connect(_on_enemy_spawned)
+		current_wave.wave_completed.connect(_on_wave_completed)
+		current_wave.wave_defeated.connect(_on_wave_defeated)
+		"""current_wave.connect("enemy_spawned", Callable(self, "_on_enemy_spawned"))
 		current_wave.connect("wave_completed", Callable(self, "_on_wave_completed"))
-		current_wave.connect("wave_defeated", Callable(self, "_on_wave_defeated"))
+		current_wave.connect("wave_defeated", Callable(self, "_on_wave_defeated"))"""
 
 
 
 		current_wave.start()
 		await current_wave.wave_completed
+
+		await get_tree().create_timer(3.0).timeout
+
 		total_waves -= 1
 	waves_complete.emit()
 
@@ -92,7 +108,7 @@ func _on_game_over():
 
 
 func _on_wave_defeated():
-	if waves.empty():
+	if waves.is_empty():
 		_on_level_complete()
 
 func _on_enemy_spawned(enemy):
@@ -106,3 +122,7 @@ func _on_enemy_reached_goal():
 func _on_enemy_killed():
 	game_stats.update_score(10)
 	game_stats.update_resources(5)
+
+
+func _on_wave_completed():
+	print("Wave completed")
