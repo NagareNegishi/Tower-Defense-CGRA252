@@ -1,34 +1,8 @@
-extends CharacterBody2D
+extends EnemyBase
 class_name Wolf
 
-#speed and health
-@export var speed = 50
-var health = 100
-
 func _ready():
-	add_to_group("enemy")
-	#play walking anim on spawn
-	$Animation.play("Walk")
+	super._ready()
+	speed = base_speed * 2
+	health = base_health
 	$Animation.flip_h = true
-
-func _process(delta):
-	#get and set progress along path
-	get_parent().set_progress(get_parent().get_progress() + speed * delta)
-	
-	#when enemy reaches end despwan can add damage to player off this call
-	if get_parent().get_progress_ratio() == 1:
-		Global.playerHealth -= 1
-		Global.enemyCount -= 1
-		queue_free()
-	
-	if health <= 0:
-		#stop movement
-		set_process(false)
-		Global.playerGold += 1
-		Global.enemyCount -= 1
-		#play death animation and wait for it to finish
-		$Animation.play("Death")
-		await  $Animation.animation_finished
-		#despawn enemy
-		queue_free()
-		

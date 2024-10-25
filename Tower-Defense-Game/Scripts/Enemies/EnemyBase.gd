@@ -1,0 +1,64 @@
+extends CharacterBody2D
+class_name EnemyBase
+
+# base parameters
+@export var base_speed: float = 50
+@export var base_health: float = 100
+@export var gold_reward: int = 1
+@export var damage_to_player: int = 1
+
+# actual parameters
+var speed: float
+var health: float
+
+signal reached_goal
+signal enemy_died
+
+func _ready():
+	speed = base_speed
+	health = base_health
+	add_to_group("enemy")
+	_play_walk_animation()
+
+func _process(delta):
+	_move(delta)
+	_check_goal()
+	_check_health()
+
+func _play_walk_animation():
+	if has_node("Animation"):
+		$Animation.play("Walk")
+
+func _move(delta):
+	if get_parent():
+		get_parent().set_progress(get_parent().get_progress() + speed * delta)
+
+func _check_goal():
+	if get_parent() and get_parent().get_progress_ratio() >= 1:
+		_on_reach_goal()
+
+func _check_health():
+	if health <= 0:
+		_on_death()
+
+func _on_reach_goal():
+	Global.playerHealth -= damage_to_player
+	Global.enemyCount -= 1
+	reached_goal.emit()
+	print("Enemy reached goal")
+	queue_free()
+
+func _on_death():
+	set_process(false)
+	Global.playerGold += gold_reward
+	Global.enemyCount -= 1
+	if has_node("Animation"):
+		$Animation.play("Death")
+		await $Animation.animation_finished
+	enemy_died.emit()
+	print("Enemy died")
+	queue_free()
+
+func take_damage(amount: float):
+	health -= amount
+	print("Enemy took damage: ", amount)

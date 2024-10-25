@@ -30,13 +30,9 @@ signal game_complete # player won
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	game_stats = GameStats.new()
-	add_child(game_stats)
-	game_stats.connect("game_over", Callable(self, "_on_game_over"))
-	
-	strength_estimator = StrengthEstimator.new()
-	add_child(strength_estimator)
-
+	game_stats = get_node("/root/Game/GameStats")
+	if game_stats:
+		game_stats.game_over.connect(_on_game_over)	
 	generate_waves()
 
 func generate_waves():
@@ -55,15 +51,9 @@ func start_level():
 	send_waves()
 
 
-
-
-
-
-
 # function to spawn a wave of enemies
 func spawn_wave(wave: Wave):
 	for i in range(wave.enemy_count):
-		var enemy = enemy_path.spawn_enemy(slime_scene)
 		# Additional enemy setup can be done here if needed
 		await get_tree().create_timer(wave.spawn_interval).timeout
 
@@ -83,7 +73,7 @@ func send_waves():
 
 		current_wave.start()
 		await current_wave.wave_completed
-		total_waves - 1
+		total_waves -= 1
 	waves_complete.emit()
 
 
@@ -106,4 +96,13 @@ func _on_wave_defeated():
 		_on_level_complete()
 
 func _on_enemy_spawned(enemy):
-	enemy_path.spawn_enemy(enemy)
+	var spawned_enemy = enemy_path.spawn_enemy(enemy)
+	spawned_enemy.reached_goal.connect(_on_enemy_reached_goal)
+	spawned_enemy.enemy_died.connect(_on_enemy_killed)
+
+func _on_enemy_reached_goal():
+	game_stats.update_life(1)
+
+func _on_enemy_killed():
+	game_stats.update_score(10)
+	game_stats.update_resources(5)

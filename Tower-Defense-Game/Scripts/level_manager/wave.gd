@@ -17,9 +17,7 @@ var difficulty: int
 @export var difficulty_level: int = 1
 @export var wave_spawn_interval: float = 1.0
 @export var wave_enemy_count: int = 5
-
 @export var enemy_scene: PackedScene
-
 
 
 # Called when the node enters the scene tree for the first time.
@@ -40,6 +38,9 @@ func generate_enemies():
 		enemy.health = 100 + (difficulty * 10)
 		enemy.speed = 50 + (difficulty * 5)
 
+		# connect signals from enemy
+		enemy.reached_goal.connect(_on_enemy_reached_end)
+		enemy.enemy_died.connect(_on_enemy_died)
 		enemies.append(enemy)
 
 # level manager will call this function to send enemies
@@ -66,7 +67,15 @@ func send_enemies():
 ## expecting to receive a signal like this
 func _on_enemy_reached_end():
 	enemies_remaining -= 1
+	print("Enemy reached end. Remaining: ", enemies_remaining)
+	_check_wave()
+
+
 func _on_enemy_died():
 	enemies_remaining -= 1
-	if enemies_remaining == 0:
+	print("Enemy died. Remaining: ", enemies_remaining)
+	_check_wave()
+
+func _check_wave():
+	if enemies_remaining <= 0:
 		wave_defeated.emit()
