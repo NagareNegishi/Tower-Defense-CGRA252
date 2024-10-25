@@ -1,12 +1,16 @@
-[gd_scene load_steps=3 format=3 uid="uid://d0lje1r7fcex0"]
+[gd_scene load_steps=4 format=3 uid="uid://jcr25qlqg3va"]
 
-[ext_resource type="Script" path="res://Scripts/Settings.gd" id="1_irsaf"]
-[ext_resource type="PackedScene" uid="uid://dp240gp14xoyx" path="res://Scenes/MenuBackdrop.tscn" id="2_yrkys"]
+[ext_resource type="Script" path="res://Scripts/Settings.gd" id="1_xh1m3"]
+[ext_resource type="PackedScene" uid="uid://dp240gp14xoyx" path="res://Scenes/MenuBackdrop.tscn" id="2_efy7s"]
 
-[node name="Node2D" type="Node2D"]
-script = ExtResource("1_irsaf")
+[sub_resource type="GDScript" id="GDScript_0fwnb"]
+script/source = "extends Button
+"
 
-[node name="Backdrop" parent="." instance=ExtResource("2_yrkys")]
+[node name="PauseMenu" type="Node2D"]
+script = ExtResource("1_xh1m3")
+
+[node name="Backdrop" parent="." instance=ExtResource("2_efy7s")]
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
@@ -15,22 +19,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-
-[node name="Menu" type="Button" parent="Control"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 511.0
-offset_top = 275.0
-offset_right = 649.0
-offset_bottom = 339.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "Main Menu
-"
 
 [node name="HSlider" type="HSlider" parent="Control"]
 layout_mode = 0
@@ -72,5 +60,14 @@ text = " Volume"
 tab_size = 8
 metadata/_edit_use_anchors_ = true
 
-[connection signal="pressed" from="Control/Menu" to="." method="_on_menu_pressed"]
+[node name="Button" type="Button" parent="Control"]
+layout_mode = 0
+offset_left = 506.0
+offset_top = 283.0
+offset_right = 663.0
+offset_bottom = 345.0
+text = "Back to game"
+script = SubResource("GDScript_0fwnb")
+
 [connection signal="toggled" from="Control/CheckButton" to="." method="_on_check_button_toggled"]
+[connection signal="pressed" from="Control/Button" to="." method="_on_button_pressed"]

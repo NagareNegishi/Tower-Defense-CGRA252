@@ -41,3 +41,9 @@ func _on_buy_tower_pressed():
 	var tower_instance = tower_scene.instantiate()
 	add_child(tower_instance)
 	print("tower Added")"""
+
+
+func _on_pause_pressed():
+	if !Global.isPaused:
+		get_tree().paused = true
+		Global.isPaused = true
