@@ -18,6 +18,7 @@ func handle_tower_placement_request(tower_position: Vector2):
 	if is_valid_tower_position(tower_position):
 		add_tower(tower_position)
 		input_manager.end_tower_placement()
+		Global.playerGold -= 100
 	else:
 		print("Invalid tower position")
 

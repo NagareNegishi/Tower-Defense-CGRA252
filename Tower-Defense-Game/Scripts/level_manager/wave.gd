@@ -105,13 +105,13 @@ func send_enemies():
 ## expecting to receive a signal like this
 func _on_enemy_reached_end():
 	enemies_remaining -= 1
-	print("Enemy reached end. Remaining: ", enemies_remaining)
+	print("Enemy reached end. Remaining: ", enemies_remaining)########################
 	_check_wave()
 
 
 func _on_enemy_died():
 	enemies_remaining -= 1
-	print("Enemy died. Remaining: ", enemies_remaining)
+	print("Enemy died. Remaining: ", enemies_remaining)############################
 	_check_wave()
 
 func _check_wave():

@@ -4,12 +4,13 @@ class_name EnemyBase
 # base parameters
 @export var base_speed: float = 100
 @export var base_health: float = 100
-@export var gold_reward: int = 1
+@export var base_reward: int = 10
 @export var damage_to_player: int = 1
 
 # actual parameters
 var speed: float
 var health: float
+var reward: int
 
 signal reached_goal
 signal enemy_died
@@ -17,6 +18,7 @@ signal enemy_died
 func _ready():
 	speed = base_speed
 	health = base_health
+	reward = base_reward
 	add_to_group("enemy")
 	_play_walk_animation()
 
@@ -62,7 +64,7 @@ func _on_reach_goal():
 
 func _on_death():
 	set_process(false)
-	Global.playerGold += gold_reward
+	Global.playerGold += reward
 	Global.enemyCount -= 1
 	if has_node("Animation"):
 		$Animation.play("Death")
