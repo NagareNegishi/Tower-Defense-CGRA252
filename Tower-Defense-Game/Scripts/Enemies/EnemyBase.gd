@@ -26,19 +26,17 @@ func _process(delta):
 	_check_goal()
 	_check_health()
 
-
 func _play_walk_animation():
 	if has_node("Animation"):
 		$Animation.play("Walk")
 
+# move the enemy along the path and flip the sprite if needed
 func _move(delta):
 	if get_parent():
 		var old_pos = global_position
 		get_parent().set_progress(get_parent().get_progress() + speed * delta)
 		get_parent().rotates = false
-
 		var new_pos = global_position
-
 		if new_pos.x < old_pos.x:
 			if has_node("Animation"):
 				$Animation.flip_h = false
@@ -59,7 +57,7 @@ func _on_reach_goal():
 	Global.playerHealth -= damage_to_player
 	Global.enemyCount -= 1
 	reached_goal.emit()
-	print("Enemy reached goal")
+	print("Enemy reached goal")###########################################
 	queue_free()
 
 func _on_death():
@@ -70,9 +68,9 @@ func _on_death():
 		$Animation.play("Death")
 		await $Animation.animation_finished
 	enemy_died.emit()
-	print("Enemy died")
+	print("Enemy died")################################################
 	queue_free()
 
 func take_damage(amount: float):
 	health -= amount
-	print("Enemy took damage: ", amount)
+	print("Enemy took damage: ", amount)#########################################

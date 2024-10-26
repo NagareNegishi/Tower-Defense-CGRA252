@@ -21,6 +21,7 @@ func setup_connections():
 	input_manager.connect("tower_placement_requested", Callable(stage, "handle_tower_placement_request"))
 	input_manager.connect("tower_selected", Callable(stage, "_on_tower_selected"))
 	hud.connect("buy_tower_requested", Callable(input_manager, "start_tower_placement"))
+	hud.connect("next_wave_requested", Callable(level_manager, "next_level"))
 	level_manager.connect("level_complete", Callable(self, "_on_level_complete"))
 	level_manager.connect("player_defeat", Callable(self, "_on_player_defeat"))
 	level_manager.connect("game_complete", Callable(self, "_on_game_complete"))
