@@ -54,6 +54,7 @@ func add_tower(tower_position: Vector2): # add_tower(tower_position: Vector2, to
 	add_child(new_tower)
 	new_tower.position = tower_position
 	game_stats.gold -= new_tower.price
+	game_stats.towers_built += 1
 	Global.playerGold = game_stats.gold
 	# new_tower.connect("tower_placed", Callable(self, "_on_tower_placed"))
 	print("Tower placed at ", new_tower.position)

@@ -14,10 +14,11 @@ var tower_scene = preload("res://Scenes/tower1.tscn")
 
 func _ready():
 	setup_connections()
-	level_manager.start_level()
 	game_stats.score = 0
 	game_stats.gold = 100
 	game_stats.life = 50
+	level_manager.start_level()
+
 
 # Connect signals
 func setup_connections():

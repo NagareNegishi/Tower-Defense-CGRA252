@@ -20,7 +20,7 @@ var current_wave_defeated = false
 
 @export var game_stats: GameStats
 @export var enemy_path: EnemyPath
-@export var strength_estimator: StrengthEstimator  #I need to wait others code
+@export var strength_estimator: StrengthEstimator
 var wave_scene = preload("res://Scenes/level_manager/wave.tscn")
 
 signal waves_complete # finished sending all waves
@@ -32,6 +32,7 @@ signal game_complete # player won
 func _ready():
 	game_stats = get_node("/root/Game/GameStats")
 	enemy_path = get_node("/root/Game/Stage/Path2D")
+	strength_estimator = get_node("/root/Game/StrengthEstimator")
 	game_stats.game_over.connect(_on_game_over)
 	generate_waves()
 
@@ -50,7 +51,8 @@ func next_level():
 		return
 	current_level += 1
 	print("Starting level ", current_level)###################
-	current_difficulty += 1 #strength_estimator.get_difficulty()
+	current_difficulty = strength_estimator.estimate_difficulty(current_level)
+	print("Difficulty: ", current_difficulty)######################
 	generate_waves()
 	start_level()
 
@@ -85,16 +87,19 @@ func _on_enemy_spawned(enemy):
 	spawned_enemy.reached_goal.connect(_on_enemy_reached_goal)
 	spawned_enemy.enemy_died.connect(_on_enemy_killed)
 	active_enemies += 1
+	game_stats.total_enemies_spawned += 1
 
 # called when an enemy reaches the goal
 func _on_enemy_reached_goal(damage: int):
-	game_stats.update_life(-damage)
+	game_stats.life -= damage
 	active_enemies -= 1
+	game_stats.enemies_reached_goal += 1
 
 # called when an enemy is killed
 func _on_enemy_killed(reward: int):
-	game_stats.update_resources(reward)
+	game_stats.gold += reward
 	active_enemies -= 1
+	game_stats.enemies_defeated += 1
 
 # check if the level is completed
 func _on_wave_defeated():

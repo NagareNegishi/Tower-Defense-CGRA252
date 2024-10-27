@@ -1,65 +1,49 @@
 extends Node
 class_name StrengthEstimator
 
-func estimate_player_strength() -> float:
-	return 1.0
+## StrengthEstimator estimates the player's strength and the difficulty of the level.
+## The player's strength is estimated based on the number of towers built, the defeat rate, and the resource efficiency.
 
-func estimate_enemy_strength(wave_number: int) -> float:
-	return float(wave_number)
+@onready var game_stats: GameStats = get_node("/root/Game/GameStats")
+const MIN_STRENGTH: float = 0.5
+const MAX_STRENGTH: float = 2.0
+const TOWER_FACTOR: float = 0.5 # probably most important factor
+const DEFEAT_RATE_FACTOR: float = 2.0
+const RESOURCE_FACTOR: float = 1000.0
 
-func calculate_next_wave_difficulty(player_strength: float, current_wave: int) -> int:
-	return int(player_strength + current_wave)
+# estimate the player's strength from 3 factors and divide by 3
+func estimate_player() -> float:
+	# default strength
+    if !game_stats:
+        return 1.0
+	# factor 1: tower strength
+    var tower_strength = game_stats.towers_built * TOWER_FACTOR
+    # factor 2: defeat rate
+    var defeat_rate = 0.0
+    if game_stats.total_enemies_spawned > 0:
+        defeat_rate = float(game_stats.enemies_defeated) / game_stats.total_enemies_spawned
+        defeat_rate *= DEFEAT_RATE_FACTOR
+    # factor 3: resource efficiency
+    var resource_efficiency = 0.0
+    if game_stats.total_gold_spent > 0:
+        resource_efficiency = float(game_stats.enemies_defeated) / game_stats.total_gold_spent * RESOURCE_FACTOR
+    # average the 3 factors
+    var strength = (tower_strength + defeat_rate + resource_efficiency) / 3.0
+    return clampf(strength, MIN_STRENGTH, MAX_STRENGTH) # balance the strength
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
+# estimate the difficulty of the level based on the current level and the player's strength
+func estimate_difficulty(current_level: int) -> int:
+    var player_strength = estimate_player()
+    var base_difficulty = current_level
+    # estimate the success rate
+    var success_rate = 0.0
+    if game_stats.total_enemies_spawned > 0:
+        success_rate = 1.0 - game_stats.enemies_reached_goal / float(game_stats.total_enemies_spawned)
+	# adjust the difficulty based on the success rate
+    var difficulty = base_difficulty * player_strength
+    if success_rate < 0.7:
+        difficulty *= 0.9
+    elif success_rate > 0.9:
+        difficulty *= 1.1
+    return int(clampf(difficulty, 1.0, 20.0)) # limit the difficulty to a reasonable range
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
-
-
-## best i can do without knowing others code
-
-# lets assume
-# Default enemy strengths
-const ENEMY_STRENGTHS = {
-	"basic": 10,
-	"fast": 15,
-	"tank": 25,
-	"boss": 50
-}
-
-# Difficulty adjustment factors
-const DIFFICULTY_DECREASE_FACTOR = 0.9
-const DIFFICULTY_INCREASE_FACTOR = 1.1
-
-var current_difficulty: float = 1.0
-var enemies_reached_goal: int = 0
-var total_enemies_spawned: int = 0
-var waves_completed: int = 0
-
-
-func estimate_wave_strength(wave_number: int, enemy_types: Array) -> float:
-	var strength = 0.0
-	for enemy_type in enemy_types:
-		strength += ENEMY_STRENGTHS.get(enemy_type, ENEMY_STRENGTHS["basic"])
-	return strength * current_difficulty * (1 + wave_number * 0.1)
-
-func enemy_reached_goal():
-	enemies_reached_goal += 1
-	adjust_difficulty()
-
-func wave_completed(enemies_spawned: int):
-	total_enemies_spawned += enemies_spawned
-	waves_completed += 1
-	adjust_difficulty()
-
-func adjust_difficulty():
-	var success_rate = 1.0 - (float(enemies_reached_goal) / total_enemies_spawned)
-	if success_rate < 0.7:  # If more than 30% of enemies reached the goal
-		current_difficulty *= DIFFICULTY_DECREASE_FACTOR
-	elif success_rate > 0.9:  # If less than 10% of enemies reached the goal
-		current_difficulty *= DIFFICULTY_INCREASE_FACTOR
-	current_difficulty = clamp(current_difficulty, 0.5, 2.0)  # Limit difficulty range
