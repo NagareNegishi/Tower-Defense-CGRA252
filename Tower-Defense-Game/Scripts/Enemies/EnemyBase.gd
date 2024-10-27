@@ -11,14 +11,16 @@ class_name EnemyBase
 var speed: float
 var health: float
 var reward: int
+var damage: int
 
-signal reached_goal
-signal enemy_died
+signal reached_goal(damage: int)
+signal enemy_died(reward: int)
 
 func _ready():
 	speed = base_speed
 	health = base_health
 	reward = base_reward
+	damage = damage_to_player
 	add_to_group("enemy")
 	_play_walk_animation()
 
@@ -56,9 +58,9 @@ func _check_health():
 		_on_death()
 
 func _on_reach_goal():
-	Global.playerHealth -= damage_to_player
+	Global.playerHealth -= damage
 	Global.enemyCount -= 1
-	reached_goal.emit()
+	reached_goal.emit(damage)
 	print("Enemy reached goal")###########################################
 	queue_free()
 
@@ -69,7 +71,7 @@ func _on_death():
 	if has_node("Animation"):
 		$Animation.play("Death")
 		await $Animation.animation_finished
-	enemy_died.emit()
+	enemy_died.emit(reward)
 	print("Enemy died")################################################
 	queue_free()
 

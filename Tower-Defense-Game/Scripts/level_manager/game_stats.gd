@@ -7,7 +7,7 @@ class_name GameStats
 # HUD should listen to these signals
 signal score_changed(new_score: int)
 signal life_changed(new_life: int)
-signal resources_changed(new_resources: int)
+signal gold_changed(new_gold: int)
 signal game_over
 
 # Current score
@@ -25,10 +25,10 @@ var life: int = 10:
 			game_over.emit()
 
 # Current resources
-var resources: int = 1000:
+var gold: int = 1000:
 	set(value):
-		resources = value
-		resources_changed.emit(resources)
+		gold = value
+		gold_changed.emit(gold)
 
 
 # Update the score
@@ -42,6 +42,6 @@ func update_life(amount: int):
 
 # Update the resources
 func update_resources(amount: int):
-	resources += amount
+	gold += amount
 
 

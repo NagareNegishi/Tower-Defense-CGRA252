@@ -9,18 +9,19 @@ signal enemy_spawned(enemy)
 @export var bee_scene: PackedScene
 @export var wolf_scene: PackedScene
 @export var goblin_scene: PackedScene
+# limits of difficulty
+@export var enemy_count_limit: int = 30
+@export var interval_limit: float = 0.1
 # initial values
 @export var difficulty_level: int = 1
-@export var max_interval: float = 2.0
-@export var min_interval: float = 1.0
-@export var wave_enemy_count: int = 5
+@export var max_interval: float = 1.5
+@export var min_interval: float = 0.8
+@export var wave_enemy_count: int = 3
 
 var enemies = []
 var enemy_count: int
 var enemies_spawned = 0
 var enemies_remaining = 0
-var spawn_interval: float
-var spawn_interval_variation: float = 0.0 # randomly vary the spawn interval by this amount
 var difficulty: int
 var enemy_weights = {
 	"slime": 70,
@@ -37,11 +38,18 @@ func _ready():
 # this is real constructor
 func create(new_difficulty: int):
 	difficulty = new_difficulty
-	spawn_interval = max_interval
-	enemy_count = wave_enemy_count
+	adjust_wave_parameters()
 	enemies_remaining = enemy_count
 	adjust_enemy_weights()
 	generate_enemies()
+
+# adjust wave parameters based on difficulty
+func adjust_wave_parameters():
+	enemy_count = mini(wave_enemy_count + (difficulty * 2), enemy_count_limit)
+	var min_reduction = (difficulty - 1) * 0.15
+	var max_reduction = (difficulty - 1) * 0.1
+	max_interval = max(max_interval * (1.0 - max_reduction), interval_limit + 0.3)
+	min_interval = max(min_interval * (1.0 - min_reduction), interval_limit)
 
 # adjust enemy weights based on difficulty, currently it is hardcoded
 func adjust_enemy_weights():
@@ -96,24 +104,23 @@ func send_enemies():
 		enemy_spawned.emit(enemy)
 		enemies_spawned += 1
 		if enemies.is_empty():
-			await get_tree().create_timer(2.0).timeout # wait for 2 seconds before emitting wave completed
+			await get_tree().create_timer(1.0).timeout # wait for 2 seconds before emitting wave completed
 			wave_completed.emit()
 			return
 		var spawn_delay = randf_range(min_interval, max_interval)
 		await get_tree().create_timer(spawn_delay).timeout
 
-## expecting to receive a signal like this
-func _on_enemy_reached_end():
+# called when an enemy reaches the goal
+func _on_enemy_reached_end(_damage: int):
 	enemies_remaining -= 1
-	print("Enemy reached end. Remaining: ", enemies_remaining)########################
 	_check_wave()
 
-
-func _on_enemy_died():
+# called when an enemy is killed
+func _on_enemy_died(_reward: int):
 	enemies_remaining -= 1
-	print("Enemy died. Remaining: ", enemies_remaining)############################
 	_check_wave()
 
+# check if the wave is completed
 func _check_wave():
 	if enemies_remaining <= 0:
 		wave_defeated.emit()
