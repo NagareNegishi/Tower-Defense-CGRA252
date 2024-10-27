@@ -7,7 +7,7 @@
 
 [sub_resource type="Curve2D" id="Curve2D_leh68"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 11, 87, 0, 0, 0, 0, 1046, 89, 0, 0, 0, 0, 1045, 240, 0, 0, 0, 0, 106, 250, 0, 0, 0, 0, 104, 404, 0, 0, 0, 0, 964, 410, 0, 0, 0, 0, 963, 567, 0, 0, 0, 0, 265, 570, 0, 0, 0, 0, 263, 655)
+"points": PackedVector2Array(0, 0, 0, 0, 11, 87, 0, 0, 0, 0, 1046, 89, 0, 0, 0, 0, 1042, 247, 0, 0, 0, 0, 106, 250, 0, 0, 0, 0, 104, 404, 0, 0, 0, 0, 964, 410, 0, 0, 0, 0, 963, 567, 0, 0, 0, 0, 265, 570, 0, 0, 0, 0, 263, 655)
 }
 point_count = 9
 
@@ -25,6 +25,7 @@ position = Vector2(11, 87)
 rotation = 0.00193236
 
 [node name="Platforms" type="Node2D" parent="."]
+visible = false
 
 [node name="Platform" parent="Platforms" instance=ExtResource("4_1vc7a")]
 position = Vector2(570, 35)

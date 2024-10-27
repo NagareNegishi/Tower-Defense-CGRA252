@@ -1,40 +1,9 @@
-extends CharacterBody2D
+extends EnemyBase
 class_name Slime
 
-## delete this line
-signal reached_goal
-###################
-
-#speed and health
-@export var speed = 50
-var health = 100
-
 func _ready():
-	add_to_group("enemy")
-	#play walking anim on spawn
-	$Animation.play("Walk")
+	super._ready()
+	speed = base_speed
+	health = base_health
+	reward = base_reward
 
-func _process(delta):
-	#get and set progress along path
-	get_parent().set_progress(get_parent().get_progress() + speed * delta)
-	
-	#when enemy reaches end despwan can add damage to player off this call
-	if get_parent().get_progress_ratio() == 1:
-		Global.playerHealth -= 1
-		Global.enemyCount -= 1
-		## delete this block############
-		reached_goal.emit()
-		#print("reached goal")
-		########################
-		queue_free()
-	
-	if health <= 0:
-		Global.playerGold += 1
-		Global.enemyCount -= 1
-		#stop movement
-		set_process(false)
-		#play death animation and wait for it to finish
-		$Animation.play("Death")
-		await  $Animation.animation_finished
-		#despawn enemy
-		queue_free()

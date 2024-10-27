@@ -11,6 +11,7 @@ var fire_rate = 1.0
 var fire_timer = 0.0
 
 var is_selected = false
+var price: int = 100
 
 @onready var sprite = $towerSprite
 @onready var tower_area = $Tower

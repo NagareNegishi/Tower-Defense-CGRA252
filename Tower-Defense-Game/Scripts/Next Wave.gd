@@ -1,7 +1,7 @@
 extends Button
 
 #diable use of button during wave process
-func _process(delta):
+func _process(_delta):
 	if Global.enemyCount > 0:
 		disabled = true
 	else:

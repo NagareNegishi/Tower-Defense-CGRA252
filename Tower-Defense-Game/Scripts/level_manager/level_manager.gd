@@ -1,7 +1,8 @@
 extends Node
 class_name LevelManager
 
-var waves = [] # for prototype
+var waves = []
+var active_enemies: int = 0
 var current_wave: Wave = null
 var next_wave: Wave = null
 var total_waves = 5 # 5 to 10 waves per level
@@ -18,10 +19,8 @@ enum GameState {
 
 @export var game_stats: GameStats
 @export var enemy_path: EnemyPath
-@export var slime_scene: PackedScene
-
-@export var wave_scene: Wave
 @export var strength_estimator: StrengthEstimator  #I need to wait others code
+var wave_scene = preload("res://Scenes/level_manager/wave.tscn")
 
 signal waves_complete # finished sending all waves
 signal level_complete # all waves are defeated
@@ -30,80 +29,94 @@ signal game_complete # player won
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	game_stats = GameStats.new()
-	add_child(game_stats)
-	game_stats.connect("game_over", Callable(self, "_on_game_over"))
-	
-	strength_estimator = StrengthEstimator.new()
-	add_child(strength_estimator)
-
+	game_stats = get_node("/root/Game/GameStats")
+	enemy_path = get_node("/root/Game/Stage/Path2D")
+	game_stats.game_over.connect(_on_game_over)
 	generate_waves()
 
+# generate waves for the level and set the difficulty
 func generate_waves():
 	for i in range(total_waves):
 		var wave = wave_scene.instantiate()
-		wave.difficulty_level = current_difficulty + i
-		wave.enemy_scene = slime_scene
+		wave.create(current_difficulty)
 		waves.append(wave)
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
+# generate waves for the next level and start
+func next_level():
+	if current_state != GameState.BETWEEN_WAVES:
+		return
+	current_difficulty += 1 #strength_estimator.get_difficulty()
+	generate_waves()
+	start_level()
 
-
+# start the level
 func start_level():
+	active_enemies = 0
 	send_waves()
 
-
-
-
-
-
-
-# function to spawn a wave of enemies
-func spawn_wave(wave: Wave):
-	for i in range(wave.enemy_count):
-		var enemy = enemy_path.spawn_enemy(slime_scene)
-		# Additional enemy setup can be done here if needed
-		await get_tree().create_timer(wave.spawn_interval).timeout
-
-
-
+# send waves to the path
 func send_waves():
 	current_state = GameState.WAVE_IN_PROGRESS
-	while not waves.empty():
+	while not waves.is_empty():
 		current_wave = waves.pop_front()
 		add_child(current_wave)
-
-		current_wave.connect("enemy_spawned", Callable(self, "_on_enemy_spawned"))
-		current_wave.connect("wave_completed", Callable(self, "_on_wave_completed"))
-		current_wave.connect("wave_defeated", Callable(self, "_on_wave_defeated"))
-
-
-
+		# connect signals from wave
+		current_wave.enemy_spawned.connect(_on_enemy_spawned)
+		current_wave.wave_completed.connect(_on_wave_completed)
+		current_wave.wave_defeated.connect(_on_wave_defeated)
 		current_wave.start()
 		await current_wave.wave_completed
-		total_waves - 1
+		await get_tree().create_timer(3.0).timeout # wait for 3 seconds before sending next wave
 	waves_complete.emit()
 
-
-
+# called when the wave is completed
 func _on_level_complete():
 	current_state = GameState.BETWEEN_WAVES
 	current_level += 1
 	if current_level > total_levels:
 		current_state = GameState.VICTORY
 		game_complete.emit()
-	
+	else:
+		level_complete.emit()
 
+# called when the player is defeated
 func _on_game_over():
+	if current_state == GameState.GAME_OVER:
+		return
 	current_state = GameState.GAME_OVER
+	# cleanup
+	if current_wave:
+		current_wave.queue_free()
+	waves.clear()
+	active_enemies = 0
 	player_defeat.emit()
 
 
 func _on_wave_defeated():
-	if waves.empty():
-		_on_level_complete()
+	_check_completion()
 
 func _on_enemy_spawned(enemy):
-	enemy_path.spawn_enemy(enemy)
+	var spawned_enemy = enemy_path.spawn_enemy(enemy)
+	spawned_enemy.reached_goal.connect(_on_enemy_reached_goal)
+	spawned_enemy.enemy_died.connect(_on_enemy_killed)
+	active_enemies += 1
+
+func _on_enemy_reached_goal():
+	game_stats.update_life(1)
+	active_enemies -= 1
+	_check_completion()
+
+
+func _on_enemy_killed():
+	game_stats.update_score(10)
+	game_stats.update_resources(5)
+	active_enemies -= 1
+	_check_completion()
+
+
+func _on_wave_completed():
+	print("Wave completed")
+
+func _check_completion():
+	if waves.is_empty() and active_enemies <= 0:
+		_on_level_complete()
