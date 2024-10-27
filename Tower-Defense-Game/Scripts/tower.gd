@@ -1,140 +1,147 @@
 extends StaticBody2D
 class_name Tower
 
-var Bullet = preload("res://Scenes/tower_1_arrow.tscn")
-var bulletDamage = 100
-var pathName
-var currTargets = []
-var curr
-var currTarget
-var fire_rate = 1.0
-var fire_timer = 0.0
-
-var is_selected = false
-var price: int = 100
-
-@onready var sprite = $towerSprite
-@onready var tower_area = $Tower
-@onready var detection_area = $Tower/DetectionArea
-@onready var selection_rect = $Selection
-@onready var upgrade_button = $UpgradeButton
-var detection_color = Color(1, 1, 1, 0.4)  # White with 20% opacity
-var detection_scale = 15.0
-
 signal upgrade_requested(tower)
 
+@onready var sprite = $towerSprite
+@onready var tower_area = $TowerArea
+@onready var detection_area = $TowerArea/DetectionArea
+@onready var selection_rect = $Selection
+#@onready var upgrade_button = $UpgradeButton
+@onready var arrow_container = $arrowContainer
+var Bullet = preload("res://Scenes/tower_1_arrow.tscn")
+var bullet_damage = 100
+var pathName
+var curr
+# fields related to targeting
+var current_targets: Array[EnemyBase] = []
+var current_target: EnemyBase = null
+var fire_rate: float = 1.0
+var fire_timer: float = 0.0
+# fields related to selection and detection area
+var is_selected = false
+var detection_color = Color(1, 1, 1, 0.4)  # White with 20% opacity
+var detection_scale = 15.0
+# fields related to tower properties
+var price: int = 100
+var upgrade_price: int = 50
 var current_level = 1
-var tower_levels = [
-	{"damage": 100, "sprite": "res://Sprites/towerlvl1.png"},  # we can remove this sprite refarence it is not there anyway
-	{"damage": 150, "sprite": "res://Sprites/towerlvl2.png"},
-	{"damage": 200, "sprite": "res://Sprites/towerlvl3.png"},
-	{"damage": 300, "sprite": "res://Sprites/towerlvl4.png"},
-	{"damage": 500, "sprite": "res://Sprites/towerlvl5.png"}
-]
+const MAX_LEVEL: int = 5
+var tower_levels := {
+	1: {"damage": 100.0, "fire_rate": 1.0},
+	2: {"damage": 150.0, "fire_rate": 0.9},
+	3: {"damage": 200.0, "fire_rate": 0.8},
+	4: {"damage": 300.0, "fire_rate": 0.7},
+	5: {"damage": 500.0, "fire_rate": 0.6}
+}
 
+# Initialize the tower properties
 func _ready_():
 	fire_timer = fire_rate
-	scale_detection_area(detection_scale)
 	selection_rect.visible = false
-	upgrade_button.hide()
+	#upgrade_button.hide()
+	update_tower()
 
+# Update the tower properties based on the current level
+func update_tower() -> void:
+	var stats = tower_levels[current_level]
+	bullet_damage = stats["damage"]
+	fire_rate = stats["fire_rate"]
+	sprite.play("towerlvl" + str(current_level))
 
+# keep track of the current target
 func _process(delta):
 	tower_area.queue_redraw()
+	targeting(delta)
 
+# Validate the target
+func is_valid_target(target: EnemyBase) -> bool:
+	return target != null and is_instance_valid(target) and target.health > 0
+
+# Handle the targeting of the tower
+func targeting(delta: float) -> void:
 	fire_timer -= delta
-	if currTarget and currTarget.health > 0:
-		if fire_timer <= 0.0:
-			_fire()
-			fire_timer = fire_rate
-			
-	else:
-		#currTargets.erase(currTarget)
-		currTarget = _new_target()
+	# if the current target is invalid, acquire a new target
+	if not is_valid_target(current_target):
+		current_target = find_target()
+		return
+	if fire_timer <= 0.0:
+		fire()
+		fire_timer = fire_rate
 
-
-func level_up():
-	if current_level < tower_levels.size() - 1:
-		current_level += 1
-		update_tower_properties()
-		print("Tower leveled up to level ", current_level + 1)
-	else:
-		print("Tower is already at max level.")
-
-func update_tower_properties():
-	bulletDamage = tower_levels[current_level]["damage"]
-	#sprite.texture = load(tower_levels[current_level]["sprite"])
-	sprite.play("towerlvl" + str(current_level))
-	
-	
-func _on_tower_body_entered(body):
-	# Only target enemies in the "enemy" group
-	if body.is_in_group("enemy") and body != self:
-		currTargets.append(body)
-		if currTarget == null:
-			currTarget = body
-			
-		currTarget = null
+# Find the target from the list of enemies
+func find_target() -> EnemyBase:
+	# filter out invalid targets
+	current_targets = current_targets.filter(is_valid_target)
+	if current_targets.is_empty():
+		return null
 		
-		for i in currTargets:
-			if currTarget == null:
-				currTarget = i
-				
-			else:
-				if i.get_parent().get_progress() > currTarget.get_parent().get_progress():
-					currTarget = i
-		
-		curr = currTarget
-		pathName = currTarget.get_parent().name
-		var tempBullet = Bullet.instantiate()
-		tempBullet.target = currTarget
-		tempBullet.bulletDamage = bulletDamage
-		get_node("arrowContainer").add_child(tempBullet)
-		tempBullet.global_position = global_position
-		
-func _on_tower_body_exited(body):
-	if body in currTargets:
-		currTargets.erase(body)
-	
-	if body == currTarget:
-		currTarget = null
-	#currTargets = get_node("Tower").get_overlapping_bodies()
-	
-func _fire():
-	if currTarget:
-		var tempBullet = Bullet.instantiate()
-		tempBullet.target = currTarget
-		tempBullet.bulletDamage = bulletDamage
-		get_node("arrowContainer").add_child(tempBullet)
-		tempBullet.global_position = global_position
+	# Get the enemy that has progressed the furthest along the path
+	return advanced_enemy()
 
-func _new_target():
-	if currTargets.size() > 0:
-		return currTargets[0]
-	return null
-	
+# find the most advanced enemy
+func advanced_enemy() -> EnemyBase:
+	var target: EnemyBase = current_targets[0]
+	var progress: float = target.get_parent().get_progress()
+	for enemy in current_targets:
+		var candidate: float = enemy.get_parent().get_progress()
+		if candidate > progress:
+			progress = candidate
+			target = enemy
+	return target
 
+# Fire the bullet at the target
+func fire() -> void:
+	if not current_target:
+		return
+	var bullet = Bullet.instantiate()
+	bullet.target = current_target
+	bullet.bullet_damage = bullet_damage
+	arrow_container.add_child(bullet)
+	bullet.global_position = global_position
 
+# Handle the enemy entering the tower's detection area
+func _on_tower_body_entered(body: Node2D) -> void:
+	if not body is EnemyBase:
+		return
+	current_targets.append(body)
+	if not current_target:
+		current_target = body
 
+# Handle the enemy exiting the tower's detection area
+func _on_tower_body_exited(body: Node2D) -> void:
+	if not body is EnemyBase:
+		return
+	current_targets.erase(body)
+	if body == current_target:
+		current_target = find_target()
 
-
-
-
+# level up the tower                      #####################still need to handle the money
+func level_up(upgrade_path: String = "damage"):
+	if current_level >= MAX_LEVEL:
+		return
+	current_level += 1
+############################################
+	match upgrade_path:
+		"damage":
+			bullet_damage *= 1.5
+		"speed":
+			fire_rate *= 0.8
+##########################################
+	update_tower()
 
 
 # Function to select the tower
 func select_tower():
 	is_selected = true
 	selection_rect.visible = true
-	upgrade_button.show()
-	tower_area.queue_redraw()
+	#upgrade_button.show()
 
 # Function to deselect the tower
 func deselect_tower():
 	is_selected = false
 	selection_rect.visible = false
-	upgrade_button.hide()
-	tower_area.queue_redraw()
+	#upgrade_button.hide()
 
 # Function to draw the detection area of the tower
 func _on_tower_draw():
@@ -146,8 +153,7 @@ func _on_tower_draw():
 # Function to scale the detection area of the tower
 func scale_detection_area(new_scale: float):
 	detection_scale = new_scale
-	tower_area.scale *= detection_scale
-	detection_area.scale *= detection_scale
+	detection_area.scale = detection_scale
 
 # Function to handle the input event for the upgrade button
 func _on_upgrade_button_input(event):
