@@ -1,0 +1,46 @@
+[gd_scene load_steps=2 format=3 uid="uid://dg0x25nhh0y1d"]
+
+[ext_resource type="Script" path="res://Scripts/InputManager/UpgradePopup.gd" id="1_ny7wq"]
+
+[node name="UpgradePopup" type="Control"]
+layout_mode = 3
+anchor_right = 0.12
+anchor_bottom = 0.109
+offset_right = -0.240005
+offset_bottom = -0.100006
+script = ExtResource("1_ny7wq")
+metadata/_edit_group_ = true
+
+[node name="Choice1" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.071
+anchor_right = 1.0
+anchor_bottom = 0.301
+offset_left = 1.0
+offset_top = 0.0419998
+offset_bottom = -0.0160027
+text = "Choice1"
+
+[node name="Choice2" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.378
+anchor_right = 1.0
+anchor_bottom = 0.607
+offset_left = 1.0
+offset_top = -0.0440025
+offset_bottom = -0.00400543
+text = "Choice2"
+
+[node name="Cancel" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.007
+anchor_top = 0.684
+anchor_right = 1.0
+anchor_bottom = 0.913
+offset_left = 0.034
+offset_top = -0.0319977
+offset_bottom = 0.00799561
+text = "Cancel"

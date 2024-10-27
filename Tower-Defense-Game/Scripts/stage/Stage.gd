@@ -7,7 +7,9 @@ var towers: Array[Tower] = []
 const MIN_TOWER_DISTANCE: float = 70.0  # distance between towers
 var tower_scene = preload("res://Scenes/tower1.tscn")
 
-var input_manager: InputManager
+@export var game_stats: GameStats
+@export var input_manager: InputManager
+@export var tower_manager: TowerManager
 var selected_tower: Tower = null
 
 func _ready():
@@ -15,11 +17,17 @@ func _ready():
 	platforms = $Platforms.get_children()
 
 func handle_tower_placement_request(tower_position: Vector2):
+	var tower_type = input_manager.current_tower_type
 	if is_valid_tower_position(tower_position):
-		add_tower(tower_position)
-		input_manager.end_tower_placement()
-		Global.playerGold -= 100
+		if tower_manager.can_build_tower(tower_type):
+			# var tower_scene = tower_manager.get_tower_scene(tower_type)
+			add_tower(tower_position) # add_tower(tower_position, tower_scene)
+			input_manager.handle_placement_result(true)
+		else :
+			input_manager.handle_placement_result(false)
+			print("Not enough gold to build tower")
 	else:
+		input_manager.handle_placement_result(false)
 		print("Invalid tower position")
 
 
@@ -40,11 +48,14 @@ func is_valid_tower_position(tower_position: Vector2) -> bool:
 	
 	return true
 
-func add_tower(tower_position: Vector2):
+func add_tower(tower_position: Vector2): # add_tower(tower_position: Vector2, tower_scene: PackedScene):
 	var new_tower = tower_scene.instantiate()
 	towers.append(new_tower)
 	add_child(new_tower)
 	new_tower.position = tower_position
+	game_stats.gold -= new_tower.price
+	game_stats.towers_built += 1
+	Global.playerGold = game_stats.gold
 	# new_tower.connect("tower_placed", Callable(self, "_on_tower_placed"))
 	print("Tower placed at ", new_tower.position)
 

@@ -2,10 +2,13 @@ extends Control
 class_name HUD
 
 signal next_wave_requested
-signal buy_tower_requested
+signal buy_tower_requested(tower_type: String)
 
 @onready var next_wave_button = $"CanvasLayer/Next Wave"
 @onready var buy_tower_button = $"CanvasLayer/Buy Tower"
+
+#@onready var basic_tower_button = $"CanvasLayer/TowerButtons/BasicTower"
+#@onready var advanced_tower_button = $"CanvasLayer/TowerButtons/AdvancedTower"
 
 # Check if buttons are found and disable them
 func _ready():
@@ -22,6 +25,13 @@ func _ready():
 	else:
 		push_error("Buy Tower button not found!")
 
+	"""if basic_tower_button:
+		basic_tower_button.pressed.connect(_on_basic_tower_pressed)
+
+	if advanced_tower_button:
+		advanced_tower_button.pressed.connect(_on_advanced_tower_pressed)"""
+
+
 #dynaically change player HP/gold and play icon animations
 func _process(_delta):
 	$CanvasLayer/Health.text = str(Global.playerHealth)
@@ -32,10 +42,12 @@ func _process(_delta):
 func _on_next_wave_pressed():
 	print("Next Wave button pressed")################################
 	next_wave_requested.emit()
+	set_button(next_wave_button, false)
+	next_wave_button.visible = false
 
 func _on_buy_tower_pressed():
 	print("Buy Tower button pressed")############################### we need price for tower
-	buy_tower_requested.emit()
+	buy_tower_requested.emit("basic")
 
 # enable/disable button
 func set_button(button: Button, enabled: bool) -> void:

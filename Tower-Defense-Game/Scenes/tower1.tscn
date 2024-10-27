@@ -205,10 +205,10 @@ position = Vector2(0, -30)
 sprite_frames = SubResource("SpriteFrames_apq6u")
 animation = &"towerlvl1"
 
-[node name="Tower" type="Area2D" parent="."]
+[node name="TowerArea" type="Area2D" parent="."]
 
-[node name="DetectionArea" type="CollisionShape2D" parent="Tower"]
-scale = Vector2(20, 20)
+[node name="DetectionArea" type="CollisionShape2D" parent="TowerArea"]
+scale = Vector2(15, 15)
 shape = SubResource("CircleShape2D_td0gv")
 
 [node name="InteractionArea" type="CollisionShape2D" parent="."]
@@ -253,7 +253,7 @@ text = "Upgrade ?"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[connection signal="body_entered" from="Tower" to="." method="_on_tower_body_entered"]
-[connection signal="body_exited" from="Tower" to="." method="_on_tower_body_exited"]
-[connection signal="draw" from="Tower" to="." method="_on_tower_draw"]
+[connection signal="body_entered" from="TowerArea" to="." method="_on_tower_body_entered"]
+[connection signal="body_exited" from="TowerArea" to="." method="_on_tower_body_exited"]
+[connection signal="draw" from="TowerArea" to="." method="_on_tower_draw"]
 [connection signal="gui_input" from="UpgradeButton" to="." method="_on_upgrade_button_input"]
