@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://vu7lio57dmva"]
+[gd_scene load_steps=30 format=3 uid="uid://vu7lio57dmva"]
 
 [ext_resource type="Texture2D" uid="uid://bcxvjdxui126e" path="res://Assets/Towers/2 Idle/1.png" id="1_gnr7i"]
 [ext_resource type="Script" path="res://Scripts/tower.gd" id="1_xph51"]
@@ -184,18 +184,6 @@ radius = 14.7308
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ogih4"]
 size = Vector2(64, 61)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6iwu0"]
-bg_color = Color(0.953144, 0.396557, 0.338229, 1)
-border_width_left = 1
-border_width_top = 1
-border_width_right = 1
-border_width_bottom = 1
-border_color = Color(0, 0.964761, 0.241403, 1)
-corner_radius_top_left = 20
-corner_radius_top_right = 20
-corner_radius_bottom_right = 20
-corner_radius_bottom_left = 20
-
 [node name="TowerType1" type="StaticBody2D"]
 position = Vector2(200, 650)
 script = ExtResource("1_xph51")
@@ -228,32 +216,6 @@ offset_top = -40.0
 scale = Vector2(2, 2)
 color = Color(1, 1, 0, 0.407843)
 
-[node name="UpgradeButton" type="Panel" parent="."]
-visible = false
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = 43.0
-offset_top = -23.0
-offset_right = 103.0
-offset_bottom = 17.0
-grow_horizontal = 2
-scale = Vector2(2.64, 1.22054)
-theme_override_styles/panel = SubResource("StyleBoxFlat_6iwu0")
-
-[node name="Label" type="Label" parent="UpgradeButton"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_font_sizes/font_size = 10
-text = "Upgrade ?"
-horizontal_alignment = 1
-vertical_alignment = 1
-
 [connection signal="body_entered" from="TowerArea" to="." method="_on_tower_body_entered"]
 [connection signal="body_exited" from="TowerArea" to="." method="_on_tower_body_exited"]
 [connection signal="draw" from="TowerArea" to="." method="_on_tower_draw"]
-[connection signal="gui_input" from="UpgradeButton" to="." method="_on_upgrade_button_input"]

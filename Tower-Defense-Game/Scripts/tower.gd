@@ -7,7 +7,6 @@ signal upgrade_requested(tower)
 @onready var tower_area = $TowerArea
 @onready var detection_area = $TowerArea/DetectionArea
 @onready var selection_rect = $Selection
-#@onready var upgrade_button = $UpgradeButton
 @onready var arrow_container = $arrowContainer
 var Bullet = preload("res://Scenes/tower_1_arrow.tscn")
 var bullet_damage = 100
