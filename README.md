@@ -6,22 +6,6 @@
 
 Goblins’ Fury: Fortress Fight
 
-# IMPORTANT:
-
-~~The code in this main branch currently contains multiple errors and is not functional.~~
-<br>Although many components are missing, the game is functioning. As we try to avoid modifying others' code as much as possible, communication between each component is not well handled yet.
-<br>-><br>
-As we tried to implement missing functionality at the last minute, there are some conflicts in the code, resulting in three different work-in-progress versions.
-
-The version in the main branch will be used as our submission. It has a functional HUD and a working "Next Wave" button.
-
-If possible, please also see the [back-up-nagare] and [last-backup-30-9] branches for other versions of the prototype:
-
-- In the [last-backup-30-9] branch, there is a start menu, enemies respawn endlessly, and the "Buy Tower" button works as a hardcoded fixed version.
-
-- The [back-up-nagare] branch does not have a HUD. However, in this version, towers level up as the game progresses, and arrows from towers home in on enemies.
-
-
 # Your group name
 
 Team 6
@@ -49,124 +33,186 @@ Team 6
 - https://drive.google.com/file/d/1RbY_nErklaLgeHszo1-wWQy5fIIjs2zN/view?usp=drive_link
 
 # Game Description
-What is the style of the game, what are similar games
-- Tower Defense similar to Bloons TD
 
-Our game is a classic 2D Tower Defense (TD) strategy game,
-drawing inspiration from popular title Bloons TD.
-The game combines strategic placement of defensive structures with resource management and quick decision-making.
-Like Bloons TD, our game will feature a variety of tower types, each with unique abilities and upgrades.
+### What is the style of the game, what are similar games
 
+Key Style Elements:
+- Top-down 2D perspective with pixel art aesthetics
+- Strategic tower placement and resource management
+- Wave-based enemy progression system
+- Focus on defensive gameplay and tactical decision-making
 
-What is the main game mechanic
-- Before each round player sets up and upgrades towers
-- Enemies spawn in waves and try to reach players base
-- Player takes damage for every enemy that makes it through to base
-- When base health reaches 0 game is over
+Similar Games:
+- Bloons TD: Similar in its core tower defense mechanics
 
+### What is the main game mechanic
 
-**Pre-round Setup**:
-- Players strategically place towers on the map before each wave begins
-- Limited resources (money/points) for purchasing and upgrading towers
-- Players can sell or relocate towers to adapt their strategy
+**Pre-round Setup & Wave Management**:
+- Players strategically place towers on the map before and during waves
+- New wave can be started manually via "Next Wave" button
+- Tower management continues during wave progression
+- Pause function available (tower placement disabled during pause)
 
-**Wave-based Enemy Spawns**:
-- Diverse enemy types with different speeds, health, and abilities
-- Progressively challenging waves that test the player's defense
+**Tower System & Mechanics**:
+- Multiple tower types:
+  - Arrow Tower: Single-target damage dealer
+  - AOE Tower: Area-of-effect slow effect
+- Tower upgrades available:
+  - Attack Speed: Reduces time between attacks
+  - Attack Range: Increases tower's targeting range
+- Strategic placement crucial for optimal defense
 
-**Player Base and Health System**:
-- Path end that players must protect
-- Base health decreases when enemies reach it
-- Game over when base health reaches zero
-
-**Tower Mechanics**:
-- Multiple tower types (e.g., projectile, area-of-effect, support)
-- Upgrade for each tower, enhancing damage, range, or special abilities
+**Enemy Wave System**:
+- Enemies follow predetermined paths to reach player's base
+- Enemy variants with different attributes:
+  - Speed variations
+  - Different health points
+  - Various damage values to base
+- Each enemy that reaches the base deals damage
+- Wave progression increases difficulty
 
 **Resource Management**:
-- Earn in-game currency by defeating enemies
-- Balance between saving for powerful upgrades and immediate defense needs
+- Earn gold by defeating enemies
+- Resources used for:
+  - Purchasing new towers
+  - Upgrading existing towers
+- Strategic balance between:
+  - Immediate defense needs
+  - Saving for tower upgrades
 
+**Base Defense System**:
+- Players must protect their base at the end of enemy paths
+- Base health decreases when enemies reach it
+- Game over condition:
+  - Base health reaches zero
+  - Victory by surviving all waves
 
-## A list of the challenging engine technology that will be learnt/used.
+### A list of the challenging engine technology currently used
 
-**Tower Upgrade System**:
-- Implement a flexible superclass for tower upgrades
-**Game Balance**:
-- Develop a testing framework to balance tower damage with enemy health/scaling
-**User Interface and HUD**:
-- Create an intuitive, responsive UI for tower placement and upgrades
-**Enemy Wave Management**:
-- Design a system to manage increasingly difficult enemy waves
-(Cant remember if we talk about it...
-**Multiple Path Implementation**:
-- Create a system to support multiple paths for enemies)
+In developing this tower defense game, we encountered and overcame several technical challenges using Godot's features:
 
+**Architecture and Design Patterns**:
+- Implemented extensible class hierarchy for entities:
+  - Created abstract super classes for towers and enemies
+  - Designed flexible system for adding new tower/enemy types
+  - Separated responsibilities into focused components
 
-## A list of the challenging engine technology currently used.
+**Signal System and Communication**:
+- Extensive use of Godot's signal system:
+  - Tower-to-enemy detection and targeting
+  - Resource management and UI updates
+  - Wave progression and game state management
+  - Error handling and validation
 
-Note: While not strictly "engine technology," the following represents significant technical challenges we addressed in our development process:
+**Game Systems Implementation**:
+- Dynamic Difficulty System:
+  - Implemented algorithm considering:
+    - Number of towers built
+    - Enemy defeat rate
+    - Resource efficiency
+  - Balanced wave generation using controlled randomness
+  - Min/max limits for maintainable challenge
 
-- Scene Management and Inter-Component Communication: We learned some useful techniques to address challenges in our development process:
-  1. Used debug logging to visualize node hierarchies, aiding in understanding scene structures.
-  2. Implemented conditional node connections and error checking to prevent issues with missing nodes.
-  3. Utilized Godot's signal system with additional safeguards to improve communication reliability between different parts of the game.
+**Input Management**:
+- Centralized input handling system:
+  - Mouse tracking and UI interaction
+  - Tower placement validation
+  - Menu and game state controls
+  - Multi-state input processing
 
+**Path System and Enemy Navigation**:
+- Implemented pathfinding system:
+  - Predefined path following
+  - Enemy movement coordination
+  - Collision detection and handling
+
+**Scene Management**:
+- Organized complex scene hierarchies
+- Implemented proper node communication
+- Handled scene transitions and state persistence
 
 ## A list of the challenging engine technology that will be tested for the rest of the development.
 
-- User Input Handling for Drag and Drop:
+Future Development Challenges and Technical Improvements
 
-  While it may not be extremely challenging, implementing a drag-and-drop system for tower placement is a new feature we plan to explore. This will involve:
-  1. Detecting and processing mouse/touch input
-  2. Creating a visual representation of the tower being dragged
-  3. Implementing placement validation to ensure towers are only placed in valid locations
-  4. Smoothly transitioning the tower from the dragged state to its final placed position
+**Entity System Enhancement**:
+- Expand the current superclass system:
+  - Add more diverse enemy types with unique behaviors
+  - Implement specialized tower types with different attack patterns
+  - Challenge: Maintaining balance while increasing complexity
 
-- Dynamic Wave Generation Algorithm:
+**Game Balance and Analytics**:
+- Improve the difficulty adjustment system:
+  - Implement data collection for player performance metrics
+  - Create visualization tools for balance testing
+  - Develop more sophisticated wave generation algorithms
+  - Challenge: Mathematical modeling of game balance
 
-  We might not have enough time to finish this feature, but We plan to create a system that makes enemy waves match how strong the player's towers are. This isn't really about engine technology, but it's important for making the game balanced and fun:
+**Performance Optimization**:
+- Optimize for larger numbers of entities:
+  - Improve collision detection efficiency
+  - Challenge: Maintaining smooth performance with complex interactions
 
-  1. Checking what towers the player has and how they're upgraded
-  2. Figuring out how strong the player's defenses are
-  3. Creating enemy waves that are challenging but not impossible
-  4. Changing the difficulty as the player's defense gets stronger
-
+**UI/UX Improvements**:
+- Enhanced tower interaction system:
+  - Preview tower range and attack patterns
+  - Improved upgrade interface
+  - Better visual feedback for player actions
+  - Challenge: Creating intuitive yet informative displays
 
 ## A list of features that have been implemented in the prototype:
 
+Prototype:
+
 - Basic Level Management: Temp_LevelManager implements a basic structure for managing game levels and waves.
+- Prototype tower although interaction with enemy was poor
+- Many different enemy without super type
+- HUD bare minimum to show coin or life
+- Spawner to spawn enemy and it follows path
 
-## Prepared but NOT YET IMPLEMENTED Systems:
+Group final project:
 
-- GameStats: A system designed for tracking game resources and player stats. This system exists in code but is not yet connected to other game systems or actively tracking any data.
+- Complete wave-based level management system
+- Two functional tower types with upgrade capabilities
+- Multiple enemy types with path following behavior
+- HUD system with resource and health display
+- Wave control system with manual progression
+- Working economy system (gold earning and spending)
 
-- StrengthEstimator: A framework intended for adjusting game difficulty. While the basic structure exists, it is not yet integrated or influencing gameplay.
+## Controls: how to interact with the ~~prototype~~ Group final project
 
-- Wave/ Wave Generation: A basic structure for creating enemy waves has been outlined in code. However, this system is not yet functional or generating actual waves in the game.
+**Basic Controls**:
+- All interactions use mouse and left-click
 
+**Wave Management**:
+- Click "Next Wave" button to start new wave
+- Waves progress automatically once started
 
-## Controls: how to interact with the prototype
+**Tower Management**:
+1. Tower Placement:
+   - Click tower purchase button
+   - Tower preview follows mouse cursor
+   - Preview shows green for valid placement, red for invalid
+   - Left-click to place tower in valid location
 
-We have three different versions of the prototype, each with slightly different controls:
+2. Tower Interaction:
+   - Left-click existing tower to select
+   - When selected, three options appear:
+     - Two upgrade buttons (attack speed/range)
+     - One sell button (returns partial gold)
+   - Click upgrade/sell buttons to execute action
 
-1. "Main" Branch Version:
-   - The game starts automatically when the main scene is executed.
-   - One wave of enemies spawns at the beginning.
-   - After all enemies in a wave are defeated or the last enemy reaches the goal, the "Start Wave" button becomes active.
-   - Press the "Start Wave" button to send another wave of enemies.
+**Game Settings**:
+- Press pause button to open settings
+- Settings menu features:
+  - Volume control slider
+  - Unpause button to return to game
+  - Game continues only after unpausing
 
-2. "Last-backup-30-9" Branch Version:
-   - This version has a start menu.
-   - Only the "Start Game" and "Quit" options are functional.
-   - Press "Start Game" to move to the game scene and begin playing.
-   - Enemy waves respawn endlessly.
-   - When the player (tower) earns enough coins, the "Buy Tower" button activates.
-   - Press "Buy Tower" to add a new tower to the scene (note: tower number and locations are currently hardcoded).
-
-3. "Back-up-nagare" Branch Version:
-   - This version has no interactive controls beyond the start menu.
-
+**Additional Notes**:
+- Towers attack automatically when in range
+- Game can be paused at any time
+- Tower placement and upgrades available during waves
 
 ## List of Assets used/templates used:
 
@@ -177,21 +223,6 @@ https://free-game-assets.itch.io/free-fields-tileset-pixel-art-for-tower-defense
 https://free-game-assets.itch.io/free-archer-towers-pixel-art-for-tower-defense
 
 https://free-game-assets.itch.io/free-magic-and-traps-top-down-pixel-art-asset
-
-https://foozlecc.itch.io/spire-tower-pack-1
-
-https://foozlecc.itch.io/spire-tower-pack-2
-
-https://foozlecc.itch.io/spire-tower-pack-3
-
-https://foozlecc.itch.io/spire-tower-pack-4
-
-https://foozlecc.itch.io/spire-enemy-pack-1
-
-https://foozlecc.itch.io/spire-enemy-pack-2
-
-
-
 
 
 # Rubric
