@@ -94,7 +94,7 @@ func _on_upgrade_confirmed(tower: Tower, choice: int) -> void:
 			cost = tower.upgrade_price1
 		2:
 			cost = tower.upgrade_price2
-	if game_stats.gold >= cost and tower.current_level < tower.MAX_LEVEL:
+	if game_stats.gold >= cost and tower.current_level < tower.max_level:
 		game_stats.gold -= cost
 		Global.playerGold = game_stats.gold
 		tower.level_up(choice)

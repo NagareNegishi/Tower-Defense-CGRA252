@@ -28,7 +28,7 @@ var option2 := [1.0, 0.9, 0.8, 0.7, 0.6] # fire rate
 var option_count1 := 0
 var option_count2 := 0
 var current_level = 1
-const MAX_LEVEL: int = 5
+var max_level: int = 5
 
 # Initialize the tower properties
 func _ready():
@@ -41,11 +41,11 @@ func update_tower(choice: int) -> void:
 	match choice:
 		1:
 			option_count1 += 1
-			upgrade_price1 += 50
+			upgrade_price1 += 50 * option_count1
 			scale_detection_area(option1[option_count1])
 		2:
 			option_count2 += 1
-			upgrade_price2 += 50
+			upgrade_price2 += 50 * option_count2
 			fire_rate = option2[option_count2]
 		3:
 			scale_detection_area(option1[option_count1])
@@ -121,7 +121,7 @@ func _on_tower_body_exited(body: Node2D) -> void:
 
 # level up the tower
 func level_up(choice: int) -> void:
-	if current_level >= MAX_LEVEL:
+	if current_level >= max_level:
 		return
 	current_level += 1
 	update_tower(choice)
