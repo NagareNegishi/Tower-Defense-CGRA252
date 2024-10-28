@@ -1,35 +1,85 @@
-# Reflection on Tower Defense Prototype Development
+# Final Group Reflection on Tower Defense Project Development
 
 ## Group Reflection
 
-Our team's experience in developing the Tower Defense prototype has been both challenging and enlightening. Through this process, we've gained valuable insights into software development, teamwork, and project management. Here's a summary of our collective learnings and observations:
+Our journey in developing the Tower Defense project has provided profound insights into the realities of group software development, particularly in an academic setting. This reflection captures our key learnings and observations from both the prototype and final development phases.
 
-### Technical Challenges and Growth
+### Team Dynamics and Project Management
 
-1. **Flexible Design**: We learned the importance of creating flexible and scalable systems. Work on the abstract LevelManager framework and experiences with adjusting tower functionality highlighted the need for adaptable code in evolving projects. This approach proved invaluable as the project progressed and requirements shifted.
+1. **Expectation Management**
+   - We learned that setting realistic expectations based on individual commitment levels is crucial
+   - The initial approach of equal task division proved ineffective when participation levels varied significantly
+   - Future projects would benefit from a more flexible, motivation-driven task allocation system
 
-2. **Integration Challenges**: The team faced difficulties in integrating different components. This experience emphasized the importance of early alignment on system interactions and design intentions.
+2. **Communication Challenges**
+   - Despite attempts to establish regular communication channels and schedules, maintaining consistent interaction proved difficult
+   - The importance of having clear, documented communication protocols became evident throughout the project
 
-3. **Expanding Skill Sets**: Team members took on tasks outside their initial roles, such as working on the map and HUD in addition to the enemy spawner system. This flexibility allowed for broader learning experiences across different aspects of game development.
+3. **Design Agreement and Documentation**
+   - Initial design discussions lacked depth, with team members agreeing to proposals without thorough understanding
+   - The absence of comprehensive UML diagrams and design documentation led to integration challenges
+   - We learned that passive agreement doesn't equate to active understanding or commitment
 
-### Communication and Teamwork
+### Technical Development Insights
 
-1. **Communication Gaps**: All team members noted challenges with communication. This affected our ability to integrate different parts of the system effectively and maintain consistent progress.
+1. **Abstract Development Approach**
+   - The necessity of developing components abstractly when dependent components aren't ready
+   - This approach, while challenging, proved valuable when integration finally occurred
+   - The importance of flexible, well-structured code became evident during the integration phase
 
-2. **Adaptation to Challenges**: Team members showed remarkable resilience and flexibility in adapting to various challenges. This included personal circumstances and significant project changes, particularly a last-minute reallocation of tasks. The team's ability to quickly adjust to these changes was crucial in maintaining project momentum and ensuring continued progress despite the obstacles faced.
+2. **Code Organization and Maintenance**
+   - Dealing with abandoned or poorly structured code required significant effort
+   - The importance of maintaining proper inheritance hierarchies and clear documentation
+   - Experience gained in refactoring and reorganizing "spaghetti code" proved valuable
 
-### Project Management Insights
+3. **Integration Challenges**
+   - Components developed in isolation faced integration issues
+   - The need for better component interface definitions and documentation
+   - Learning to adapt and modify code to work with existing components
 
-1. **Early Alignment**: We recognized the need for better early alignment on expectations, component interactions, and consistent contributions from all team members.
+### Key Learnings for Future Projects
 
-2. **Documentation and Sharing**: Our attempt to use GitLab issues for sharing design ideas, while not fully successful, highlighted the importance of effective documentation in team projects.
+1. **Project Initialization**
+   - Start with clear, documented agreements on:
+     - Individual commitment levels
+     - Design principles and architecture
+     - Communication protocols
+     - Code structure and organization standards
+
+2. **Task Management**
+   - Adopt a more flexible approach based on:
+     - Individual motivation and availability
+     - Clear communication of capabilities and limitations
+     - Regular progress updates and redistribution of tasks as needed
+
+3. **Documentation and Communication**
+   - Implement comprehensive documentation practices:
+     - Detailed UML diagrams before development
+     - Clear component interfaces and interactions
+     - Regular code review and documentation updates
 
 ### Conclusion
 
-This prototype development has been a valuable learning experience for our team. We've gained insights into the technical aspects of game development, the crucial role of effective communication in team projects, and the importance of adaptability in software development. Moving forward, we are committed to improving our communication, enhancing our collaborative problem-solving skills, and maintaining the flexibility that allowed us to overcome challenges in this project. These learnings will undoubtedly contribute to more efficient and cohesive teamwork in the future.
+This project has been a valuable learning experience in understanding the complexities of group software development. The challenges we faced, particularly in team coordination and communication, have provided important lessons for future projects. While the final product may not have met all initial expectations, the learning outcomes in terms of project management, technical development, and team dynamics have been significant.
+
+Moving forward, we recognize that successful group projects require:
+- Clear and honest communication about commitment levels
+- Comprehensive design documentation and agreement
+- Flexible task allocation based on motivation and capability
+- Regular code review and documentation practices
+- Strong project management and coordination
+
+These insights will be valuable for future software development projects, whether in academic or professional settings.
 
 
-## Individual Reflections
+
+
+
+
+
+
+
+## Individual Reflections for the prototype
 
 ### [Team Member 1 Name]
 [personal reflection on the development process, what you've learned, challenges faced, and any insights gained]
