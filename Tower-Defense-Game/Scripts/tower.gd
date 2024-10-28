@@ -20,13 +20,17 @@ var is_selected = false
 var detection_color = Color(1, 1, 1, 0.4)  # White with 20% opacity
 var detection_scale = 5.0
 # fields related to tower properties
-var price: int = 100
+var total_value: int = 0 # total value of the tower
+var sold_rate = 0.8
+var price: int = 100 # initial price
 var upgrade_price1: int = 50
 var upgrade_price2: int = 50
 var option1 := [5, 10, 15, 20, 25] # attack range
 var option2 := [1.0, 0.9, 0.8, 0.7, 0.6] # fire rate
 var option_count1 := 0
 var option_count2 := 0
+var option1_text := "Attack Range"
+var option2_text := "Fire Rate"
 var current_level = 1
 var max_level: int = 5
 
@@ -35,6 +39,7 @@ func _ready():
 	fire_timer = fire_rate
 	selection_rect.visible = false
 	update_tower(3)
+	total_value = price
 
 # Update the tower properties based on the current level
 func update_tower(choice: int) -> void:
@@ -42,12 +47,14 @@ func update_tower(choice: int) -> void:
 		1:
 			option_count1 += 1
 			upgrade_price1 += 50 * option_count1
+			total_value += upgrade_price1
 			scale_detection_area(option1[option_count1])
 		2:
 			option_count2 += 1
 			upgrade_price2 += 50 * option_count2
+			total_value += upgrade_price2
 			fire_rate = option2[option_count2]
-		3:
+		3: # default
 			scale_detection_area(option1[option_count1])
 			fire_rate = option2[option_count2]
 	sprite.play("towerlvl" + str(current_level))
@@ -133,8 +140,9 @@ func select_tower():
 
 # Function to deselect the tower
 func deselect_tower():
+	if selection_rect:
+		selection_rect.visible = false
 	is_selected = false
-	selection_rect.visible = false
 
 # Function to draw the detection area of the tower
 func _on_tower_draw():
@@ -148,4 +156,12 @@ func _on_tower_draw():
 func scale_detection_area(new_scale: float):
 	detection_scale = new_scale
 	detection_area.scale = Vector2(detection_scale, detection_scale)
+
+# Function to sell the tower
+func sell_tower():
+	queue_free()
+
+# Function to get the sell price of the tower
+func get_sell_price() -> int:
+	return total_value * sold_rate
 

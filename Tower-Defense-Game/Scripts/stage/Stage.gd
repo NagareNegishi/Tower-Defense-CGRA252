@@ -60,10 +60,11 @@ func add_tower(tower_position: Vector2, tower_scene: PackedScene):
 
 # handle tower selection
 func _on_tower_selected(tower: Tower):
-	if selected_tower:
-		selected_tower.deselect_tower()
-		selected_tower = null
-	if tower:
+	if selected_tower and is_instance_valid(selected_tower):
+		selected_tower.selection_rect.visible = false
+	selected_tower = null
+	
+	if tower and is_instance_valid(tower):
 		selected_tower = tower
-		selected_tower.select_tower()
+		selected_tower.selection_rect.visible = true
 

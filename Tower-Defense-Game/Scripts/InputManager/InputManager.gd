@@ -19,7 +19,7 @@ var selected_tower: Tower = null
 func _ready():
 	tower_preview.visible = false
 	upgrade_popup.upgrade_confirmed.connect(_on_upgrade_confirmed)
-	upgrade_popup.upgrade_cancelled.connect(_on_upgrade_cancelled)
+	upgrade_popup.tower_sold.connect(_on_tower_sold)
 	upgrade_popup.hide()
 
 # process input
@@ -100,9 +100,17 @@ func _on_upgrade_confirmed(tower: Tower, choice: int) -> void:
 		tower.level_up(choice)
 		upgrade_popup.update_button_states()
 
-# Handle upgrade cancellations
-func _on_upgrade_cancelled() -> void:
+# Handle tower sold
+func _on_tower_sold(tower: Tower) -> void:
+	if not is_instance_valid(tower):
+		return
+	var sell_price = tower.get_sell_price()
+	game_stats.gold += sell_price
+	Global.playerGold = game_stats.gold
 	deselect_current_tower()
+	if stage and stage.towers.has(tower):
+		stage.towers.erase(tower)
+	tower.sell_tower()
 
 # Select a tower
 func select_tower(tower: Tower) -> void:
@@ -115,7 +123,7 @@ func select_tower(tower: Tower) -> void:
 
 # Deselect the current tower
 func deselect_current_tower() -> void:
-	if selected_tower:
+	if selected_tower and is_instance_valid(selected_tower):
 		selected_tower.deselect_tower()
-		selected_tower = null
-		upgrade_popup.hide()
+	selected_tower = null
+	upgrade_popup.hide()
