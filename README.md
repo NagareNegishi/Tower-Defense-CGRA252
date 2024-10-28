@@ -256,9 +256,9 @@ Each task was initially assigned to:
 
 Each task was implemented by:
 
-- Stage: Jinhao Huangfu(in progress), Brock Clarke(in progress)(the map in the prototype is done by him)
-- Tower: Bruno Helbick(in progress)
-- Enemy: Brock Clarke(in progress)
-- HUD: HUD.tscn Brock Clarke(in progress), HUD.gd Nagare Negishi(in progress)
-- InputController: Eric Liu(in progress), HUD.tscn Brock Clarke(in progress)(as HUD handling some buttons input)
-- LevelManager: Nagare Negishi(in progress)
+- Stage: Brock Clarke(in progress), Nagare Negishi(script)
+- Tower: Bruno Helbick(in progress) ,Nagare Negishi(refactor/super class/new type)
+- Enemy: Brock Clarke
+- HUD: HUD.tscn Brock Clarke(in progress), HUD.gd Nagare Negishi
+- InputController: Nagare Negishi
+- LevelManager: Nagare Negishi
