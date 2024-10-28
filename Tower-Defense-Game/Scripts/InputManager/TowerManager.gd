@@ -7,7 +7,7 @@ class_name TowerManager
 # list of tower types and their costs
 var tower_costs = {
 	"type1": 100,
-	"type2": 150,
+	"type2": 3000,
 }
 # list of tower scenes
 var tower_scenes = {
