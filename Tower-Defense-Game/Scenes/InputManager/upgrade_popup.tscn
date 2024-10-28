@@ -44,3 +44,7 @@ offset_left = 0.034
 offset_top = -0.0319977
 offset_bottom = 0.00799561
 text = "Cancel"
+
+[connection signal="pressed" from="Choice1" to="." method="_on_choice1_pressed"]
+[connection signal="pressed" from="Choice2" to="." method="_on_choice2_pressed"]
+[connection signal="pressed" from="Cancel" to="." method="_on_cancel_pressed"]

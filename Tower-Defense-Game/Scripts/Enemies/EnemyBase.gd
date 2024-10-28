@@ -61,20 +61,17 @@ func _on_reach_goal():
 	Global.playerHealth -= damage
 	Global.enemyCount -= 1
 	reached_goal.emit(damage)
-	print("Enemy reached goal")###########################################
 	queue_free()
 
 func _on_death():
 	set_process(false)
-	Global.playerGold += reward
+	enemy_died.emit(reward)
 	Global.enemyCount -= 1
+	Global.playerGold += reward
 	if has_node("Animation"):
 		$Animation.play("Death")
 		await $Animation.animation_finished
-	enemy_died.emit(reward)
-	print("Enemy died")################################################
 	queue_free()
 
 func take_damage(amount: float):
 	health -= amount
-	print("Enemy took damage: ", amount)#########################################
