@@ -1,0 +1,144 @@
+[gd_scene load_steps=19 format=3 uid="uid://c1iekh2ox4l0f"]
+
+[ext_resource type="Script" path="res://Scripts/Tower/tower2.gd" id="1_h1d2m"]
+[ext_resource type="Texture2D" uid="uid://dvo2vxchsytd1" path="res://Assets/Towers/2 Idle/6.png" id="1_oltu8"]
+[ext_resource type="Texture2D" uid="uid://crlvpqxr005te" path="res://Assets/Towers/2 Idle/7.png" id="2_pugew"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6mi68"]
+atlas = ExtResource("1_oltu8")
+region = Rect2(0, 0, 70, 130)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y0ahh"]
+atlas = ExtResource("1_oltu8")
+region = Rect2(70, 0, 70, 130)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cd6dd"]
+atlas = ExtResource("1_oltu8")
+region = Rect2(140, 0, 70, 130)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5emcy"]
+atlas = ExtResource("1_oltu8")
+region = Rect2(210, 0, 70, 130)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rr0ja"]
+atlas = ExtResource("1_oltu8")
+region = Rect2(280, 0, 70, 130)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_315ao"]
+atlas = ExtResource("1_oltu8")
+region = Rect2(350, 0, 70, 130)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_628qu"]
+atlas = ExtResource("2_pugew")
+region = Rect2(0, 0, 70, 130)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hgn4v"]
+atlas = ExtResource("2_pugew")
+region = Rect2(70, 0, 70, 130)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xuhs3"]
+atlas = ExtResource("2_pugew")
+region = Rect2(140, 0, 70, 130)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tjtpg"]
+atlas = ExtResource("2_pugew")
+region = Rect2(210, 0, 70, 130)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ysmke"]
+atlas = ExtResource("2_pugew")
+region = Rect2(280, 0, 70, 130)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nfarp"]
+atlas = ExtResource("2_pugew")
+region = Rect2(350, 0, 70, 130)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_apq6u"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6mi68")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y0ahh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cd6dd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5emcy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rr0ja")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_315ao")
+}],
+"loop": true,
+"name": &"towerlvl1",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_628qu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hgn4v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xuhs3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tjtpg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ysmke")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nfarp")
+}],
+"loop": true,
+"name": &"towerlvl2",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_td0gv"]
+radius = 14.7308
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ogih4"]
+size = Vector2(64, 61)
+
+[node name="TowerType" type="StaticBody2D"]
+position = Vector2(200, 650)
+script = ExtResource("1_h1d2m")
+
+[node name="towerSprite" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -30)
+sprite_frames = SubResource("SpriteFrames_apq6u")
+animation = &"towerlvl2"
+
+[node name="TowerArea" type="Area2D" parent="."]
+
+[node name="DetectionArea" type="CollisionShape2D" parent="TowerArea"]
+scale = Vector2(5, 5)
+shape = SubResource("CircleShape2D_td0gv")
+
+[node name="InteractionArea" type="CollisionShape2D" parent="."]
+position = Vector2(1, 4.5)
+shape = SubResource("RectangleShape2D_ogih4")
+
+[node name="Aim" type="Marker2D" parent="."]
+scale = Vector2(1.9008, 1.75289)
+gizmo_extents = 215.7
+
+[node name="arrowContainer" type="Node" parent="."]
+
+[node name="Selection" type="ColorRect" parent="."]
+visible = false
+offset_left = -40.0
+offset_top = -40.0
+scale = Vector2(2, 2)
+color = Color(1, 1, 0, 0.407843)
+
+[connection signal="body_entered" from="TowerArea" to="." method="_on_tower_body_entered"]
+[connection signal="body_exited" from="TowerArea" to="." method="_on_tower_body_exited"]
+[connection signal="draw" from="TowerArea" to="." method="_on_tower_draw"]

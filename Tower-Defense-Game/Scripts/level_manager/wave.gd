@@ -39,8 +39,8 @@ func _ready():
 func create(new_difficulty: int):
 	difficulty = new_difficulty
 	adjust_wave_parameters()
-	enemies_remaining = enemy_count
 	adjust_enemy_weights()
+	enemies_remaining = enemy_count
 	generate_enemies()
 
 # adjust wave parameters based on difficulty
@@ -51,17 +51,21 @@ func adjust_wave_parameters():
 	max_interval = max(max_interval * (1.0 - max_reduction), interval_limit + 0.3)
 	min_interval = max(min_interval * (1.0 - min_reduction), interval_limit)
 
-# adjust enemy weights based on difficulty, currently it is hardcoded
+# adjust enemy weights based on difficulty
 func adjust_enemy_weights():
-	match difficulty:
-		1:
-			enemy_weights = {"slime": 100, "bee": 0, "wolf": 0, "goblin": 0}
-		2:
-			enemy_weights = {"slime": 70, "bee": 30, "wolf": 0, "goblin": 0}
-		3:
-			enemy_weights = {"slime": 40, "bee": 40, "wolf": 20, "goblin": 0}
-		_:
-			enemy_weights = {"slime": 30, "bee": 30, "wolf": 30, "goblin": 10}
+	enemy_weights = {
+		"slime": calculate_weights(100, 1, 15, 20), # 100 % first -> 20% at least
+		"bee": calculate_weights(20, 4, -5, 10), # from difficulty 4
+		"wolf": calculate_weights(20, 6, -5, 0), # from difficulty 6
+		"goblin": calculate_weights(5, 8, -5, 0) # from difficulty 8
+	}
+
+# helper method to calculate weights based on difficulty
+func calculate_weights(base: int, min_difficulty: int, reduce: int, min_rate: int) -> int:
+	if difficulty < min_difficulty: # too easy for this enemy
+		return 0
+	var weight = base - (reduce * (difficulty - min_difficulty)) #reduce slime, increase others
+	return maxi(weight, min_rate) # at least min_rate
 
 # get a random enemy scene based on weights
 func get_random_enemy_scene() -> PackedScene:

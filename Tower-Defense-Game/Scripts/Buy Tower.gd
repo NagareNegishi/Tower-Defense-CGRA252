@@ -1,5 +1,5 @@
 extends Button
 
-func _process(delta):
+func _process(_delta):
 	if Global.playerGold >= 100:
 		disabled = false

@@ -4,7 +4,6 @@ class_name LevelManager
 var waves = []
 var active_enemies: int = 0
 var current_wave: Wave = null
-var next_wave: Wave = null
 var total_waves = 5 # 5 to 10 waves per level
 var current_level = 1
 var total_levels = 5
@@ -16,14 +15,14 @@ enum GameState {
 	GAME_OVER,
 	VICTORY
 }
-var current_wave_defeated = false
+var all_waves_sent = false
+var level_completed = false
 
 @export var game_stats: GameStats
 @export var enemy_path: EnemyPath
 @export var strength_estimator: StrengthEstimator
 var wave_scene = preload("res://Scenes/level_manager/wave.tscn")
 
-signal waves_complete # finished sending all waves
 signal level_complete # all waves are defeated
 signal player_defeat # player lost
 signal game_complete # player won
@@ -39,7 +38,7 @@ func _ready():
 # generate waves for the level and set the difficulty
 func generate_waves():
 	waves.clear()
-	print("Generating waves for level ", current_level, " with difficulty ", current_difficulty)#########################
+	all_waves_sent = false
 	for i in range(total_waves):
 		var wave = wave_scene.instantiate()
 		wave.create(current_difficulty)
@@ -50,19 +49,17 @@ func next_level():
 	if current_state != GameState.BETWEEN_WAVES:
 		return
 	current_level += 1
-	print("Starting level ", current_level)###################
 	current_difficulty = strength_estimator.estimate_difficulty(current_level)
-	print("Difficulty: ", current_difficulty)######################
 	generate_waves()
 	start_level()
 
 # start the level
 func start_level():
-	if waves.is_empty():########################
+	if waves.is_empty():
 		print("No waves generated!")
 		return
-	print("Starting level ", current_level, " with ", waves.size(), " waves")##################
 	active_enemies = 0
+	level_completed = false
 	send_waves()
 
 # send waves to the path
@@ -76,10 +73,9 @@ func send_waves():
 		current_wave.wave_defeated.connect(_on_wave_defeated)
 		current_wave.start()
 		await current_wave.wave_completed
-		if not current_wave_defeated:
-			await current_wave.wave_defeated
-		await get_tree().create_timer(1.0).timeout # wait for 3 seconds before sending next wave###############################
-	waves_complete.emit()
+		if waves.is_empty():
+			all_waves_sent = true
+		await get_tree().create_timer(3.0).timeout # wait for 3 seconds before sending next wave
 
 # connect signals from enemy
 func _on_enemy_spawned(enemy):
@@ -89,28 +85,35 @@ func _on_enemy_spawned(enemy):
 	active_enemies += 1
 	game_stats.total_enemies_spawned += 1
 
+# check if the level is completed
+func check_level_completion():
+	if all_waves_sent and active_enemies <= 0 and waves.is_empty():
+		_on_level_complete()
+
 # called when an enemy reaches the goal
 func _on_enemy_reached_goal(damage: int):
 	game_stats.life -= damage
 	active_enemies -= 1
 	game_stats.enemies_reached_goal += 1
+	check_level_completion()
 
 # called when an enemy is killed
 func _on_enemy_killed(reward: int):
 	game_stats.gold += reward
 	active_enemies -= 1
 	game_stats.enemies_defeated += 1
+	check_level_completion()
 
 # check if the level is completed
 func _on_wave_defeated():
-	current_wave_defeated = true
-	if waves.is_empty():
-		_on_level_complete()
+	check_level_completion()
 
 # check if the game is completed
 func _on_level_complete():
+	if level_completed:
+		return
+	level_completed = true
 	current_state = GameState.BETWEEN_WAVES
-	print("Level completed"+ str(current_level))
 	if current_level >= total_levels:
 		current_state = GameState.VICTORY
 		game_complete.emit()
@@ -123,8 +126,8 @@ func _on_game_over():
 		return
 	current_state = GameState.GAME_OVER
 	# cleanup
-	if current_wave:
-		current_wave.queue_free()
+	#if current_wave:
+	#	current_wave.queue_free()
 	waves.clear()
 	active_enemies = 0
 	player_defeat.emit()

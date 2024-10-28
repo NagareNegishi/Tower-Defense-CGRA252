@@ -7,12 +7,9 @@ signal upgrade_requested(tower)
 @onready var tower_area = $TowerArea
 @onready var detection_area = $TowerArea/DetectionArea
 @onready var selection_rect = $Selection
-#@onready var upgrade_button = $UpgradeButton
 @onready var arrow_container = $arrowContainer
-var Bullet = preload("res://Scenes/tower_1_arrow.tscn")
+var Bullet = preload("res://Scenes/Towers/tower_1_arrow.tscn")
 var bullet_damage = 100
-var pathName
-var curr
 # fields related to targeting
 var current_targets: Array[EnemyBase] = []
 var current_target: EnemyBase = null
@@ -21,32 +18,38 @@ var fire_timer: float = 0.0
 # fields related to selection and detection area
 var is_selected = false
 var detection_color = Color(1, 1, 1, 0.4)  # White with 20% opacity
-var detection_scale = 15.0
+var detection_scale = 5.0
 # fields related to tower properties
 var price: int = 100
-var upgrade_price: int = 50
+var upgrade_price1: int = 50
+var upgrade_price2: int = 50
+var option1 := [5, 10, 15, 20, 25] # attack range
+var option2 := [1.0, 0.9, 0.8, 0.7, 0.6] # fire rate
+var option_count1 := 0
+var option_count2 := 0
 var current_level = 1
-const MAX_LEVEL: int = 5
-var tower_levels := {
-	1: {"damage": 100.0, "fire_rate": 1.0},
-	2: {"damage": 150.0, "fire_rate": 0.9},
-	3: {"damage": 200.0, "fire_rate": 0.8},
-	4: {"damage": 300.0, "fire_rate": 0.7},
-	5: {"damage": 500.0, "fire_rate": 0.6}
-}
+var max_level: int = 5
 
 # Initialize the tower properties
-func _ready_():
+func _ready():
 	fire_timer = fire_rate
 	selection_rect.visible = false
-	#upgrade_button.hide()
-	update_tower()
+	update_tower(3)
 
 # Update the tower properties based on the current level
-func update_tower() -> void:
-	var stats = tower_levels[current_level]
-	bullet_damage = stats["damage"]
-	fire_rate = stats["fire_rate"]
+func update_tower(choice: int) -> void:
+	match choice:
+		1:
+			option_count1 += 1
+			upgrade_price1 += 50 * option_count1
+			scale_detection_area(option1[option_count1])
+		2:
+			option_count2 += 1
+			upgrade_price2 += 50 * option_count2
+			fire_rate = option2[option_count2]
+		3:
+			scale_detection_area(option1[option_count1])
+			fire_rate = option2[option_count2]
 	sprite.play("towerlvl" + str(current_level))
 
 # keep track of the current target
@@ -116,48 +119,33 @@ func _on_tower_body_exited(body: Node2D) -> void:
 	if body == current_target:
 		current_target = find_target()
 
-# level up the tower                      #####################still need to handle the money
-func level_up(upgrade_path: String = "damage"):
-	if current_level >= MAX_LEVEL:
+# level up the tower
+func level_up(choice: int) -> void:
+	if current_level >= max_level:
 		return
 	current_level += 1
-############################################
-	match upgrade_path:
-		"damage":
-			bullet_damage *= 1.5
-		"speed":
-			fire_rate *= 0.8
-##########################################
-	update_tower()
-
+	update_tower(choice)
 
 # Function to select the tower
 func select_tower():
 	is_selected = true
 	selection_rect.visible = true
-	#upgrade_button.show()
 
 # Function to deselect the tower
 func deselect_tower():
 	is_selected = false
 	selection_rect.visible = false
-	#upgrade_button.hide()
 
 # Function to draw the detection area of the tower
 func _on_tower_draw():
 	if is_selected:
 		var shape = detection_area.shape as CircleShape2D
 		if shape:
-			tower_area.draw_circle(Vector2.ZERO, shape.radius * detection_scale , detection_color)
+			var radius = shape.radius * detection_area.scale.x
+			tower_area.draw_circle(Vector2.ZERO, radius, detection_color)
 
 # Function to scale the detection area of the tower
 func scale_detection_area(new_scale: float):
 	detection_scale = new_scale
-	detection_area.scale = detection_scale
-
-# Function to handle the input event for the upgrade button
-func _on_upgrade_button_input(event):
-	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_RIGHT and event.pressed:
-		print("Upgrade button pressed")
-		level_up()
+	detection_area.scale = Vector2(detection_scale, detection_scale)
 

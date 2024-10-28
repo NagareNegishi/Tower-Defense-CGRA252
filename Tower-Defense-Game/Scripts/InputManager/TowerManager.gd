@@ -4,22 +4,27 @@ class_name TowerManager
 @export var game_stats: GameStats
 @export var stage: Stage
 
+# list of tower types and their costs
 var tower_costs = {
-    "basic": 100,
-    #"advanced": 200,
+	"type1": 100,
+	"type2": 3000,
 }
+# list of tower scenes
 var tower_scenes = {
-    "basic": preload("res://Scenes/tower1.tscn"),
-    #"advanced": preload("res://Scenes/tower2.tscn")
+	"type1": preload("res://Scenes/Towers/tower1.tscn"),
+	"type2": preload("res://Scenes/Towers/tower2.tscn")
 }
 
+# check if the player can afford to build a tower
 func can_build_tower(type: String) -> bool:
-    return game_stats.gold >= tower_costs[type]
+	return game_stats.gold >= tower_costs[type]
 
+# get the cost of a tower
 func get_tower_cost(type: String) -> int:
-    return tower_costs[type]
+	return tower_costs[type]
 
+# get the tower scene
 func get_tower_scene(type: String) -> PackedScene:
-    if tower_scenes.has(type):
-        return tower_scenes[type]
-    return tower_scenes["basic"] 
+	if tower_scenes.has(type):
+		return tower_scenes[type]
+	return tower_scenes["type1"]
