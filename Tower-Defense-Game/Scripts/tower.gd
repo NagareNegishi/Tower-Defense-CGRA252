@@ -8,10 +8,8 @@ signal upgrade_requested(tower)
 @onready var detection_area = $TowerArea/DetectionArea
 @onready var selection_rect = $Selection
 @onready var arrow_container = $arrowContainer
-var Bullet = preload("res://Scenes/tower_1_arrow.tscn")
+var Bullet = preload("res://Scenes/Towers/tower_1_arrow.tscn")
 var bullet_damage = 100
-var pathName
-var curr
 # fields related to targeting
 var current_targets: Array[EnemyBase] = []
 var current_target: EnemyBase = null

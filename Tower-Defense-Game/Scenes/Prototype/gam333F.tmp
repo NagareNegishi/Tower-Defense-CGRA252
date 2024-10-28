@@ -24,7 +24,7 @@ script/source = "extends TextEdit
 script/source = "extends TextEdit
 
 #dyanamically change player gold
-func _process(_delta):
+func _process(delta):
 	text = str(Global.playerGold)
 	
 "

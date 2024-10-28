@@ -12,7 +12,7 @@ var tower_image: Sprite2D
 @export var game_stats: GameStats
 @export var tower_manager: TowerManager
 var stage: Stage
-var current_tower_type: String = "basic"
+var current_tower_type: String = "type1"
 var selected_tower: Tower = null
 
 # set the tower image

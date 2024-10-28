@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=3 uid="uid://dt3kcf5j3nvsj"]
 
 [ext_resource type="Script" path="res://Scripts/HUD.gd" id="1_em3vq"]
-[ext_resource type="PackedScene" uid="uid://b055ixjo5jrno" path="res://Scenes/Coin.tscn" id="1_i52ew"]
-[ext_resource type="PackedScene" uid="uid://dubw3phbv5o6m" path="res://Scenes/Heart.tscn" id="2_fmweh"]
+[ext_resource type="PackedScene" path="res://Scenes/Coin.tscn" id="1_i52ew"]
+[ext_resource type="PackedScene" path="res://Scenes/Heart.tscn" id="2_fmweh"]
 [ext_resource type="Script" path="res://Scripts/Buy Tower.gd" id="6_sxnni"]
 [ext_resource type="Script" path="res://Scripts/Next Wave.gd" id="7_i7c0w"]
 
@@ -30,7 +30,6 @@ text = "x 0"
 
 [node name="Heart" parent="CanvasLayer" instance=ExtResource("2_fmweh")]
 position = Vector2(100, -190)
-script = null
 
 [node name="Money" type="TextEdit" parent="CanvasLayer"]
 offset_left = 45.0
@@ -77,7 +76,6 @@ script = ExtResource("7_i7c0w")
 
 [node name="Coin" parent="CanvasLayer" instance=ExtResource("1_i52ew")]
 position = Vector2(32, -190)
-script = null
 
 [connection signal="pressed" from="CanvasLayer/Pause" to="CanvasLayer/Pause" method="_on_pressed"]
 [connection signal="pressed" from="CanvasLayer/Next Wave" to="CanvasLayer/Next Wave" method="_on_pressed"]

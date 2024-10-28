@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://ccsvug7et0ip6"]
+[gd_scene load_steps=30 format=3 uid="uid://vu7lio57dmva"]
 
 [ext_resource type="Texture2D" uid="uid://bcxvjdxui126e" path="res://Assets/Towers/2 Idle/1.png" id="1_gnr7i"]
 [ext_resource type="Script" path="res://Scripts/tower.gd" id="1_xph51"]
