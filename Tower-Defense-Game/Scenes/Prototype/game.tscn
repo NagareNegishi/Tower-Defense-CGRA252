@@ -10,7 +10,7 @@
 [ext_resource type="PackedScene" path="res://Scenes/Heart.tscn" id="9_a7q1j"]
 [ext_resource type="Script" path="res://Scripts/Buy Tower.gd" id="13_3fpjn"]
 [ext_resource type="Script" path="res://Scripts/Next Wave.gd" id="14_51vyn"]
-[ext_resource type="PackedScene" path="res://Scenes/Coin.tscn" id="15_xo2jt"]
+[ext_resource type="PackedScene" uid="uid://b055ixjo5jrno" path="res://Scenes/Coin.tscn" id="15_xo2jt"]
 [ext_resource type="PackedScene" uid="uid://bereouv6k206h" path="res://Scenes/stage/stage.tscn" id="16_1n1sm"]
 [ext_resource type="PackedScene" uid="uid://jcr25qlqg3va" path="res://Scenes/PauseMenu.tscn" id="17_jcxi8"]
 
