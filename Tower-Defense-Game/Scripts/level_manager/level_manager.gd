@@ -21,7 +21,7 @@ var level_completed = false
 @export var game_stats: GameStats
 @export var enemy_path: EnemyPath
 @export var strength_estimator: StrengthEstimator
-var wave_scene = preload("res://Scenes/level_manager/wave.tscn")
+var wave_scene = preload("res://Scenes/Level_Manager/wave.tscn")
 
 signal level_complete # all waves are defeated
 signal player_defeat # player lost
