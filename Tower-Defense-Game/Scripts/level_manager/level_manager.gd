@@ -4,9 +4,9 @@ class_name LevelManager
 var waves = []
 var active_enemies: int = 0
 var current_wave: Wave = null
-var total_waves = 5 # 5 to 10 waves per level
+var total_waves = 1#5 # 5 to 10 waves per level
 var current_level = 1
-var total_levels = 5
+var total_levels = 1#5
 var current_difficulty = 1
 var current_state = GameState.BETWEEN_WAVES
 enum GameState {

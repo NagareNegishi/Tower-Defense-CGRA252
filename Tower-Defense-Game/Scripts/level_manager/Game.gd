@@ -16,7 +16,7 @@ func _ready():
 	setup_connections()
 	game_stats.score = 0
 	game_stats.gold = 100
-	game_stats.life = 50
+	game_stats.life = 1#50
 	level_manager.start_level()
 
 
@@ -47,10 +47,12 @@ func _on_level_complete():
 
 func _on_player_defeat():
 	print("Game Over!")##################################
+	SceneManager.game_over()
 
 
 func _on_game_complete():
 	print("Congratulations! You've completed the game!")#############################
+	SceneManager.victory()
 
 
 func _on_pause_pressed():

@@ -1,14 +1,28 @@
 extends Button
+class_name CustomButton
 
 signal click_end()
 
+@onready var sound_hover: AudioStreamPlayer = $Sound_Hover
+@onready var sound_click: AudioStreamPlayer = $Sound_Click
+@export var custom_text: String = ""
 
+# setup the button and connect the signals
+func _ready() -> void:
+	if custom_text != "":
+		text = custom_text
+	mouse_entered.connect(_on_mouse_entered)
+	pressed.connect(_on_pressed)
+	sound_click.finished.connect(_on_sound_click_finished)
+
+# play the hover sound
 func _on_mouse_entered():
-	$Sound_Hover.play()
-	
+	sound_hover.play()
 
+# play the click sound
 func _on_pressed():
-	$Sound_Click.play()
+	sound_click.play()
 
+# emit the click_end signal when the click sound is finished
 func _on_sound_click_finished():
-	emit_signal("click_end")
+	click_end.emit()
