@@ -14,9 +14,7 @@ var tower_scene = preload("res://Scenes/tower1.tscn")
 
 func _ready():
 	setup_connections()
-	game_stats.score = 0
-	game_stats.gold = 100
-	game_stats.life = 1#50
+	reset_game()
 	level_manager.start_level()
 
 
@@ -37,6 +35,7 @@ func setup_connections():
 	level_manager.connect("level_complete", Callable(self, "_on_level_complete"))
 	level_manager.connect("player_defeat", Callable(self, "_on_player_defeat"))
 	level_manager.connect("game_complete", Callable(self, "_on_game_complete"))
+	game_stats.connect("game_over", Callable(level_manager, "_on_game_over"))
 
 
 func _on_level_complete():
@@ -59,3 +58,19 @@ func _on_pause_pressed():
 	if !Global.isPaused:
 		get_tree().paused = true
 		Global.isPaused = true
+
+
+func reset_game() -> void:
+	Global.reset_game_state()
+	game_stats.reset()
+	level_manager.reset()
+	_cleanup_entities()
+
+
+func _cleanup_entities() -> void:
+	var enemies = get_tree().get_nodes_in_group("enemies")
+	for enemy in enemies:
+		enemy.queue_free()
+	var towers = get_tree().get_nodes_in_group("towers")
+	for tower in towers:
+		tower.queue_free()
