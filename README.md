@@ -250,7 +250,7 @@ Each task was initially assigned to:
 - Stage: Jinhao Huangfu ?
 - Tower: Bruno Helbick ?
 - Enemy: Brock Clarke
-- HUD:
+- HUD: Angus Ng
 - InputController: Eric Liu ?
 - LevelManager: Nagare Negishi
 
@@ -259,6 +259,6 @@ Each task was implemented by:
 - Stage: Brock Clarke(in progress), Nagare Negishi(script)
 - Tower: Bruno Helbick(in progress) ,Nagare Negishi(refactor/super class/new type)
 - Enemy: Brock Clarke
-- HUD: HUD.tscn Brock Clarke(in progress), HUD.gd Nagare Negishi
+- HUD: HUD.tscn Brock Clarke(in progress), HUD.gd Nagare Negishi, Angus Ng
 - InputController: Nagare Negishi
 - LevelManager: Nagare Negishi

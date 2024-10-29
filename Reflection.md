@@ -118,5 +118,13 @@ As we have had a bit of a lack of commuication towards the project I have also h
 
 Working as a team has also been quite enlightening as said by Nagare that animal system doesnt necessarily work as people fall into thier natural demanors. my role assigned has been the communicator/ facilitator while I dont think my communication has lacked there is certainly room for improvement with this and future projects
 
-### [Team Member 6 Name]
-[Space for Team Member 6's reflection]
+### [Angus Ng,  🦉]
+As the team member responsible for ideating the game concept and developing the early prototype of the title screen, this phase has offered a mix of creative challenges and learning experiences:
+
+Conceptual Development: Generating the initial idea required balancing creativity with feasibility. Crafting a compelling yet achievable concept pushed me to consider our team’s skill set and project timeline, encouraging me to focus on creating a solid foundation that everyone could build upon. This experience has been invaluable for learning how to align vision with practical execution.
+
+Title Screen Prototype: Developing the title screen prototype allowed me to experiment with design and set the game's initial tone. It underscored the importance of first impressions, making me realize how critical even the smallest design elements are in drawing players in. It also required thinking ahead about how the title screen would integrate with the rest of the game’s visuals and user interface. This experience strengthened my understanding of the visual and interactive flow needed to engage users right from the start.
+
+Challenges with Coordination and Communication: Due to some personal circumstances, I faced challenges in maintaining consistent communication, which impacted my ability to coordinate as effectively as I’d hoped. As with any project involving multiple roles, coordinating design ideas and integrating the title screen within the evolving structure was challenging. Clear communication became essential to ensure consistency in theme and functionality across different areas of development. In hindsight, establishing a more structured process for design feedback early on would have streamlined our collaboration.
+
+Overall, this experience has emphasized the importance of both foundational vision and cross-functional collaboration. Moving forward, I hope to enhance my approach to design communication and maintain stronger team engagement to foster a cohesive user experience.
