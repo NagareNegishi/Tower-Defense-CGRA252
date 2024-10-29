@@ -11,9 +11,9 @@ signal click_end()
 func _ready() -> void:
 	if custom_text != "":
 		text = custom_text
-	mouse_entered.connect(_on_mouse_entered)
-	pressed.connect(_on_pressed)
-	sound_click.finished.connect(_on_sound_click_finished)
+	Global.connection_check(self, "mouse_entered", self, "_on_mouse_entered")
+	Global.connection_check(self, "pressed", self, "_on_pressed")
+	Global.connection_check(sound_click, "finished", self, "_on_sound_click_finished")
 
 # play the hover sound
 func _on_mouse_entered():

@@ -7,6 +7,8 @@ signal buy_tower_requested(tower_type: String)
 @onready var next_wave_button = $"CanvasLayer/Next Wave"
 @onready var buy_tower_button = $"CanvasLayer/Buy Tower"
 @onready var buy_tower2_button = $"CanvasLayer/Buy Tower2"
+@onready var health_label = $CanvasLayer/Health
+@onready var money_label = $CanvasLayer/Money
 
 # Check buttons and connect signals
 func _ready():
@@ -24,11 +26,12 @@ func _ready():
 		buy_tower2_button.pressed.connect(_on_buy_tower_2_pressed)
 	else:
 		push_error("Buy Tower2 button not found!")
+	setup_labels()
+
 
 #dynaically change player HP/gold and play icon animations
 func _process(_delta):
-	$CanvasLayer/Health.text = str(Global.playerHealth)
-	$CanvasLayer/Money.text = str(Global.playerGold)
+	update_labels()
 	$CanvasLayer/Coin.play("Shine")
 	$CanvasLayer/Heart.play("Shine")
 
@@ -55,3 +58,20 @@ func set_button(button: Button, enabled: bool) -> void:
 			button.visible = true
 		else:
 			button.mouse_filter = Control.MOUSE_FILTER_IGNORE
+
+# setup labels
+func setup_labels():
+	if health_label:
+		health_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
+		health_label.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
+
+	if money_label:
+		money_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
+		money_label.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
+
+# update labels
+func update_labels():
+	if health_label:
+		health_label.text = str(Global.playerHealth)
+	if money_label:
+		money_label.text = str(Global.playerGold)

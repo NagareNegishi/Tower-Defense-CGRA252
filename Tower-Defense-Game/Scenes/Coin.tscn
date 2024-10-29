@@ -1,7 +1,6 @@
-[gd_scene load_steps=18 format=3 uid="uid://b055ixjo5jrno"]
+[gd_scene load_steps=17 format=3 uid="uid://b055ixjo5jrno"]
 
 [ext_resource type="Texture2D" uid="uid://d17ejsyvklswn" path="res://Assets/gold.blink.png" id="1_2d40n"]
-[ext_resource type="Script" path="res://Scripts/Coin.gd" id="2_e1x7a"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vvt6c"]
 atlas = ExtResource("1_2d40n")
@@ -112,6 +111,5 @@ animations = [{
 [node name="Coin" type="AnimatedSprite2D"]
 sprite_frames = SubResource("SpriteFrames_njjuq")
 animation = &"Shine"
-script = ExtResource("2_e1x7a")
 
 [connection signal="ready" from="." to="." method="_on_ready"]

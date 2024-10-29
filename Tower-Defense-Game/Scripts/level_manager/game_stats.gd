@@ -1,6 +1,5 @@
 extends Node
 class_name GameStats
-
 ## GameStats manages the game statistics such as score, life, and resources.
 ## It uses signals to notify other parts of the game when these values change.
 
@@ -16,7 +15,7 @@ var score: int = 0:
 		score = value
 		score_changed.emit(score)
 # Current life
-var life: int = 10:
+var life: int = 50:
 	set(value):
 		life = value
 		life_changed.emit(life)
@@ -39,7 +38,7 @@ var total_gold_spent: int = 0
 # reset the game statistics
 func reset():
 	score = 0
-	life = 1#0
+	life = 50
 	gold = 100
 	towers_built = 0
 	total_enemies_spawned = 0

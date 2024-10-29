@@ -7,27 +7,18 @@
 [ext_resource type="Script" path="res://Scripts/level_manager/strength_estimator.gd" id="5_3bk54"]
 [ext_resource type="Script" path="res://Scripts/InputManager/TowerManager.gd" id="5_b4kxd"]
 [ext_resource type="Script" path="res://Scripts/HUD.gd" id="7_syon7"]
-[ext_resource type="PackedScene" path="res://Scenes/Heart.tscn" id="9_a7q1j"]
+[ext_resource type="PackedScene" uid="uid://s252ubovu1ud" path="res://Scenes/Heart.tscn" id="9_a7q1j"]
 [ext_resource type="Script" path="res://Scripts/Buy Tower.gd" id="13_3fpjn"]
 [ext_resource type="Script" path="res://Scripts/Next Wave.gd" id="14_51vyn"]
 [ext_resource type="PackedScene" uid="uid://b055ixjo5jrno" path="res://Scenes/Coin.tscn" id="15_xo2jt"]
 [ext_resource type="PackedScene" uid="uid://bereouv6k206h" path="res://Scenes/stage/stage.tscn" id="16_1n1sm"]
 [ext_resource type="PackedScene" uid="uid://jcr25qlqg3va" path="res://Scenes/PauseMenu.tscn" id="17_jcxi8"]
 
-[sub_resource type="GDScript" id="GDScript_4nubo"]
-script/source = "extends TextEdit
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vpoex"]
+bg_color = Color(0, 0, 0, 0.407843)
 
-
-"
-
-[sub_resource type="GDScript" id="GDScript_73kjn"]
-script/source = "extends TextEdit
-
-#dyanamically change player gold
-func _process(_delta):
-	text = str(Global.playerGold)
-	
-"
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dfig3"]
+bg_color = Color(0.00784314, 0.0156863, 0.0235294, 0.407843)
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_afu5y")
@@ -71,24 +62,27 @@ script = ExtResource("7_syon7")
 offset = Vector2(0, 220)
 transform = Transform2D(1, 0, 0, 1, 0, 220)
 
-[node name="Health" type="TextEdit" parent="HUD/CanvasLayer"]
-offset_left = 120.0
-offset_top = -210.0
-offset_right = 160.0
-offset_bottom = -170.0
+[node name="Health" type="Label" parent="HUD/CanvasLayer"]
+offset_left = 260.0
+offset_top = -200.0
+offset_right = 300.0
+offset_bottom = -177.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_vpoex")
 text = "x 0"
-script = SubResource("GDScript_4nubo")
 
 [node name="Heart" parent="HUD/CanvasLayer" instance=ExtResource("9_a7q1j")]
-position = Vector2(100, -190)
+position = Vector2(240, -190)
 
-[node name="Money" type="TextEdit" parent="HUD/CanvasLayer"]
-offset_left = 45.0
-offset_top = -210.0
-offset_right = 85.0
-offset_bottom = -170.0
+[node name="Money" type="Label" parent="HUD/CanvasLayer"]
+offset_left = 120.0
+offset_top = -200.0
+offset_right = 210.0
+offset_bottom = -177.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_dfig3")
 text = "x 0"
-script = SubResource("GDScript_73kjn")
+
+[node name="Coin" parent="HUD/CanvasLayer" instance=ExtResource("15_xo2jt")]
+position = Vector2(100, -190)
 
 [node name="Pause" type="Button" parent="HUD/CanvasLayer"]
 offset_left = 1048.0
@@ -108,7 +102,8 @@ offset_bottom = -351.0
 grow_horizontal = 2
 grow_vertical = 2
 disabled = true
-text = "Buy Tower"
+text = "Buy Arrow Tower
+100 G"
 script = ExtResource("13_3fpjn")
 
 [node name="Buy Tower2" type="Button" parent="HUD/CanvasLayer"]
@@ -122,7 +117,8 @@ offset_bottom = -233.0
 grow_horizontal = 2
 grow_vertical = 2
 disabled = true
-text = "Buy Tower 2"
+text = "Buy Thunderbolt Tower
+3000 G"
 script = ExtResource("13_3fpjn")
 
 [node name="Next Wave" type="Button" parent="HUD/CanvasLayer"]
@@ -138,9 +134,6 @@ grow_vertical = 2
 text = "Next Wave
 "
 script = ExtResource("14_51vyn")
-
-[node name="Coin" parent="HUD/CanvasLayer" instance=ExtResource("15_xo2jt")]
-position = Vector2(32, -190)
 
 [connection signal="pressed" from="HUD/CanvasLayer/Pause" to="." method="_on_pause_pressed"]
 [connection signal="pressed" from="HUD/CanvasLayer/Pause" to="PauseMenu" method="_on_pause_pressed"]
