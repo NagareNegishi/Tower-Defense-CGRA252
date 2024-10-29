@@ -1,7 +1,6 @@
 extends Node2D
 
 var isPaused = false
-
 var tower_scene = preload("res://Scenes/tower1.tscn")
 
 @onready var input_manager: InputManager = $InputManager
@@ -11,14 +10,11 @@ var tower_scene = preload("res://Scenes/tower1.tscn")
 @onready var game_stats: GameStats = $GameStats
 @onready var tower_manager: TowerManager = $TowerManager
 
-
+# setup connections and start the game
 func _ready():
 	setup_connections()
-	game_stats.score = 0
-	game_stats.gold = 100
-	game_stats.life = 50
+	reset_game()
 	level_manager.start_level()
-
 
 # Connect signals
 func setup_connections():
@@ -37,23 +33,29 @@ func setup_connections():
 	level_manager.connect("level_complete", Callable(self, "_on_level_complete"))
 	level_manager.connect("player_defeat", Callable(self, "_on_player_defeat"))
 	level_manager.connect("game_complete", Callable(self, "_on_game_complete"))
+	Global.connection_check(game_stats, "game_over", self, "_on_game_over")
+	#game_stats.connect("game_over", Callable(level_manager, "_on_game_over"))
 
-
+# Activate the next wave button
 func _on_level_complete():
-	print("Level completed!")#################################
 	hud.set_button(hud.next_wave_button, true)
 
-
-
+# call the game over scene
 func _on_player_defeat():
-	print("Game Over!")##################################
+	SceneManager.game_over()
 
-
+# call the victory scene
 func _on_game_complete():
-	print("Congratulations! You've completed the game!")#############################
+	SceneManager.victory()
 
-
+# pause the game
 func _on_pause_pressed():
 	if !Global.isPaused:
 		get_tree().paused = true
 		Global.isPaused = true
+
+# resume the game
+func reset_game() -> void:
+	Global.reset_game_state()
+	game_stats.reset()
+	level_manager.reset()
