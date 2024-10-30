@@ -117,7 +117,7 @@ As project needs emerged, gradually adopted additional responsibilities:
 ## Code Discussion
 ### Project Contributions
 
-- **Level Management System** (\Scripts\level_manager)
+**Level Management System** (\Scripts\level_manager)
 
 - `game_stats.gd` [All]
     - GameStats manages the game statistics such as score, life, and resources
@@ -139,7 +139,7 @@ As project needs emerged, gradually adopted additional responsibilities:
 - All files in `\Scenes\Level_Manager` and `\Scripts\level_manager\temp` [All]
     - code used for prototype are in temp folder, not used for final submission but necessary for the prototype
 
-- **Stage Management System** (\Scripts\stage)
+**Stage Management System** (\Scripts\stage)
 
 - `platform.gd` [Most]
     - Platform to place towers.
@@ -156,7 +156,7 @@ As project needs emerged, gradually adopted additional responsibilities:
 - `Stage.tscn` [Some]
     - Scene for stage, used platform and path meeting with existing map images.
 
-- **Input Management System** (\Scripts\InputManager)
+**Input Management System** (\Scripts\InputManager)
 
 - `InputManager.gd` [All]
    - Manages user input from mouse to trigger tower placement, upgrade, sell
@@ -170,7 +170,7 @@ As project needs emerged, gradually adopted additional responsibilities:
 - All files in `\Scenes\InputManager` [All]
    - Scenes for corresponding scripts
 
-- **Tower System** (\Scripts\Tower) (\Scripts) (\Scenes\Towers)
+**Tower System** (\Scripts\Tower) (\Scripts) (\Scenes\Towers)
 
 - `tower.gd` [Most]
    - Base class of tower that detects and attacks enemies, with upgrade capability
@@ -204,7 +204,7 @@ As project needs emerged, gradually adopted additional responsibilities:
 - `thunderbolt.tscn` [All]
    - Scene for Thunderbolt.gd
 
-- **Enemy System** (\Scripts\Enemies)
+**Enemy System** (\Scripts\Enemies)
 
 - `EnemyBase.gd` [Some]
    - Enemy types Slime, Bee, Wolf and Goblin already existed with same behavior
@@ -212,7 +212,7 @@ As project needs emerged, gradually adopted additional responsibilities:
      - Refactored existing code for easy management and future extension
      - Added slow down function
 
-- **HUD System** (\Scripts\Menu) (\Scripts)
+**HUD System** (\Scripts\Menu) (\Scripts)
 
 - `HUD.gd` [Most]
    - Implemented button set up and actions triggered by them
@@ -228,12 +228,12 @@ As project needs emerged, gradually adopted additional responsibilities:
    - Scenes for corresponding scripts
 
 
-### Video Discussion
+## Video Discussion
 
 
 //////////////////////////////////////////////video here
 
-### Most Interesting Code
+## Most Interesting Code
 
 The most interesting part of my code is the strength estimation system in `strength_estimator.gd`. This system dynamically adjusts game difficulty by analyzing three key factors:
 1. Tower strength (how many towers built)
@@ -247,7 +247,7 @@ This implementation is particularly interesting because it creates a dynamic dif
 https://gitlab.ecs.vuw.ac.nz/course-work/cgra252/2024/project/team6/tower-defense/-/blob/main/Tower-Defense-Game/Scripts/level_manager/strength_estimator.gd#L15-48
 
 
-### Code I'm Most Proud Of
+## Code I'm Most Proud Of
 
 I am most proud of the Input Management system, particularly the integration between `InputManager.gd` and `UpgradePopup.gd`.
 
@@ -274,7 +274,7 @@ https://gitlab.ecs.vuw.ac.nz/course-work/cgra252/2024/project/team6/tower-defens
 https://gitlab.ecs.vuw.ac.nz/course-work/cgra252/2024/project/team6/tower-defense/-/blob/main/Tower-Defense-Game/Scripts/InputManager/UpgradePopup.gd
 
 
-### Problematic Code
+## Problematic Code
 
 The current implementation of `platform.gd` represents poorly written code, despite being functional for the current stage.
 
@@ -296,7 +296,7 @@ This design would make the code more reusable and allow for easy creation of dif
 https://gitlab.ecs.vuw.ac.nz/course-work/cgra252/2024/project/team6/tower-defense/-/blob/main/Tower-Defense-Game/Scripts/stage/platform.gd
 
 
-### AI Tools Usage
+## AI Tools Usage
 
 - **GitHub Copilot**:
    - Utilized throughout the game development process
