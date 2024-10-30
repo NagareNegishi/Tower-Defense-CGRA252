@@ -19,7 +19,7 @@ Team 6
 
 🐶 Nagare Negishi
 
-🐰 Brock Clarke
+🐰 Brock Clarke (Smart commits on #12 #19 #21)
 
 🦉 Angus Ng
 

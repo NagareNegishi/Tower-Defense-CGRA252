@@ -7,11 +7,12 @@ var target: EnemyBase
 
 # Set the target to follow
 func _physics_process(delta):
-	#Null check for target
+	#Null check for target removes arrow from game
 	if not is_instance_valid(target):
 		queue_free()
 		return
-	var direction := (target.global_position - global_position).normalized() #calculate direction to fly in
+	#calculate direction to fly in
+	var direction := (target.global_position - global_position).normalized() 
 	global_position += direction * speed * delta
 	look_at(target.global_position)
 
