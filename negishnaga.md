@@ -6,6 +6,7 @@
 - **Username**:
     - negishnaga
     - Initially : negimakushi
+    - ( smart commits on: #11, #17 )
 
 - **Project Role**: Lead Developer & System Architect
     - Initially assigned to LevelManager Developer
@@ -373,8 +374,6 @@ A key learning came from redesigning the input system, where I learned the impor
 
 The most important takeaway from this project is understanding that successful software development requires both flexibility and solid foundations. While having clear shared understanding and commitment to design rules at the beginning is crucial, equally important is the ability to adapt to changes while maintaining code quality. This means not only being able to adjust to changing team dynamics and requirements, but also consistently focusing on clear documentation, maintainable code structure, and extensible system design. These principles will be essential for any future project, regardless of its scale or complexity.
 
-
-## Submission Weighting
 
 ## Submission Weighting
 
