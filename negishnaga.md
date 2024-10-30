@@ -376,16 +376,12 @@ The most important takeaway from this project is understanding that successful s
 
 ## Submission Weighting
 
-+-------------+--------+---------+
+## Submission Weighting
+
 | Area        | Weight | Range   |
-+=============+========+=========+
+|-------------|--------|---------|
 | Final Game  | 15%    | 10-30% |
-+-------------+--------+---------+
 | Good Code   | 25%    | 10-30% |
-+-------------+--------+---------+
 | Bad Code    | 20%    | 10-30% |
-+-------------+--------+---------+
 | Reflection  | 35%    | 20-40% |
-+-------------+--------+---------+
-| Video       | 5%    | 5-15%  |
-+-------------+--------+---------+
+| Video       | 5%     | 5-15%  |
