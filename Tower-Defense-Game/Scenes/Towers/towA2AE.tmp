@@ -1,0 +1,107 @@
+[gd_scene load_steps=12 format=3 uid="uid://bvb1uvbnu6vsy"]
+
+[ext_resource type="Script" path="res://Scripts/Tower/tower3.gd" id="1_6earc"]
+[ext_resource type="Texture2D" uid="uid://dytwsy4jh2ot1" path="res://Assets/Towers/Towers bases/PNGs/Tower 04.png" id="2_5ajmt"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vuu6a"]
+atlas = ExtResource("2_5ajmt")
+region = Rect2(0, 0, 64, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iqykr"]
+atlas = ExtResource("2_5ajmt")
+region = Rect2(0, 0, 64, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qy4f0"]
+atlas = ExtResource("2_5ajmt")
+region = Rect2(64, 0, 64, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mpiyg"]
+atlas = ExtResource("2_5ajmt")
+region = Rect2(64, 0, 64, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2uyj7"]
+atlas = ExtResource("2_5ajmt")
+region = Rect2(128, 0, 64, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xgpeu"]
+atlas = ExtResource("2_5ajmt")
+region = Rect2(128, 0, 64, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ldald"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vuu6a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iqykr")
+}],
+"loop": true,
+"name": &"towerlvl1",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qy4f0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mpiyg")
+}],
+"loop": true,
+"name": &"towerlvl2",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2uyj7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xgpeu")
+}],
+"loop": true,
+"name": &"towerlvl3",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bkbr7"]
+radius = 14.7308
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8ju1u"]
+size = Vector2(64, 61)
+
+[node name="TowerType" type="StaticBody2D"]
+position = Vector2(200, 650)
+script = ExtResource("1_6earc")
+
+[node name="towerSprite" type="AnimatedSprite2D" parent="."]
+position = Vector2(1, -22)
+scale = Vector2(0.9, 0.9)
+sprite_frames = SubResource("SpriteFrames_ldald")
+animation = &"towerlvl3"
+
+[node name="TowerArea" type="Area2D" parent="."]
+scale = Vector2(1.52, 1.52)
+
+[node name="DetectionArea" type="CollisionShape2D" parent="TowerArea"]
+z_index = 1
+scale = Vector2(5, 5)
+shape = SubResource("CircleShape2D_bkbr7")
+
+[node name="InteractionArea" type="CollisionShape2D" parent="."]
+position = Vector2(1, 4.5)
+shape = SubResource("RectangleShape2D_8ju1u")
+
+[node name="Aim" type="Marker2D" parent="."]
+scale = Vector2(1.9008, 1.75289)
+gizmo_extents = 215.7
+
+[node name="arrowContainer" type="Node" parent="."]
+
+[node name="Selection" type="ColorRect" parent="."]
+visible = false
+offset_left = -40.0
+offset_top = -40.0
+scale = Vector2(2, 2)
+color = Color(1, 1, 0, 0.407843)
+
+[connection signal="draw" from="TowerArea" to="." method="_on_tower_area_draw"]

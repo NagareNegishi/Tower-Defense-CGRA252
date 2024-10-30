@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=3 uid="uid://dt3kcf5j3nvsj"]
 
 [ext_resource type="Script" path="res://Scripts/HUD.gd" id="1_em3vq"]
-[ext_resource type="PackedScene" path="res://Scenes/Coin.tscn" id="1_i52ew"]
-[ext_resource type="PackedScene" path="res://Scenes/Heart.tscn" id="2_fmweh"]
+[ext_resource type="PackedScene" uid="uid://b055ixjo5jrno" path="res://Scenes/Coin.tscn" id="1_i52ew"]
+[ext_resource type="PackedScene" uid="uid://s252ubovu1ud" path="res://Scenes/Heart.tscn" id="2_fmweh"]
 [ext_resource type="Script" path="res://Scripts/Buy Tower.gd" id="6_sxnni"]
 [ext_resource type="Script" path="res://Scripts/Next Wave.gd" id="7_i7c0w"]
 

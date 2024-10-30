@@ -152,6 +152,7 @@ func _on_tower_draw():
 			var radius = shape.radius * detection_area.scale.x
 			tower_area.draw_circle(Vector2.ZERO, radius, detection_color)
 
+
 # Function to scale the detection area of the tower
 func scale_detection_area(new_scale: float):
 	detection_scale = new_scale
@@ -164,4 +165,5 @@ func sell_tower():
 # Function to get the sell price of the tower
 func get_sell_price() -> int:
 	return total_value * sold_rate
+
 

@@ -11,8 +11,8 @@ signal tower_sold(tower: Tower)
 var current_tower: Tower
 const OFFSET := Vector2(50, -100)
 const COLORS = {
-    "default": Color.GREEN,
-    "cant_afford": Color(1, 0.8, 0.8),
+	"default": Color.GREEN,
+	"cant_afford": Color(1, 0.8, 0.8),
 	"max_level": Color.YELLOW,
 	"warning": Color.RED
 }
