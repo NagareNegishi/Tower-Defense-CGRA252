@@ -24,6 +24,7 @@
     - Established system architecture that was adopted by the team
 
 - Project Management
+
     - Documentation lead (90%+ of project documentation)
     - Git workflow management:
       - Issue tracking and milestone planning
@@ -112,7 +113,6 @@ As project needs emerged, gradually adopted additional responsibilities:
     - Realistic schedule
     - Active member capacity
 
-/////////////////////////////////////////////////////////////////
 
 ## Code Discussion
 ### Project Contributions
@@ -120,67 +120,237 @@ As project needs emerged, gradually adopted additional responsibilities:
 - **Level Management System** (\Scripts\level_manager)
 
 - `game_stats.gd` [All]
-    GameStats manages the game statistics such as score, life, and resources
+    - GameStats manages the game statistics such as score, life, and resources
+
+- `wave.gd` [All]
+    - generates array of enemies and sends them based on difficulty of the game
+
+- `strength_estimator.gd` [All]
+    - StrengthEstimator estimates the player's strength and the difficulty of the level.
+    - The player's strength is estimated based on the number of towers built, the defeat rate, and the resource efficiency.
+
+- `level_manager.gd` [All]
+    - LevelManager generates waves based on difficulty from StrengthEstimator
+    - Manages game progression, game over, next level, victory
+
+- `Game.gd` [All]
+    - Root of the game, connects all managing level components of game
+
+- All files in `\Scenes\Level_Manager` and `\Scripts\level_manager\temp` [All]
+    - code used for prototype are in temp folder, not used for final submission but necessary for the prototype
+
+- **Stage Management System** (\Scripts\stage)
+
+- `platform.gd` [Most]
+    - Platform to place towers.
+    - Took over existing, but almost empty script. Checks the valid location.
+
+- `EnemyPath.gd` [Half]
+    - Path where enemies follow.
+    - This script itself is entirely made by me, however used some existing code in the process to make it.
+
+- `Stage.gd` [All]
+    - Manages tower placement.
+    - Contains path and array of platform, array of enemies.
+
+- `Stage.tscn` [Some]
+    - Scene for stage, used platform and path meeting with existing map images.
+
+- **Input Management System** (\Scripts\InputManager)
+
+- `InputManager.gd` [All]
+   - Manages user input from mouse to trigger tower placement, upgrade, sell
+
+- `TowerManager.gd` [All]
+   - Supports InputManager, contains tower scenes and provides information
+
+- `UpgradePopup.gd` [All]
+   - Shows and manages UI for tower upgrade, sell
+
+- All files in `\Scenes\InputManager` [All]
+   - Scenes for corresponding scripts
+
+- **Tower System** (\Scripts\Tower) (\Scripts) (\Scenes\Towers)
+
+- `tower.gd` [Most]
+   - Base class of tower that detects and attacks enemies, with upgrade capability
+   - Code existed with buggy firing system and auto-leveling when taken over
+   - Made improvements:
+     - Added class name and made it extendable
+     - Fixed firing system to aim at most advanced enemy and timing
+     - Added upgrade system with 2 options and selling function
+
+- `tower1Arrow.gd` [Some]
+   - Homing projectile used by tower to attack enemy
+   - Code existed but had inefficient condition checks due to lack of enemy super class
+   - Refactored code and made it extendable
+
+- `tower2.gd` [All]
+   - Tower with AoE ability fires Thunderbolt
+   - Simple implementation as subclass after making tower extendable
+
+- `Thunderbolt.gd` [All]
+   - AoE used by tower2
+   - Attacks enemies up to 4 times and temporarily slows them down
+
+- `tower1.tscn` [Touched]
+   - Scene for tower.gd
+   - Modified to show attack range and selected status
+
+- `tower2.tscn` [All]
+   - Scene for tower2.gd
+   - Duplicated and modified tower1.tscn with different animation
+
+- `thunderbolt.tscn` [All]
+   - Scene for Thunderbolt.gd
+
+- **Enemy System** (\Scripts\Enemies)
+
+- `EnemyBase.gd` [Some]
+   - Enemy types Slime, Bee, Wolf and Goblin already existed with same behavior
+   - Made improvements:
+     - Refactored existing code for easy management and future extension
+     - Added slow down function
+
+- **HUD System** (\Scripts\Menu) (\Scripts)
+
+- `HUD.gd` [Most]
+   - Implemented button set up and actions triggered by them
+
+- `EndMenu.gd` [All]
+   - Script for game over, victory scene
+   - Refactored `MainMenu.gd`, duplicated and modified
+
+- `SceneManager.gd` [All]
+   - Manages scene transition, this script is autoloaded
+
+- All files in `\Scenes\Menu` [All]
+   - Scenes for corresponding scripts
 
 
-
-    - LevelManager: Implemented complete game progression system
-    - Stage: Developed core stage functionality and path system
-    - InputController: Rebuilt tower placement and upgrade system
-    - Tower System: Refactored and enhanced tower mechanics
-    - Enemy System: Improved existing code with better class structure
-    - HUD: Implemented game interface functionality
+### Video Discussion
 
 
+//////////////////////////////////////////////video here
+
+### Most Interesting Code
+
+The most interesting part of my code is the strength estimation system in `strength_estimator.gd`. This system dynamically adjusts game difficulty by analyzing three key factors:
+1. Tower strength (how many towers built)
+2. Defeat rate (enemy elimination efficiency)
+3. Resource efficiency (gold usage effectiveness)
+
+The system uses these factors and success rate to calculate appropriate difficulty levels
+This implementation is particularly interesting because it creates a dynamic difficulty system that responds to player skill and strategy, rather than using a fixed difficulty curve.
+
+**Link to code**:
+https://gitlab.ecs.vuw.ac.nz/course-work/cgra252/2024/project/team6/tower-defense/-/blob/main/Tower-Defense-Game/Scripts/level_manager/strength_estimator.gd#L15-48
 
 
+### Code I'm Most Proud Of
+
+I am most proud of the Input Management system, particularly the integration between `InputManager.gd` and `UpgradePopup.gd`.
+
+The previous implementation had several issues:
+- Drag and drop system caused frequent positioning errors
+- Right-click for upgrades was unintuitive
+- Upgrade buttons attached directly to towers
+- Multiple interaction methods led to user confusion
+
+My reimplementation solves these issues while making the game more intuitive:
+- Preview-based placement shows valid positions before placement
+- Unified left-click system for all interactions
+- Centralized popup system for upgrades instead of attached buttons
+- Clear visual feedback (green/red preview) for placement validity
+
+**Code Quality Improvements**:
+- Clear separation of responsibilities between input handling and UI
+- Efficient signal-based communication between components
+- Well-structured and maintainable code
+
+**Link to code**:
+https://gitlab.ecs.vuw.ac.nz/course-work/cgra252/2024/project/team6/tower-defense/-/blob/main/Tower-Defense-Game/Scripts/InputManager/InputManager.gd
+
+https://gitlab.ecs.vuw.ac.nz/course-work/cgra252/2024/project/team6/tower-defense/-/blob/main/Tower-Defense-Game/Scripts/InputManager/UpgradePopup.gd
 
 
-- documentation:
-    most documentation are done by me (over 90%), readme.refrection md
+### Problematic Code
 
-- git use:
-    most git planning and managing are done by me too. making issue, milastone, label, tags, managing issue board, release brach
+The current implementation of `platform.gd` represents poorly written code, despite being functional for the current stage.
 
-- developed LevelManager:
-    as developper initialy assign to develop the system manage game progression(wave creation, difficulty adjustment, game progression, and root of the game which connect everything),
-    i developed entire code for that
-    all script in LevelManager folder
+**Current Implementation Issues:**
+- Simply checks if a point is inside a rectangular StaticBody2D
+- Requires manual placement of multiple platforms to create valid tower positions
+- Lacks proper path awareness
+- Not scalable for different stage designs
 
-- reorganized project:
-    as we faced lack of participation from team mambers I changed task allocation and way we develop the project meet reality
+**How It Should Be Improved:**
+- Platform system should cover the entire stage
+- Implement path detection system to automatically identify enemy routes
+- Create dynamic "no-build zones" around paths using radius calculations
+- Add methods to generate valid tower positions based on path layout
 
-- stage:
-    made all code for stage functions. stage where tower in placed, path which followed by enemy
-    all script in stage folder, visual of stage are made by other developper
+This design would make the code more reusable and allow for easy creation of different stages without manual platform placement.
 
-- tower:
-    take over tower development, it already had animation and base code but contained many bugs.
-    i refactored code, fixed issue around aiming enemy. imlemented updrade, showing selected, attack range also add class name and made it super class.
-    refactored and improved arrow class
-    made thouderbolt tower as sub class of tower and thonder bolt for aoe
-    all script in tower folder
-
-- enemy:
-    most code and all image are already done by other developper.
-    to make it easy to managed by other class i added class name to all enemy refactored existing code to make super class.
-    add few method to control it speed and few signals to communication
-
-- hud:
-    made script for hud. design and conponents are made by other developper.
-    implemented buy tower, new wave button function
-    refactored existing main menu script and created game over/ victory menu based on it
-    also created scene manager to deal with scence change
-
-- InputController:
-    when i take it over there are code to drag and drop the tower, however i found moving tower already placed is unefficient and code wasnt working.
-    I made entirely new input mangement system for tower placement and upgrade
-    all script in inputmanager
+**Link to code**:
+https://gitlab.ecs.vuw.ac.nz/course-work/cgra252/2024/project/team6/tower-defense/-/blob/main/Tower-Defense-Game/Scripts/stage/platform.gd
 
 
+### AI Tools Usage
+
+- **GitHub Copilot**:
+   - Utilized throughout the game development process
+   - Particularly useful for:
+       - Generating documentation comments
+       - Creating repetitive code patterns
+       - Syntax checking and basic refactoring
+   
+   - Less effective for:
+       - Creating completely new functions from scratch
+       - Often generated overly complex code that didn't match intended design
+       - Required careful review and modification of suggestions
+
+   - Overall, while not reliable for core logic implementation, it significantly improved development efficiency for routine tasks and documentation.
+
+- **Claude**:
+   - Documentation assistance:
+       - Invaluable for non-native English speakers
+       - Helped with proofreading and spell-checking
+       - Could refine rough drafts into proper documentation
+       - Tended to exaggerate achievements (Maybe this is English thing)
+       - Required balancing between AI suggestions and personal voice
+
+   - Debugging support:
+       - Generated comprehensive debug print statements
+       - Helped identify logic errors (boundary conditions, > or >=)
+       - Discovered its usefulness in deciphering poorly written existing code during development
+
+   - Code development:
+       - Similar to Copilot: sometimes generated overcomplicated solutions
+       - Unlike Copilot: could help simplify approaches when asked
+       - Required oversight due to limited understanding of full project context
+
+   - Overall highly beneficial, but needed constant validation against project requirements and design intentions
 
 
+## Learning Reflection
 
+*Note: As the primary author of the group reflection, some of my personal insights naturally overlapped with the group reflection. Here, I focus on my individual growth and specific learnings from this experience.*
 
+### Personal Growth
 
+This project challenged me to develop in multiple aspects of software development.
 
+In technical development, I faced the challenge of integrating multiple complex systems, which taught me the importance of proper planning and documentation. The lack of UML diagrams and common module definitions at the start led to integration difficulties, highlighting how crucial these design elements are. This experience emphasized the value of well-structured code and clear interfaces between components.
+
+The experience of taking over and improving existing code significantly enhanced my refactoring skills, while the need to accommodate future changes pushed me to develop more flexible and maintainable systems.
+
+The project's management challenges led to unexpected learning experiences. As the team became smaller than anticipated, I had to adapt quickly, learning to redistribute tasks effectively and reorganize the project structure to match our available resources. This experience particularly improved my documentation and communication strategies, essential skills for maintaining project progress with a reduced team.
+
+Perhaps most significantly, my approach to problem-solving evolved throughout the project. I discovered the value of abstract development when working with incomplete components, and learned to balance between ideal solutions and practical implementations given our resource constraints. The experience of debugging and analyzing poorly structured code enhanced my ability to understand and improve complex systems.
+
+### Key Takeaway
+
+A key learning came from redesigning the input system, where I learned the importance of user-centric design. By focusing on creating more intuitive and consistent interactions, and refactoring code for future extensibility, I gained valuable insights into how technical decisions directly impact user experience.
+
+The most important takeaway from this project is understanding that successful software development requires both flexibility and solid foundations. While having clear shared understanding and commitment to design rules at the beginning is crucial, equally important is the ability to adapt to changes while maintaining code quality. This means not only being able to adjust to changing team dynamics and requirements, but also consistently focusing on clear documentation, maintainable code structure, and extensible system design. These principles will be essential for any future project, regardless of its scale or complexity.
