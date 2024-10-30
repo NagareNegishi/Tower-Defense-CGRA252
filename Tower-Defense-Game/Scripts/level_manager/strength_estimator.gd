@@ -14,36 +14,36 @@ const RESOURCE_FACTOR: float = 1000.0
 # estimate the player's strength from 3 factors and divide by 3
 func estimate_player() -> float:
 	# default strength
-    if !game_stats:
-        return 1.0
+	if !game_stats:
+		return 1.0
 	# factor 1: tower strength
-    var tower_strength = game_stats.towers_built * TOWER_FACTOR
-    # factor 2: defeat rate
-    var defeat_rate = 0.0
-    if game_stats.total_enemies_spawned > 0:
-        defeat_rate = float(game_stats.enemies_defeated) / game_stats.total_enemies_spawned
-        defeat_rate *= DEFEAT_RATE_FACTOR
-    # factor 3: resource efficiency
-    var resource_efficiency = 0.0
-    if game_stats.total_gold_spent > 0:
-        resource_efficiency = float(game_stats.enemies_defeated) / game_stats.total_gold_spent * RESOURCE_FACTOR
-    # average the 3 factors
-    var strength = (tower_strength + defeat_rate + resource_efficiency) / 3.0
-    return clampf(strength, MIN_STRENGTH, MAX_STRENGTH) # balance the strength
+	var tower_strength = game_stats.towers_built * TOWER_FACTOR
+	# factor 2: defeat rate
+	var defeat_rate = 0.0
+	if game_stats.total_enemies_spawned > 0:
+		defeat_rate = float(game_stats.enemies_defeated) / game_stats.total_enemies_spawned
+		defeat_rate *= DEFEAT_RATE_FACTOR
+	# factor 3: resource efficiency
+	var resource_efficiency = 0.0
+	if game_stats.total_gold_spent > 0:
+		resource_efficiency = float(game_stats.enemies_defeated) / game_stats.total_gold_spent * RESOURCE_FACTOR
+	# average the 3 factors
+	var strength = (tower_strength + defeat_rate + resource_efficiency) / 3.0
+	return clampf(strength, MIN_STRENGTH, MAX_STRENGTH) # balance the strength
 
 # estimate the difficulty of the level based on the current level and the player's strength
 func estimate_difficulty(current_level: int) -> int:
-    var player_strength = estimate_player()
-    var base_difficulty = current_level
-    # estimate the success rate
-    var success_rate = 0.0
-    if game_stats.total_enemies_spawned > 0:
-        success_rate = 1.0 - game_stats.enemies_reached_goal / float(game_stats.total_enemies_spawned)
+	var player_strength = estimate_player()
+	var base_difficulty = current_level
+	# estimate the success rate
+	var success_rate = 0.0
+	if game_stats.total_enemies_spawned > 0:
+		success_rate = 1.0 - game_stats.enemies_reached_goal / float(game_stats.total_enemies_spawned)
 	# adjust the difficulty based on the success rate
-    var difficulty = base_difficulty * player_strength
-    if success_rate < 0.7:
-        difficulty *= 0.9
-    elif success_rate > 0.9:
-        difficulty *= 1.1
-    return int(clampf(difficulty, 1.0, 20.0)) # limit the difficulty to a reasonable range
+	var difficulty = base_difficulty * player_strength
+	if success_rate < 0.7:
+		difficulty *= 0.9
+	elif success_rate > 0.9:
+		difficulty *= 1.1
+	return int(clampf(difficulty, 1.0, 20.0)) # limit the difficulty to a reasonable range
 
