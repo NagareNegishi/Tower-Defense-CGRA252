@@ -113,6 +113,23 @@ As project needs emerged, gradually adopted additional responsibilities:
     - Realistic schedule
     - Active member capacity
 
+## Project Structure
+
+To illustrate the game's architecture and component relationships, I created this structural diagram:
+
+![Game Structure Diagram](/images/documentation/game_structure.png)
+
+Key components and their relationships:
+- **Core Systems**:
+  - Auto Load components (Global, BackGroundMusic, SceneManager)
+  - Main Menu → Game flow → Victory/Game Over states
+
+- **Game Components**:
+  - Stage System: Manages Path, Platform, and Tower placement
+  - Input System: Handles user interaction through InputManager and UpgradePopup
+  - Tower System: Implements Arrow and Tower2 (with Thunderbolt) mechanics
+  - Enemy System: Controls various enemy types through EnemyBase
+  - Level Management: Coordinates Wave generation and difficulty through StrengthEstimator
 
 ## Code Discussion
 ### Project Contributions
@@ -172,7 +189,7 @@ As project needs emerged, gradually adopted additional responsibilities:
 
 **Tower System** (\Scripts\Tower) (\Scripts) (\Scenes\Towers)
 
-- `tower.gd` [Most]
+- `tower.gd` [Half]
    - Base class of tower that detects and attacks enemies, with upgrade capability
    - Code existed with buggy firing system and auto-leveling when taken over
    - Made improvements:
@@ -231,7 +248,8 @@ As project needs emerged, gradually adopted additional responsibilities:
 ## Video Discussion
 
 
-//////////////////////////////////////////////video here
+//////////////////////////////////////////////
+video link will be here
 
 ## Most Interesting Code
 
