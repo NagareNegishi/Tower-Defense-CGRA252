@@ -1,6 +1,32 @@
 # Tower Defense
 # CGRA252
 
+# Note on Repository Versions
+## Release Version
+- Release: "Goblins' Fury: Fortress Fight - First Release"
+- Tag: v1.0.1
+- Contains:
+ - Working exported game files in main/export/windows
+ - Windows version
+ - Web version
+ - Core functionality
+
+This release version is recommended for game submission review.
+
+## Main Branch
+Please also refer to the main branch for:
+- Individual project reports
+- Group demonstration video
+- Additional features that may be added after release
+- Latest documentation updates
+
+## Note on Smart Commits
+Initial phase:
+- Issue #3 was pre-allocated for setup planning
+- Team members used individual issue numbers for commits
+
+After project reorganization:
+- Standardized all development commits to issue #17
 
 # The title of the game
 
@@ -17,12 +43,11 @@ Team 6
 
 🐱 Bruno Helbick
 
-🐶 Nagare Negishi
+🐶 Nagare Negishi  ( smart commits on: #11, #17 )
 
 🐰 Brock Clarke (Smart commits on #12 #19 #21)
 
 🦉 Angus Ng
-
 
 # Link to video (onedrive/vimeo/youtube/googledrive other video service) showing the design of the game ( approx. 2-4 mins )
 
@@ -225,17 +250,6 @@ https://free-game-assets.itch.io/free-archer-towers-pixel-art-for-tower-defense
 https://free-game-assets.itch.io/free-magic-and-traps-top-down-pixel-art-asset
 
 
-# Rubric
-
-| Area | Weighting | Default range |
-|------|:---------:|:-------------:|
-| Updates | 10% | 0-20 |
-| Prototype - Code | 25% | 15-35 |
-| Prototype - Plan | 25% | 15-35 |
-| Reflection | 30% | 20-40 |
-| Video | 10% | 5-15 |
-
-
 ### Task Division
 
 - Stage: Responsible for the game environment and coordinating tower and enemy positions/ path.
@@ -250,7 +264,7 @@ Each task was initially assigned to:
 - Stage: Jinhao Huangfu ?
 - Tower: Bruno Helbick ?
 - Enemy: Brock Clarke
-- HUD:
+- HUD: Angus Ng
 - InputController: Eric Liu ?
 - LevelManager: Nagare Negishi
 
@@ -259,6 +273,6 @@ Each task was implemented by:
 - Stage: Brock Clarke(in progress), Nagare Negishi(script)
 - Tower: Bruno Helbick(in progress) ,Nagare Negishi(refactor/super class/new type)
 - Enemy: Brock Clarke
-- HUD: HUD.tscn Brock Clarke(in progress), HUD.gd Nagare Negishi
+- HUD: HUD.tscn Brock Clarke(in progress), HUD.gd Nagare Negishi, Angus Ng
 - InputController: Nagare Negishi
 - LevelManager: Nagare Negishi

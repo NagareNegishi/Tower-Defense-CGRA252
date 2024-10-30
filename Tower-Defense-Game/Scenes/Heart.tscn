@@ -1,7 +1,6 @@
-[gd_scene load_steps=14 format=3 uid="uid://dubw3phbv5o6m"]
+[gd_scene load_steps=13 format=3 uid="uid://s252ubovu1ud"]
 
 [ext_resource type="Texture2D" uid="uid://chdcsai6o127s" path="res://Assets/heart.blink.png" id="1_s6q6u"]
-[ext_resource type="Script" path="res://Scripts/Heart.gd" id="2_b8w7f"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_p5cx5"]
 atlas = ExtResource("1_s6q6u")
@@ -84,6 +83,5 @@ animations = [{
 [node name="Heart" type="AnimatedSprite2D"]
 sprite_frames = SubResource("SpriteFrames_jdbt6")
 animation = &"Shine"
-script = ExtResource("2_b8w7f")
 
 [connection signal="ready" from="." to="." method="_on_ready"]

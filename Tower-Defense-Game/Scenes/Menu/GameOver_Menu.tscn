@@ -1,0 +1,94 @@
+[gd_scene load_steps=6 format=3 uid="uid://brnhotlmuabj8"]
+
+[ext_resource type="Script" path="res://Scripts/Menu/EndMenu.gd" id="1_t3uyy"]
+[ext_resource type="PackedScene" uid="uid://dp240gp14xoyx" path="res://Scenes/MenuBackdrop.tscn" id="2_8mw87"]
+[ext_resource type="PackedScene" uid="uid://btenchf3ee11" path="res://Scenes/Basic_Button.tscn" id="3_toqxy"]
+[ext_resource type="Texture2D" uid="uid://dwdn0sxewh65h" path="res://Assets/Icon/StartGame-Icon.webp" id="4_8adan"]
+[ext_resource type="Texture2D" uid="uid://b1o5ga33flil4" path="res://Assets/Icon/Exit_Icon.png" id="6_yb40a"]
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_t3uyy")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.017
+offset_left = 2.0
+offset_right = 2.0
+offset_bottom = -16.3
+color = Color(0.441858, 0.291657, 1, 1)
+
+[node name="Node2D" parent="." instance=ExtResource("2_8mw87")]
+
+[node name="Title" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.201
+anchor_top = 0.272
+anchor_right = 0.783
+anchor_bottom = 0.438
+offset_left = -0.552002
+offset_top = 0.199982
+offset_right = -0.0160522
+offset_bottom = -0.200012
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.733333, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0.560784, 1)
+theme_override_constants/shadow_offset_x = 5
+theme_override_constants/shadow_offset_y = 5
+theme_override_constants/outline_size = 5
+theme_override_constants/shadow_outline_size = 5
+theme_override_constants/line_spacing = 50
+theme_override_font_sizes/font_size = 70
+text = "Game Over"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Start_Game" parent="." instance=ExtResource("3_toqxy")]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.217
+anchor_top = 0.722
+anchor_right = 0.477
+anchor_bottom = 0.833
+offset_left = 0.0159912
+offset_top = 0.199951
+offset_right = 0.495972
+offset_bottom = 0.299927
+text = "Try Again?
+"
+
+[node name="Start_Game_Icon" type="Sprite2D" parent="Start_Game"]
+position = Vector2(243, 52)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("4_8adan")
+
+[node name="Exit_Game" parent="." instance=ExtResource("3_toqxy")]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.521
+anchor_top = 0.722
+anchor_right = 0.781
+anchor_bottom = 0.833
+offset_left = -0.192017
+offset_top = 0.199951
+offset_right = 0.287964
+offset_bottom = 0.299927
+text = "Quit
+"
+
+[node name="Exit_Game_Icon" type="Sprite2D" parent="Exit_Game"]
+position = Vector2(240, 52)
+scale = Vector2(0.03, 0.03)
+texture = ExtResource("6_yb40a")
+
+[connection signal="click_end" from="Start_Game" to="." method="_on_start_game_click_end"]
+[connection signal="click_end" from="Exit_Game" to="." method="_on_exit_game_click_end"]

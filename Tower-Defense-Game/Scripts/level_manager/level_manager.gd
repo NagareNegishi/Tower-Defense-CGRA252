@@ -21,7 +21,7 @@ var level_completed = false
 @export var game_stats: GameStats
 @export var enemy_path: EnemyPath
 @export var strength_estimator: StrengthEstimator
-var wave_scene = preload("res://Scenes/level_manager/wave.tscn")
+var wave_scene = preload("res://Scenes/Level_Manager/wave.tscn")
 
 signal level_complete # all waves are defeated
 signal player_defeat # player lost
@@ -87,6 +87,8 @@ func _on_enemy_spawned(enemy):
 
 # check if the level is completed
 func check_level_completion():
+	if current_state == GameState.GAME_OVER:
+		return
 	if all_waves_sent and active_enemies <= 0 and waves.is_empty():
 		_on_level_complete()
 
@@ -126,8 +128,25 @@ func _on_game_over():
 		return
 	current_state = GameState.GAME_OVER
 	# cleanup
-	#if current_wave:
-	#	current_wave.queue_free()
+	if current_wave:
+		current_wave.queue_free()
+		current_wave = null
 	waves.clear()
 	active_enemies = 0
 	player_defeat.emit()
+
+# reset the level manager
+func reset():
+	waves.clear()
+	active_enemies = 0
+	if current_wave:
+		current_wave.queue_free()
+	current_wave = null
+	total_waves = 5
+	current_level = 1
+	total_levels = 5
+	current_difficulty = 1
+	current_state = GameState.BETWEEN_WAVES
+	all_waves_sent = false
+	level_completed = false
+	generate_waves()
