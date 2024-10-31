@@ -8,7 +8,6 @@ https://gitlab.ecs.vuw.ac.nz/course-work/cgra252/2024/project/team6/tower-defens
 - Tag: v1.0.1
 - URL: https://gitlab.ecs.vuw.ac.nz/course-work/cgra252/2024/project/team6/tower-defense/-/releases/v1.0.1
 
-*Note: This PDF serves as a backup of the individual report. The original markdown file can be found in the main repository.*
 
 # Individual Project Report
 
@@ -389,8 +388,8 @@ The most important takeaway from this project is understanding that successful s
 
 | Area        | Weight | Range   |
 |-------------|--------|---------|
-| Final Game  | 15%    | 10-30% |
+| Final Game  | 25%    | 10-30% |
 | Good Code   | 25%    | 10-30% |
-| Bad Code    | 20%    | 10-30% |
-| Reflection  | 35%    | 20-40% |
+| Bad Code    | 15%    | 10-30% |
+| Reflection  | 30%    | 20-40% |
 | Video       | 5%     | 5-15%  |
