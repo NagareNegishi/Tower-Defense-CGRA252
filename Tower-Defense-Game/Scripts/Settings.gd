@@ -19,8 +19,11 @@ func _on_menu_pressed():
 
 #change volume accoring to slider position
 func _on_h_slider_value_changed(value: float) -> void:
-	AudioServer.set_bus_volume_db(bus_index, linear_to_db(value))
 
+	var min_db = -20.0  # Silence or minimum volume
+	var max_db = 20.0    # Maximum volume
+	var db_value = lerp(min_db, max_db, pow(value,2))
+	AudioServer.set_bus_volume_db(bus_index, db_value)
 #mute for music
 func _on_check_button_toggled(_toggled_on):
 	AudioServer.set_bus_mute(bus_index, not AudioServer.is_bus_mute(bus_index))
