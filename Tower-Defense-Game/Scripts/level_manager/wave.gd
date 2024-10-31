@@ -9,8 +9,11 @@ signal enemy_spawned(enemy)
 @export var bee_scene: PackedScene
 @export var wolf_scene: PackedScene
 @export var goblin_scene: PackedScene
+@export var strong_wolf_scene: PackedScene
+@export var boss_goblin_scene: PackedScene
+
 # limits of difficulty
-@export var enemy_count_limit: int = 30
+@export var enemy_count_limit: int = 50
 @export var interval_limit: float = 0.1
 # initial values
 @export var difficulty_level: int = 1
@@ -24,10 +27,12 @@ var enemies_spawned = 0
 var enemies_remaining = 0
 var difficulty: int
 var enemy_weights = {
-	"slime": 70,
+	"slime": 60,
 	"bee": 20,
-	"wolf": 8,
-	"goblin": 2
+	"wolf": 10,
+	"goblin": 5,
+	"strong wolf": 3,
+	"boss goblin": 2
 }
 
 # this is just safe guard
@@ -57,7 +62,9 @@ func adjust_enemy_weights():
 		"slime": calculate_weights(100, 1, 15, 20), # 100 % first -> 20% at least
 		"bee": calculate_weights(20, 4, -5, 10), # from difficulty 4
 		"wolf": calculate_weights(20, 6, -5, 0), # from difficulty 6
-		"goblin": calculate_weights(5, 8, -5, 0) # from difficulty 8
+		"goblin": calculate_weights(5, 8, -5, 0), # from difficulty 8
+		"strong wolf": calculate_weights(5, 10, -3, 0), # from difficulty 10
+		"boss goblin": calculate_weights(5, 15, -3, 0) # from difficulty 10
 	}
 
 # helper method to calculate weights based on difficulty
@@ -85,6 +92,8 @@ func get_random_enemy_scene() -> PackedScene:
 				"bee": return bee_scene
 				"wolf": return wolf_scene
 				"goblin": return goblin_scene
+				"strong wolf": return strong_wolf_scene
+				"boss goblin": return boss_goblin_scene
 	return slime_scene # default
 
 # At the creation of the wave, generate enemies

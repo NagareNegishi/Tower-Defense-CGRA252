@@ -1,10 +1,12 @@
-[gd_scene load_steps=6 format=3 uid="uid://b5c5toixra6dd"]
+[gd_scene load_steps=8 format=3 uid="uid://b5c5toixra6dd"]
 
 [ext_resource type="Script" path="res://Scripts/level_manager/wave.gd" id="1_uamwk"]
 [ext_resource type="PackedScene" uid="uid://cwh4jo7nuoq3j" path="res://Scenes/Enemies/slime.tscn" id="2_aoo4r"]
 [ext_resource type="PackedScene" uid="uid://cpp4aiqvwncpp" path="res://Scenes/Enemies/Bee.tscn" id="3_b12ky"]
 [ext_resource type="PackedScene" uid="uid://c3gnueqlj1ky8" path="res://Scenes/Enemies/Wolf.tscn" id="4_87lyr"]
 [ext_resource type="PackedScene" uid="uid://d1setya43cpnp" path="res://Scenes/Enemies/goblin.tscn" id="5_mgkki"]
+[ext_resource type="PackedScene" uid="uid://qd1jgjvt6mup" path="res://Scenes/Enemies/boss_goblin.tscn" id="6_ac2fj"]
+[ext_resource type="PackedScene" uid="uid://dboq6dwry5ijy" path="res://Scenes/Enemies/Strong_Wolf.tscn" id="6_fmakm"]
 
 [node name="Wave" type="Node"]
 script = ExtResource("1_uamwk")
@@ -12,3 +14,5 @@ slime_scene = ExtResource("2_aoo4r")
 bee_scene = ExtResource("3_b12ky")
 wolf_scene = ExtResource("4_87lyr")
 goblin_scene = ExtResource("5_mgkki")
+strong_wolf_scene = ExtResource("6_fmakm")
+boss_goblin_scene = ExtResource("6_ac2fj")
