@@ -91,21 +91,21 @@ func update_tower(choice: int) -> void:
 			tower_fire_rate = max(0.5, tower_fire_rate - 0.5 * option_count2) 
 	if choice == 2:
 		_start_tick_damage()  # Restart tick damage loop with updated fire rate
-
 # Function to select the tower
 func select_tower():
 	is_selected = true
-	var shape = detection_area.shape as CircleShape2D
-	var radius = shape.radius * detection_area.scale.x
-	tower_area.draw_circle(Vector2.ZERO, radius, detection_color)
-	selection_rect.visible = true
+	tower_area.queue_redraw()
+	if selection_rect:
+		selection_rect.visible = true
 
-# Function to deselect the tower
+
 func deselect_tower():
+	is_selected = false
 	if selection_rect:
 		selection_rect.visible = false
-	is_selected = false
+	tower_area.queue_redraw()
 
+# Drawing function for the tower area
 func _on_tower_area_draw():
 	if is_selected:
 		var shape = detection_area.shape as CircleShape2D

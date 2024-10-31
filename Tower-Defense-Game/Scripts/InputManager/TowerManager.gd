@@ -8,13 +8,15 @@ class_name TowerManager
 var tower_costs = {
 	"type1": 100,
 	"type2": 3000,
-	"type3": 5
+	"type3": 100,
+	"type4": 300
 }
 # list of tower scenes
 var tower_scenes = {
 	"type1": preload("res://Scenes/Towers/tower1.tscn"),
 	"type2": preload("res://Scenes/Towers/tower2.tscn"),
-	"type3": preload("res://Scenes/Towers/tower3.tscn")
+	"type3": preload("res://Scenes/Towers/tower3.tscn"),
+	"type4": preload("res://Scenes/Towers/tower4.tscn")
 }
 
 # check if the player can afford to build a tower

@@ -136,6 +136,21 @@ text = "Buy Laser Tower
 100 G"
 script = ExtResource("13_3fpjn")
 
+[node name="Buy Tower4" type="Button" parent="HUD/CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 16.0
+offset_top = 441.0
+offset_right = -886.0
+offset_bottom = -349.0
+grow_horizontal = 2
+grow_vertical = 2
+disabled = true
+text = "Buy  MagicBall Tower
+300 G"
+script = ExtResource("13_3fpjn")
+
 [node name="Next Wave" type="Button" parent="HUD/CanvasLayer"]
 anchors_preset = 15
 anchor_right = 1.0
@@ -156,4 +171,5 @@ script = ExtResource("14_51vyn")
 [connection signal="pressed" from="HUD/CanvasLayer/Buy Tower" to="." method="_on_buy_tower_pressed"]
 [connection signal="pressed" from="HUD/CanvasLayer/Buy Tower2" to="." method="_on_buy_tower_pressed"]
 [connection signal="pressed" from="HUD/CanvasLayer/Buy Tower3" to="." method="_on_buy_tower_pressed"]
+[connection signal="pressed" from="HUD/CanvasLayer/Buy Tower4" to="." method="_on_buy_tower_pressed"]
 [connection signal="pressed" from="HUD/CanvasLayer/Next Wave" to="HUD/CanvasLayer/Next Wave" method="_on_pressed"]
