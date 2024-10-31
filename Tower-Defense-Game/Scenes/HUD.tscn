@@ -3,6 +3,7 @@
 [ext_resource type="Script" path="res://Scripts/HUD.gd" id="1_em3vq"]
 [ext_resource type="PackedScene" uid="uid://b055ixjo5jrno" path="res://Scenes/Coin.tscn" id="1_i52ew"]
 [ext_resource type="PackedScene" uid="uid://s252ubovu1ud" path="res://Scenes/Heart.tscn" id="2_fmweh"]
+
 [ext_resource type="Script" path="res://Scripts/Buy Tower.gd" id="6_sxnni"]
 [ext_resource type="Script" path="res://Scripts/Next Wave.gd" id="7_i7c0w"]
 
@@ -70,8 +71,7 @@ offset_bottom = -232.0
 grow_horizontal = 2
 grow_vertical = 2
 disabled = true
-text = "Next Wave
-"
+text = "Next Wave"
 script = ExtResource("7_i7c0w")
 
 [node name="Coin" parent="CanvasLayer" instance=ExtResource("1_i52ew")]
