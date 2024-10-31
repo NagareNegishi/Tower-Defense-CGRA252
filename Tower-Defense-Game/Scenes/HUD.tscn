@@ -70,8 +70,7 @@ offset_bottom = -232.0
 grow_horizontal = 2
 grow_vertical = 2
 disabled = true
-text = "Next Wave
-"
+text = "Next Wave"
 script = ExtResource("7_i7c0w")
 
 [node name="Coin" parent="CanvasLayer" instance=ExtResource("1_i52ew")]
