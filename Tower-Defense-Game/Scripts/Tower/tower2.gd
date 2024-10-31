@@ -1,4 +1,3 @@
-# tower2.gd
 extends Tower
 class_name Tower2
 ## Tower2 will fire a thunderbolt at the enemy

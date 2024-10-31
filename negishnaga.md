@@ -1,3 +1,15 @@
+# Repository Links
+
+## Main Repository
+https://gitlab.ecs.vuw.ac.nz/course-work/cgra252/2024/project/team6/tower-defense
+
+## Release Version
+- Release: "Goblins' Fury: Fortress Fight - First Release"
+- Tag: v1.0.1
+- URL: https://gitlab.ecs.vuw.ac.nz/course-work/cgra252/2024/project/team6/tower-defense/-/releases/v1.0.1
+
+*Note: This PDF serves as a backup of the individual report. The original markdown file can be found in the main repository.*
+
 # Individual Project Report
 
 ## Header Information
@@ -248,9 +260,7 @@ Key components and their relationships:
 
 ## Video Discussion
 
-
-//////////////////////////////////////////////
-video link will be here
+https://myvuwac-my.sharepoint.com/:v:/g/personal/negishnaga_myvuw_ac_nz/EaXLwxTua-hAjvZJZ9B6llcBW9BrurcfPpsRn4GHKE_H6A
 
 ## Most Interesting Code
 
