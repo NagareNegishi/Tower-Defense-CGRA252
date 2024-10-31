@@ -95,10 +95,10 @@ text = "Pause II"
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 530.0
-offset_top = 437.0
-offset_right = -372.0
-offset_bottom = -351.0
+offset_left = 16.0
+offset_top = 557.0
+offset_right = -886.0
+offset_bottom = -231.0
 grow_horizontal = 2
 grow_vertical = 2
 disabled = true
@@ -121,6 +121,36 @@ text = "Buy Thunderbolt Tower
 3000 G"
 script = ExtResource("13_3fpjn")
 
+[node name="Buy Tower3" type="Button" parent="HUD/CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 273.0
+offset_top = 557.0
+offset_right = -629.0
+offset_bottom = -233.0
+grow_horizontal = 2
+grow_vertical = 2
+disabled = true
+text = "Buy Laser Tower
+100 G"
+script = ExtResource("13_3fpjn")
+
+[node name="Buy Tower4" type="Button" parent="HUD/CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 16.0
+offset_top = 441.0
+offset_right = -886.0
+offset_bottom = -349.0
+grow_horizontal = 2
+grow_vertical = 2
+disabled = true
+text = "Buy  MagicBall Tower
+300 G"
+script = ExtResource("13_3fpjn")
+
 [node name="Next Wave" type="Button" parent="HUD/CanvasLayer"]
 anchors_preset = 15
 anchor_right = 1.0
@@ -140,4 +170,6 @@ script = ExtResource("14_51vyn")
 [connection signal="pressed" from="HUD/CanvasLayer/Pause" to="HUD/CanvasLayer/Pause" method="_on_pressed"]
 [connection signal="pressed" from="HUD/CanvasLayer/Buy Tower" to="." method="_on_buy_tower_pressed"]
 [connection signal="pressed" from="HUD/CanvasLayer/Buy Tower2" to="." method="_on_buy_tower_pressed"]
+[connection signal="pressed" from="HUD/CanvasLayer/Buy Tower3" to="." method="_on_buy_tower_pressed"]
+[connection signal="pressed" from="HUD/CanvasLayer/Buy Tower4" to="." method="_on_buy_tower_pressed"]
 [connection signal="pressed" from="HUD/CanvasLayer/Next Wave" to="HUD/CanvasLayer/Next Wave" method="_on_pressed"]

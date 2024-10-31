@@ -7,6 +7,8 @@ signal buy_tower_requested(tower_type: String)
 @onready var next_wave_button = $"CanvasLayer/Next Wave"
 @onready var buy_tower_button = $"CanvasLayer/Buy Tower"
 @onready var buy_tower2_button = $"CanvasLayer/Buy Tower2"
+@onready var buy_tower3_button = $"CanvasLayer/Buy Tower3"
+@onready var buy_tower4_button = $"CanvasLayer/Buy Tower4"
 @onready var health_label = $CanvasLayer/Health
 @onready var money_label = $CanvasLayer/Money
 
@@ -26,6 +28,14 @@ func _ready():
 		buy_tower2_button.pressed.connect(_on_buy_tower_2_pressed)
 	else:
 		push_error("Buy Tower2 button not found!")
+	if buy_tower3_button:
+		buy_tower3_button.pressed.connect(_on_buy_tower_3_pressed)
+	else:
+		push_error("Buy Tower3 button not found!")
+	if buy_tower4_button:
+		buy_tower4_button.pressed.connect(_on_buy_tower_4_pressed)
+	else:
+		push_error("Buy Tower4 button not found!")
 	setup_labels()
 
 
@@ -48,6 +58,13 @@ func _on_buy_tower_pressed():
 # send request to input_manager
 func _on_buy_tower_2_pressed():
 	buy_tower_requested.emit("type2")
+
+# send request to input_manager
+func _on_buy_tower_3_pressed():
+	buy_tower_requested.emit("type3")
+# send request to input_manager
+func _on_buy_tower_4_pressed():
+	buy_tower_requested.emit("type4")
 
 # enable/disable button
 func set_button(button: Button, enabled: bool) -> void:

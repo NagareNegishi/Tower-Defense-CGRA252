@@ -122,6 +122,12 @@ animation = &"towerlvl2"
 scale = Vector2(5, 5)
 shape = SubResource("CircleShape2D_td0gv")
 
+[node name="TowerArea" type="Area2D" parent="TowerArea"]
+
+[node name="DetectionArea" type="CollisionShape2D" parent="TowerArea/TowerArea"]
+scale = Vector2(5, 5)
+shape = SubResource("CircleShape2D_td0gv")
+
 [node name="InteractionArea" type="CollisionShape2D" parent="."]
 position = Vector2(1, 4.5)
 shape = SubResource("RectangleShape2D_ogih4")
@@ -142,3 +148,6 @@ color = Color(1, 1, 0, 0.407843)
 [connection signal="body_entered" from="TowerArea" to="." method="_on_tower_body_entered"]
 [connection signal="body_exited" from="TowerArea" to="." method="_on_tower_body_exited"]
 [connection signal="draw" from="TowerArea" to="." method="_on_tower_draw"]
+[connection signal="body_entered" from="TowerArea/TowerArea" to="." method="_on_tower_body_entered"]
+[connection signal="body_exited" from="TowerArea/TowerArea" to="." method="_on_tower_body_exited"]
+[connection signal="draw" from="TowerArea/TowerArea" to="." method="_on_tower_draw"]
