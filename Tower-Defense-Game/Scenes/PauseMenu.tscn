@@ -26,7 +26,9 @@ offset_left = 487.0
 offset_top = 398.0
 offset_right = 679.0
 offset_bottom = 414.0
-value = 50.0
+max_value = 1.0
+step = 0.01
+value = 1.0
 metadata/_edit_use_anchors_ = true
 
 [node name="CheckButton" type="CheckButton" parent="Control"]
