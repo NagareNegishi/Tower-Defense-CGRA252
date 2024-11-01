@@ -1,6 +1,6 @@
 [gd_scene load_steps=21 format=3 uid="uid://b03huljpf4har"]
 
-[ext_resource type="Script" path="res://Scenes/Towers/FlyingBalls.gd" id="1_hq1vc"]
+[ext_resource type="Script" path="res://Scripts/Tower/FlyingBalls.gd" id="1_hq1vc"]
 [ext_resource type="Texture2D" uid="uid://dir7wsqhg5ixh" path="res://Assets/Towers/Towers Weapons/Tower 03/Spritesheets/Tower 03 - Level 01 - Projectile - Impact.png" id="2_d37wk"]
 [ext_resource type="Texture2D" uid="uid://b1pxoyp57yr6k" path="res://Assets/Towers/Towers Weapons/Tower 03/Spritesheets/Tower 03 - Level 01 - Projectile.png" id="3_mpx84"]
 [ext_resource type="Script" path="res://Scripts/Tower/pathing.gd" id="5_l1573"]

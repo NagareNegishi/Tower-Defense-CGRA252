@@ -212,6 +212,21 @@ text = "Buy  MagicBall Tower
 2000 G"
 script = ExtResource("13_3fpjn")
 
+[node name="Buy Tower5" type="Button" parent="HUD/CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 273.0
+offset_top = 441.0
+offset_right = -629.0
+offset_bottom = -349.0
+grow_horizontal = 2
+grow_vertical = 2
+disabled = true
+text = "Buy  TeslaBomb Tower
+1200 G"
+script = ExtResource("13_3fpjn")
+
 [node name="Next Wave" type="Button" parent="HUD/CanvasLayer"]
 anchors_preset = -1
 anchor_left = 0.729
@@ -245,4 +260,5 @@ script = ExtResource("14_51vyn")
 [connection signal="pressed" from="HUD/CanvasLayer/Buy Tower2" to="." method="_on_buy_tower_pressed"]
 [connection signal="pressed" from="HUD/CanvasLayer/Buy Tower3" to="." method="_on_buy_tower_pressed"]
 [connection signal="pressed" from="HUD/CanvasLayer/Buy Tower4" to="." method="_on_buy_tower_pressed"]
+[connection signal="pressed" from="HUD/CanvasLayer/Buy Tower5" to="." method="_on_buy_tower_pressed"]
 [connection signal="pressed" from="HUD/CanvasLayer/Next Wave" to="HUD/CanvasLayer/Next Wave" method="_on_pressed"]

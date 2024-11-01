@@ -16,7 +16,8 @@ var tower_scenes = {
 	"type1": preload("res://Scenes/Towers/tower1.tscn"),
 	"type2": preload("res://Scenes/Towers/tower2.tscn"),
 	"type3": preload("res://Scenes/Towers/tower3.tscn"),
-	"type4": preload("res://Scenes/Towers/tower4.tscn")
+	"type4": preload("res://Scenes/Towers/tower4.tscn"),
+	"type5": preload("res://Scenes/Towers/tower5.tscn")
 }
 
 # check if the player can afford to build a tower

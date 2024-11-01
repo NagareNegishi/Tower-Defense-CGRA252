@@ -1,0 +1,73 @@
+[gd_scene load_steps=8 format=3 uid="uid://byl0evd1edici"]
+
+[ext_resource type="Script" path="res://Scripts/Tower/tower5.gd" id="1_jl2ei"]
+[ext_resource type="Texture2D" uid="uid://c44j53fpumghh" path="res://Assets/Towers/Towers bases/PNGs/Tower 03.png" id="2_srouo"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nu747"]
+atlas = ExtResource("2_srouo")
+region = Rect2(0, 0, 64, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ioafk"]
+atlas = ExtResource("2_srouo")
+region = Rect2(64, 0, 64, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_apq6u"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nu747")
+}],
+"loop": true,
+"name": &"towerlvl1",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ioafk")
+}],
+"loop": true,
+"name": &"towerlvl2",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_td0gv"]
+radius = 14.7308
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ogih4"]
+size = Vector2(64, 61)
+
+[node name="TowerType" type="StaticBody2D"]
+position = Vector2(200, 650)
+script = ExtResource("1_jl2ei")
+
+[node name="towerSprite" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -30)
+sprite_frames = SubResource("SpriteFrames_apq6u")
+animation = &"towerlvl2"
+
+[node name="TowerArea" type="Area2D" parent="."]
+
+[node name="DetectionArea" type="CollisionShape2D" parent="TowerArea"]
+scale = Vector2(5, 5)
+shape = SubResource("CircleShape2D_td0gv")
+
+[node name="InteractionArea" type="CollisionShape2D" parent="."]
+position = Vector2(1, 4.5)
+shape = SubResource("RectangleShape2D_ogih4")
+
+[node name="Aim" type="Marker2D" parent="."]
+scale = Vector2(1.9008, 1.75289)
+gizmo_extents = 215.7
+
+[node name="arrowContainer" type="Node" parent="."]
+
+[node name="Selection" type="ColorRect" parent="."]
+visible = false
+offset_left = -40.0
+offset_top = -40.0
+scale = Vector2(2, 2)
+color = Color(1, 1, 0, 0.407843)
+
+[connection signal="body_entered" from="TowerArea" to="." method="_on_tower_body_entered"]
+[connection signal="body_exited" from="TowerArea" to="." method="_on_tower_body_exited"]
+[connection signal="draw" from="TowerArea" to="." method="_on_tower_draw"]
