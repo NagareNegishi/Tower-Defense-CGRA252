@@ -22,9 +22,9 @@ var detection_scale = 5.0
 # fields related to tower properties
 var total_value: int = 0 # total value of the tower
 var sold_rate = 0.8
-var price: int = 100 # initial price
-var upgrade_price1: int = 50
-var upgrade_price2: int = 50
+var price: int = 500 # initial price
+var upgrade_price1: int = 100
+var upgrade_price2: int = 100
 var option1 := [5, 10, 15, 20, 25] # attack range
 var option2 := [1.0, 0.9, 0.8, 0.7, 0.6] # fire rate
 var option_count1 := 0
@@ -46,12 +46,12 @@ func update_tower(choice: int) -> void:
 	match choice:
 		1:
 			option_count1 += 1
-			upgrade_price1 += 50 * option_count1
+			upgrade_price1 += 100 * option_count1
 			total_value += upgrade_price1
 			scale_detection_area(option1[option_count1])
 		2:
 			option_count2 += 1
-			upgrade_price2 += 50 * option_count2
+			upgrade_price2 += 100 * option_count2
 			total_value += upgrade_price2
 			fire_rate = option2[option_count2]
 		3: # default

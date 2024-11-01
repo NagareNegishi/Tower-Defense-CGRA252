@@ -10,6 +10,7 @@ const MAX_STRENGTH: float = 2.0
 const TOWER_FACTOR: float = 0.5 # probably most important factor
 const DEFEAT_RATE_FACTOR: float = 2.0
 const RESOURCE_FACTOR: float = 1000.0
+@export var difficulty_limit: int = 50
 
 # estimate the player's strength from 3 factors and divide by 3
 func estimate_player() -> float:
@@ -45,5 +46,5 @@ func estimate_difficulty(current_level: int) -> int:
 		difficulty *= 0.9
 	elif success_rate > 0.9:
 		difficulty *= 1.1
-	return int(clampf(difficulty, 1.0, 20.0)) # limit the difficulty to a reasonable range
+	return int(clampf(difficulty, base_difficulty * 2, difficulty_limit)) # limit the difficulty to a reasonable range
 

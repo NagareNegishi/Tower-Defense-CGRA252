@@ -6,7 +6,7 @@ var active_enemies: int = 0
 var current_wave: Wave = null
 var total_waves = 5 # 5 to 10 waves per level
 var current_level = 1
-var total_levels = 5
+var total_levels = 15
 var current_difficulty = 1
 var current_state = GameState.BETWEEN_WAVES
 enum GameState {
@@ -144,7 +144,7 @@ func reset():
 	current_wave = null
 	total_waves = 5
 	current_level = 1
-	total_levels = 5
+	total_levels = 15
 	current_difficulty = 1
 	current_state = GameState.BETWEEN_WAVES
 	all_waves_sent = false

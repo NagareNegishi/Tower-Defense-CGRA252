@@ -2,7 +2,7 @@ extends Node
 
 # variables to be integrated into nagis level manager
 var playerHealth = 50
-var playerGold = 100
+var playerGold = 1000
 var isPaused = false
 var waveReady = true
 var enemyCount = 0
@@ -12,7 +12,7 @@ var prepWave = false
 # reset the game state
 func reset_game_state() -> void:
 	playerHealth = 50
-	playerGold = 100
+	playerGold = 1000
 	isPaused = false
 	waveReady = true
 	enemyCount = 0

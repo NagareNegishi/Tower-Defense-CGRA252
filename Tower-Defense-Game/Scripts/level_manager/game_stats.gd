@@ -22,7 +22,7 @@ var life: int = 50:
 		if life <= 0:
 			game_over.emit()
 # Current resources
-var gold: int = 100:
+var gold: int = 1000:
 	set(value):
 		if value < gold:
 			total_gold_spent += gold - value
@@ -39,7 +39,7 @@ var total_gold_spent: int = 0
 func reset():
 	score = 0
 	life = 50
-	gold = 100
+	gold = 1000
 	towers_built = 0
 	total_enemies_spawned = 0
 	enemies_defeated = 0

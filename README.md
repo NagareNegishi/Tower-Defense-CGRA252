@@ -18,6 +18,11 @@ Please also refer to the main branch for:
 - Individual project reports
 - Group demonstration video
 - Additional features that may be added after release
+ - Currently added:
+   - 2 additional towers implemented
+   - Difficulty rebalanced to accommodate new towers
+   - 2 new boss-type enemies
+   - Styled button improvements
 - Latest documentation updates
 
 ## Note on Smart Commits
