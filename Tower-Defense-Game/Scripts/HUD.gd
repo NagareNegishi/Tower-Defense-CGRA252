@@ -9,6 +9,7 @@ signal buy_tower_requested(tower_type: String)
 @onready var buy_tower2_button = $"CanvasLayer/Buy Tower2"
 @onready var buy_tower3_button = $"CanvasLayer/Buy Tower3"
 @onready var buy_tower4_button = $"CanvasLayer/Buy Tower4"
+@onready var buy_tower5_button = $"CanvasLayer/Buy Tower5"
 @onready var health_label = $CanvasLayer/Health
 @onready var money_label = $CanvasLayer/Money
 
@@ -36,6 +37,10 @@ func _ready():
 		buy_tower4_button.pressed.connect(_on_buy_tower_4_pressed)
 	else:
 		push_error("Buy Tower4 button not found!")
+	if buy_tower5_button:
+		buy_tower5_button.pressed.connect(_on_buy_tower_5_pressed)
+	else:
+		push_error("Buy Tower5 button not found!")
 	setup_labels()
 
 
@@ -65,6 +70,9 @@ func _on_buy_tower_3_pressed():
 # send request to input_manager
 func _on_buy_tower_4_pressed():
 	buy_tower_requested.emit("type4")
+# send request to input_manager
+func _on_buy_tower_5_pressed():
+	buy_tower_requested.emit("type5")
 
 # enable/disable button
 func set_button(button: Button, enabled: bool) -> void:
