@@ -12,7 +12,7 @@ func _ready():
 		animation.position = Vector2(0, offset)
 	super._ready()
 	speed = base_speed * 2
-	health = base_health * 8
-	reward = base_reward * 8
+	health = base_health * 10
+	reward = base_reward * 4
 	damage = damage_to_player * 2
 	original_speed = speed

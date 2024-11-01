@@ -11,8 +11,8 @@ func _ready():
 		var offset = -10 * animation.scale.y
 		animation.position = Vector2(0, offset)
 	super._ready()
-	health = base_health * 15
-	reward = base_reward * 100
-	damage = damage_to_player * 10
+	health = base_health * 20
+	reward = base_reward * 5
+	damage = damage_to_player * 5
 	original_speed = speed
 

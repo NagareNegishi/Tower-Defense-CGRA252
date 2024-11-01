@@ -61,10 +61,10 @@ func adjust_enemy_weights():
 	enemy_weights = {
 		"slime": calculate_weights(100, 1, 15, 20), # 100 % first -> 20% at least
 		"bee": calculate_weights(20, 4, -5, 10), # from difficulty 4
-		"wolf": calculate_weights(20, 6, -5, 0), # from difficulty 6
-		"goblin": calculate_weights(5, 8, -5, 0), # from difficulty 8
-		"strong wolf": calculate_weights(5, 10, -3, 0), # from difficulty 10
-		"boss goblin": calculate_weights(5, 15, -3, 0) # from difficulty 10
+		"wolf": calculate_weights(10, 8, -5, 0), # from difficulty 8
+		"goblin": calculate_weights(5, 12, -5, 0), # from difficulty 10
+		"strong wolf": calculate_weights(2, 16, -3, 0), # from difficulty 16
+		"boss goblin": calculate_weights(2, 20, -3, 0) # from difficulty 20
 	}
 
 # helper method to calculate weights based on difficulty

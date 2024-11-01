@@ -151,7 +151,7 @@ Key components and their relationships:
 - `game_stats.gd` [All]
     - GameStats manages the game statistics such as score, life, and resources
 
-- `wave.gd` [All]
+- `wave.gd` [Most]
     - generates array of enemies and sends them based on difficulty of the game
 
 - `strength_estimator.gd` [All]
@@ -209,7 +209,7 @@ Key components and their relationships:
      - Fixed firing system to aim at most advanced enemy and timing
      - Added upgrade system with 2 options and selling function
 
-- `tower1Arrow.gd` [Some]
+- `tower1Arrow.gd` [Touched]
    - Homing projectile used by tower to attack enemy
    - Code existed but had inefficient condition checks due to lack of enemy super class
    - Refactored code and made it extendable
@@ -235,7 +235,7 @@ Key components and their relationships:
 
 **Enemy System** (\Scripts\Enemies)
 
-- `EnemyBase.gd` [Some]
+- `EnemyBase.gd` [Touched]
    - Enemy types Slime, Bee, Wolf and Goblin already existed with same behavior
    - Made improvements:
      - Refactored existing code for easy management and future extension
@@ -243,7 +243,7 @@ Key components and their relationships:
 
 **HUD System** (\Scripts\Menu) (\Scripts)
 
-- `HUD.gd` [Most]
+- `HUD.gd` [Half]
    - Implemented button set up and actions triggered by them
 
 - `EndMenu.gd` [All]
@@ -252,6 +252,9 @@ Key components and their relationships:
 
 - `SceneManager.gd` [All]
    - Manages scene transition, this script is autoloaded
+
+- `Buy Tower.gd` [Touched]
+  - Added button styling via script due to style inconsistencies between `HUD.tscn` and `game.tscn`
 
 - All files in `\Scenes\Menu` [All]
    - Scenes for corresponding scripts

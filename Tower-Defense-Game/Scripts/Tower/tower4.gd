@@ -9,7 +9,7 @@ func _ready():
 	super._ready()
 	fire_rate = 2
 	scale_detection_area(10)
-	price = 300
+	price = 2000
 	upgrade_price1 = 400
 	upgrade_price2 = 400
 	option1 = [10, 15] # attack range

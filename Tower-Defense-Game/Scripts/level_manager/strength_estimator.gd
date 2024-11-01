@@ -10,7 +10,7 @@ const MAX_STRENGTH: float = 2.0
 const TOWER_FACTOR: float = 0.5 # probably most important factor
 const DEFEAT_RATE_FACTOR: float = 2.0
 const RESOURCE_FACTOR: float = 1000.0
-@export var difficulty_limit: int = 30
+@export var difficulty_limit: int = 50
 
 # estimate the player's strength from 3 factors and divide by 3
 func estimate_player() -> float:

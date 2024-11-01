@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://bmb1ihnnrpan4"]
+[gd_scene load_steps=24 format=3 uid="uid://bmb1ihnnrpan4"]
 
 [ext_resource type="Script" path="res://Scripts/level_manager/Game.gd" id="1_afu5y"]
 [ext_resource type="PackedScene" uid="uid://bbfwgc53jd2tb" path="res://Scenes/InputManager/input_manager.tscn" id="3_frryq"]
@@ -19,6 +19,42 @@ bg_color = Color(0, 0, 0, 0.407843)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dfig3"]
 bg_color = Color(0.00784314, 0.0156863, 0.0235294, 0.407843)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p3sbd"]
+bg_color = Color(0.583781, 0.528722, 0.956336, 1)
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_scfgv"]
+bg_color = Color(0.619608, 0.34902, 0.956863, 1)
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eanhl"]
+bg_color = Color(0.584314, 0.529412, 0.956863, 1)
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4w2kt"]
+bg_color = Color(0.320189, 0.687117, 0.470614, 1)
+corner_radius_top_left = 200
+corner_radius_top_right = 200
+corner_radius_bottom_right = 200
+corner_radius_bottom_left = 200
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fug2f"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b7apg"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ifrch"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nv84w"]
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_afu5y")
@@ -84,38 +120,52 @@ text = "x 0"
 position = Vector2(100, -190)
 
 [node name="Pause" type="Button" parent="HUD/CanvasLayer"]
-offset_left = 1048.0
-offset_top = 435.0
-offset_right = 1128.0
-offset_bottom = 668.0
+anchors_preset = -1
+anchor_left = 0.91
+anchor_top = 0.483
+anchor_right = 0.979
+anchor_bottom = 0.742
+offset_left = -0.320068
+offset_top = 0.299988
+offset_right = 0.192017
+offset_bottom = 0.199951
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
 theme_override_font_sizes/font_size = 20
-text = "Pause II"
+theme_override_styles/normal = SubResource("StyleBoxFlat_p3sbd")
+theme_override_styles/hover = SubResource("StyleBoxFlat_scfgv")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_eanhl")
+text = "Pause"
 
 [node name="Buy Tower" type="Button" parent="HUD/CanvasLayer"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 385.0
-offset_top = 450.0
-offset_right = -517.0
-offset_bottom = -338.0
+anchors_preset = -1
+anchor_left = 0.334
+anchor_top = 0.5
+anchor_right = 0.519
+anchor_bottom = 0.606
+offset_left = 0.231964
+offset_right = 37.1119
+offset_bottom = 16.6
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.85, 0.85)
 theme_override_font_sizes/font_size = 20
 disabled = true
 text = "Buy Arrow Tower
-100 G"
+500 G"
 script = ExtResource("13_3fpjn")
 
 [node name="Buy Tower2" type="Button" parent="HUD/CanvasLayer"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 610.0
-offset_top = 570.0
-offset_right = -292.0
-offset_bottom = -220.0
+anchors_preset = -1
+anchor_left = 0.53
+anchor_top = 0.633
+anchor_right = 0.701
+anchor_bottom = 0.737
+offset_left = -0.560059
+offset_top = 0.299988
+offset_right = 52.4479
+offset_bottom = 16.7
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.85, 0.85)
@@ -126,51 +176,64 @@ text = "Buy Thunderbolt Tower
 script = ExtResource("13_3fpjn")
 
 [node name="Buy Tower3" type="Button" parent="HUD/CanvasLayer"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 610.0
-offset_top = 450.0
-offset_right = -292.0
-offset_bottom = -340.0
+anchors_preset = -1
+anchor_left = 0.53
+anchor_top = 0.5
+anchor_right = 0.714
+anchor_bottom = 0.604
+offset_left = -0.560059
+offset_right = 37.4719
+offset_bottom = 16.4
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.85, 0.85)
 theme_override_font_sizes/font_size = 20
 disabled = true
 text = "Buy Laser Tower
-100 G"
+500 G"
 script = ExtResource("13_3fpjn")
 
 [node name="Buy Tower4" type="Button" parent="HUD/CanvasLayer"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 385.0
-offset_top = 570.0
-offset_right = -517.0
-offset_bottom = -220.0
+anchors_preset = -1
+anchor_left = 0.334
+anchor_top = 0.633
+anchor_right = 0.519
+anchor_bottom = 0.737
+offset_left = 0.231964
+offset_top = 0.299988
+offset_right = 37.1119
+offset_bottom = 16.7
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.85, 0.85)
 theme_override_font_sizes/font_size = 20
 disabled = true
 text = "Buy  MagicBall Tower
-300 G"
+2000 G"
 script = ExtResource("13_3fpjn")
 
 [node name="Next Wave" type="Button" parent="HUD/CanvasLayer"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 840.0
-offset_top = 435.0
-offset_right = -62.0
-offset_bottom = -232.0
+anchors_preset = -1
+anchor_left = 0.729
+anchor_top = 0.483
+anchor_right = 0.903
+anchor_bottom = 0.742
+offset_left = 0.191956
+offset_top = 0.299988
+offset_right = 49.7439
+offset_bottom = 0.199951
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.8, 1)
+theme_override_colors/font_color = Color(0.991164, 0.991164, 0.991164, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
 theme_override_font_sizes/font_size = 22
+theme_override_styles/normal = SubResource("StyleBoxFlat_4w2kt")
+theme_override_styles/hover = SubResource("StyleBoxFlat_fug2f")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_b7apg")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_ifrch")
+theme_override_styles/focus = SubResource("StyleBoxFlat_nv84w")
 text = "Next Wave
 "
 script = ExtResource("14_51vyn")
