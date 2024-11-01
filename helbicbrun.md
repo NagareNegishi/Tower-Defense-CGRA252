@@ -39,11 +39,11 @@ Tower1_arrows
 
 ### Most Interesting Code/Blueprint Section
 https://gitlab.ecs.vuw.ac.nz/course-work/cgra252/2024/project/team6/tower-defense/-/blob/main/Tower-Defense-Game/Scripts/Tower/FlyingBalls.gd?ref_type=heads#L16-34
-The MagicBalls were spawned in "random" places by the Tower4 and did 2 rotates around the tower before exploding. 
+The MagicBalls Rotated around their tower a couple times, dealing damage to monsters that they collided with before they eventually exploded.
 
 ### Section You’re Most Proud Of
 https://gitlab.ecs.vuw.ac.nz/course-work/cgra252/2024/project/team6/tower-defense/-/blob/main/Tower-Defense-Game/Scripts/Tower/slimeball.gd?ref_type=heads#L11-41
-I made a cool little tesla bomb that would take advantage of the alkready implemented arrow mechanics, but instead of take out a singular target on collision it would explode and deal damage to all the surrounding enemies aswell. I thought this was a really neat, simple and effective design. 
+I made a cool little tesla bomb that would take advantage of the alkready implemented arrow mechanics, but instead of taking out a singular target on collision. It would explode and deal damage to all the surrounding enemies aswell. I thought this was a really neat, simple and effective design. 
 
 ### Section You Consider Bad Code
 I think my tower3 is poorly written, this is because it extends parts of the initial tower class that it doesnt need to in parts. I definitley could have made it alot more compact and cleaner if I had avoided overriding stuff where I didnt need to. However overriding did give me alot more freedom to do what I wanted, the way I wanted. 
