@@ -37,7 +37,7 @@ https://gitlab.ecs.vuw.ac.nz/course-work/cgra252/2024/project/team6/tower-defens
 
 - Project Management
 
-    - Documentation lead (90%+ of project documentation)
+    - Documentation lead (90%+ of project documentation, excluding video materials)
     - Git workflow management:
       - Issue tracking and milestone planning
       - Label and tag organization
