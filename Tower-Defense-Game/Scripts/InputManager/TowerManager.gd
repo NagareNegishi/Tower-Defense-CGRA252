@@ -9,7 +9,8 @@ var tower_costs = {
 	"type1": 500,
 	"type2": 3000,
 	"type3": 500,
-	"type4": 2000
+	"type4": 2000,
+	"type5": 1200
 }
 # list of tower scenes
 var tower_scenes = {
