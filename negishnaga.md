@@ -1,16 +1,3 @@
-# Repository Links
-
-## Main Repository
-https://gitlab.ecs.vuw.ac.nz/course-work/cgra252/2024/project/team6/tower-defense
-
-## Release Version
-- Release: "Goblins' Fury: Fortress Fight - First Release"
-- Tag: v1.0.1
-- URL: https://gitlab.ecs.vuw.ac.nz/course-work/cgra252/2024/project/team6/tower-defense/-/releases/v1.0.1
-
-
-# Individual Project Report
-
 ## Header Information
 - **Name**: Nagare Negishi
 
@@ -385,14 +372,3 @@ Perhaps most significantly, my approach to problem-solving evolved throughout th
 A key learning came from redesigning the input system, where I learned the importance of user-centric design. By focusing on creating more intuitive and consistent interactions, and refactoring code for future extensibility, I gained valuable insights into how technical decisions directly impact user experience.
 
 The most important takeaway from this project is understanding that successful software development requires both flexibility and solid foundations. While having clear shared understanding and commitment to design rules at the beginning is crucial, equally important is the ability to adapt to changes while maintaining code quality. This means not only being able to adjust to changing team dynamics and requirements, but also consistently focusing on clear documentation, maintainable code structure, and extensible system design. These principles will be essential for any future project, regardless of its scale or complexity.
-
-
-## Submission Weighting
-
-| Area        | Weight | Range   |
-|-------------|--------|---------|
-| Final Game  | 25%    | 10-30% |
-| Good Code   | 25%    | 10-30% |
-| Bad Code    | 15%    | 10-30% |
-| Reflection  | 30%    | 20-40% |
-| Video       | 5%     | 5-15%  |
